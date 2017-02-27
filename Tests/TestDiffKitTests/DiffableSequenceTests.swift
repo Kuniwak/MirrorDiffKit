@@ -6,7 +6,7 @@ class DiffableSequenceTests: XCTestCase {
     private struct TestCase {
         let from: DiffableSequence
         let to: DiffableSequence
-        let expected: [DiffableSequence.DiffStep]
+        let expected: [DiffableSequence.LineState]
     }
 
 
@@ -24,7 +24,9 @@ class DiffableSequenceTests: XCTestCase {
                 to: DiffableSequence([
                     .string("I'm not changed"),
                 ]),
-                expected: []
+                expected: [
+                    .notChanged(.string("I'm not changed")),
+                ]
             ),
             #line: TestCase(
                 from: DiffableSequence([]),
@@ -32,7 +34,7 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm inserted"),
                 ]),
                 expected: [
-                    .inserted(.string("I'm inserted"), atIndex: 0),
+                    .inserted(.string("I'm inserted")),
                 ]
             ),
             #line: TestCase(
@@ -41,7 +43,7 @@ class DiffableSequenceTests: XCTestCase {
                 ]),
                 to: DiffableSequence([]),
                 expected: [
-                    .deleted(.string("I'm deleted"), atIndex: 0),
+                    .deleted(.string("I'm deleted")),
                 ]
             ),
             #line: TestCase(
@@ -54,8 +56,9 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm inserted"),
                 ]),
                 expected: [
-                    .deleted(.string("I'm deleted"), atIndex: 1),
-                    .inserted(.string("I'm inserted"), atIndex: 1),
+                    .notChanged(.string("I'm not changed")),
+                    .deleted(.string("I'm deleted")),
+                    .inserted(.string("I'm inserted")),
                 ]
             ),
             #line: TestCase(
@@ -68,10 +71,99 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm not changed"),
                 ]),
                 expected: [
-                    .inserted(.string("I'm inserted"), atIndex: 0),
-                    .deleted(.string("I'm deleted"), atIndex: 1),
+                    .inserted(.string("I'm inserted")),
+                    .notChanged(.string("I'm not changed")),
+                    .deleted(.string("I'm deleted")),
                 ]
-            )
+            ),
+            #line: TestCase(
+                from: DiffableSequence([
+                    .string("I'm deleted"),
+                    .string("I'm not changed"),
+                ]),
+                to: DiffableSequence([
+                    .string("I'm inserted"),
+                    .string("I'm not changed"),
+                ]),
+                expected: [
+                    .deleted(.string("I'm deleted")),
+                    .inserted(.string("I'm inserted")),
+                    .notChanged(.string("I'm not changed")),
+                ]
+            ),
+            #line: TestCase(
+                from: DiffableSequence([
+                    .string("I'm deleted"),
+                    .string("I'm not changed"),
+                ]),
+                to: DiffableSequence([
+                    .string("I'm not changed"),
+                    .string("I'm inserted"),
+                ]),
+                expected: [
+                    .deleted(.string("I'm deleted")),
+                    .notChanged(.string("I'm not changed")),
+                    .inserted(.string("I'm inserted")),
+                ]
+            ),
+            #line: TestCase(
+                from: DiffableSequence([
+                    .string("I'm not changed 1"),
+                    .string("I'm not changed 2"),
+                    .string("I'm not changed 3"),
+                    .string("I'm not changed 4"),
+                ]),
+                to: DiffableSequence([
+                    .string("I'm not changed 1"),
+                    .string("I'm not changed 2"),
+                    .string("I'm not changed 3"),
+                    .string("I'm not changed 4"),
+                ]),
+                expected: [
+                    .notChanged(.string("I'm not changed 1")),
+                    .notChanged(.string("I'm not changed 2")),
+                    .notChanged(.string("I'm not changed 3")),
+                    .notChanged(.string("I'm not changed 4")),
+                ]
+            ),
+            #line: TestCase(
+                from: DiffableSequence([
+                    .string("I'm deleted 1"),
+                    .string("I'm deleted 2"),
+                    .string("I'm deleted 3"),
+                    .string("I'm deleted 4"),
+                    .string("I'm not changed"),
+                ]),
+                to: DiffableSequence([
+                    .string("I'm not changed"),
+                ]),
+                expected: [
+                    .deleted(.string("I'm deleted 1")),
+                    .deleted(.string("I'm deleted 2")),
+                    .deleted(.string("I'm deleted 3")),
+                    .deleted(.string("I'm deleted 4")),
+                    .notChanged(.string("I'm not changed")),
+                ]
+            ),
+            #line: TestCase(
+                from: DiffableSequence([
+                    .string("I'm not changed"),
+                ]),
+                to: DiffableSequence([
+                    .string("I'm inserted 1"),
+                    .string("I'm inserted 2"),
+                    .string("I'm inserted 3"),
+                    .string("I'm inserted 4"),
+                    .string("I'm not changed"),
+                ]),
+                expected: [
+                    .inserted(.string("I'm inserted 1")),
+                    .inserted(.string("I'm inserted 2")),
+                    .inserted(.string("I'm inserted 3")),
+                    .inserted(.string("I'm inserted 4")),
+                    .notChanged(.string("I'm not changed")),
+                ]
+            ),
         ]
 
 
@@ -81,7 +173,7 @@ class DiffableSequenceTests: XCTestCase {
                 to: testCase.to
             )
 
-            XCTAssertEqual(diff, testCase.expected, line: #line)
+            XCTAssertEqual(diff, testCase.expected, line: line)
         }
     }
 
