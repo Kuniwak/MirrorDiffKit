@@ -26,6 +26,21 @@ public indirect enum Diffable {
     case unknown(Any)
 
     case date(Date)
+
+
+    public static func from<T: DiffableConvertible>(_ x: T) -> Diffable {
+        return x.diffable
+    }
+
+
+    public static func from(any x: Any) -> Diffable {
+        return transform(fromAny: x)
+    }
+
+
+    public static func from(mirrorOf x: Any) -> Diffable {
+        return transform(fromMirrorOf: x)
+    }
 }
 
 
@@ -75,7 +90,7 @@ extension Diffable: Equatable {
 }
 
 
-public func transform(fromAny x: Any?) -> Diffable {
+func transform(fromAny x: Any?) -> Diffable {
     switch x {
     case .none:
         return .none
@@ -86,93 +101,92 @@ public func transform(fromAny x: Any?) -> Diffable {
 
 
 private func transform(fromNonOptionalAny x: Any) -> Diffable {
-    if (x as? NSNull) != nil {
-        return .null
+    if let y = x as? NSNull {
+        return Diffable.from(y)
     }
 
     // MARK: - Integer subtypes
-    if let int = x as? Int {
-        return .number(Double(int))
+    if let y = x as? Int {
+        return Diffable.from(y)
     }
 
-    if let int = x as? Int8 {
-        return .number(Double(int))
+    if let y = x as? Int8 {
+        return Diffable.from(y)
     }
 
-    if let int = x as? Int16 {
-        return .number(Double(int))
+    if let y = x as? Int16 {
+        return Diffable.from(y)
     }
 
-    if let int = x as? Int32 {
-        return .number(Double(int))
+    if let y = x as? Int32 {
+        return Diffable.from(y)
     }
 
-    if let int = x as? Int64 {
-        return .number(Double(int))
+    if let y = x as? Int64 {
+        return Diffable.from(y)
     }
 
-    if let uint = x as? UInt {
-        return .number(Double(uint))
+    if let y = x as? UInt {
+        return Diffable.from(y)
     }
 
-    if let uint = x as? UInt8 {
-        return .number(Double(uint))
+    if let y = x as? UInt8 {
+        return Diffable.from(y)
     }
 
-    if let uint = x as? UInt16 {
-        return .number(Double(uint))
+    if let y = x as? UInt16 {
+        return Diffable.from(y)
     }
 
-    if let uint = x as? UInt32 {
-        return .number(Double(uint))
+    if let y = x as? UInt32 {
+        return Diffable.from(y)
     }
 
-    if let uint = x as? UInt64 {
-        return .number(Double(uint))
+    if let y = x as? UInt64 {
+        return Diffable.from(y)
     }
 
 
     // MARK: - FloatingPoint subtypes
-    if let double = x as? Double {
-        return .number(double)
+    if let y = x as? Double {
+        return Diffable.from(y)
     }
 
-    if let double = x as? Float {
-        return .number(Double(double))
+    if let y = x as? Float {
+        return Diffable.from(y)
     }
 
-    if let double = x as? Float32 {
-        return .number(Double(double))
+    if let y = x as? Float32 {
+        return Diffable.from(y)
     }
 
-    if let double = x as? Float64 {
-        return .number(Double(double))
+    if let y = x as? Float64 {
+        return Diffable.from(y)
     }
 
-    if let double = x as? Float80 {
-        return .number(Double(double))
+    if let y = x as? Float80 {
+        return Diffable.from(y)
     }
 
 
     // MARK: - String related types
-    if let char = x as? Character {
-        // NOTE: "a" == String(describing: Character("a"))
-        return .string(String(describing: char))
+    if let y = x as? Character {
+        return Diffable.from(y)
     }
 
-    if let string = x as? String {
-        return .string(string)
+    if let y = x as? String {
+        return Diffable.from(y)
     }
 
 
     // MARK: - Bool subtypes
-    if let bool = x as? Bool {
-        return .bool(bool)
+    if let y = x as? Bool {
+        return Diffable.from(y)
     }
 
 
-    if let date = x as? Date {
-        return .date(date)
+    if let y = x as? Date {
+        return Diffable.from(y)
     }
 
 
@@ -183,24 +197,31 @@ private func transform(fromNonOptionalAny x: Any) -> Diffable {
     //
     // So, we can only try to cast concrete collection types. See all concerte
     // types in SDK: http://swiftdoc.org/v3.0/protocol/Collection/hierarchy/
-    if let array = x as? [Any] {
-        return .array(array.map(transform(fromAny:)))
+    if let y = x as? [Any] {
+        return Diffable.from(y)
     }
 
+    return transform(fromMirrorOf: x)
+}
+
+
+
+func transform(fromMirrorOf x: Any) -> Diffable {
     do {
         let mirror = Mirror(reflecting: x)
+
         switch mirror.displayStyle {
-        // XXX: Handle `nil` in a variable typed Any here.
-        //
-        // (lldb) po let $var: Any? = nil
-        // (lldb) po let $container: Any = $var
-        // (lldb) po $container == nil
-        // false <- FUUUUUUUUUUUUU
-        //
-        // (lldb) po Mirror(reflecting: $container)
-        // Mirror for Optional<Any>
-        //
-        // Therefore we can handle it by only using Mirrors.
+            // XXX: Handle `nil` in a variable typed Any here.
+            //
+            // (lldb) po let $var: Any? = nil
+            // (lldb) po let $container: Any = $var
+            // (lldb) po $container == nil
+            // false <- FUUUUUUUUUUUUU
+            //
+            // (lldb) po Mirror(reflecting: $container)
+            // Mirror for Optional<Any>
+            //
+            // Therefore we can handle it by only using Mirrors.
         case .some(.optional):
             return .none
 
