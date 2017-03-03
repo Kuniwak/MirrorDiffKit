@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="100"
+   viewBox="0 0 600.00001 100"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="/Users/yuki.kokubun/Development/MirrorDiffKit/Documentation/Images/logo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="342.80058"
+     inkscape:cy="266.21892"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="true"
+     borderlayer="true"
+     inkscape:showpageshadow="false"
+     guidecolor="#000000"
+     guideopacity="0.49803922"
+     guidehicolor="#000000"
+     guidehiopacity="0.49803922"
+     inkscape:object-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     units="px"
+     inkscape:window-width="1676"
+     inkscape:window-height="1005"
+     inkscape:window-x="4"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       color="#6a6a6a"
+       opacity="0.04313725"
+       empcolor="#595959"
+       empopacity="0.09411765" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-952.36216)">
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 530,482.36218 0,140 -140,0 z"
+       id="path4165"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none"
+       id="circle4167"
+       cx="460"
+       cy="552.36218"
+       r="48.888325" />
+    <path
+       style="fill:#573991;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 88.66497,968.78774 -17.54659,17.54659 a 24.195992,24.195992 0 0 1 7.09809,17.09807 24.195992,24.195992 0 0 1 -24.19616,24.1962 24.195992,24.195992 0 0 1 -17.09903,-7.0972 l -17.54563,17.5457 69.28932,0 0,-69.28936 z m -51.74369,51.74366 34.1971,-34.19707 a 24.195992,24.195992 0 0 0 -17.09807,-7.09713 24.195992,24.195992 0 0 0 -24.19617,24.1952 24.195992,24.195992 0 0 0 7.09714,17.099 z"
+       id="path4182"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:79.6000824px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="114.66678"
+       y="1035.901"
+       id="text4199"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4201"
+         x="114.66678"
+         y="1035.901">MirrorDiffKit</tspan></text>
+    <path
+       id="path4203"
+       d="m 210,502.36133 -35.45312,35.45312 A 48.888325,48.888325 0 0 1 188.88867,572.36133 48.888325,48.888325 0 0 1 140,621.25 48.888325,48.888325 0 0 1 105.45117,606.91016 L 70,642.36133 l 140,0 0,-140 z M 105.45117,606.91016 174.54688,537.81445 A 48.888325,48.888325 0 0 0 140,523.47461 48.888325,48.888325 0 0 0 91.111328,572.36133 48.888325,48.888325 0 0 0 105.45117,606.91016 Z"
+       style="fill:#200e47;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Exports"
+     style="opacity:0"
+     transform="translate(0,-952.36216)" />
+</svg>

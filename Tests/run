@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+# https://github.com/vapor/swift/blob/master/LICENSE
+#
+# ------------------------------------------------------------------------------
+# The MIT License (MIT)
+#
+# Copyright (c) 2016 Qutheory, LLC
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# ------------------------------------------------------------------------------
+
+set -e
+set -o pipefail
+
+echo "Swift 3 Circle CI Installer";
+
+# Determine version
+VERSION_FILE=".swift-version"
+if [ ! -f $VERSION_FILE ]; 
+then
+    echo "No .swift-version file found."
+    exit 1
+fi
+VERSION=`cat $VERSION_FILE | tr -d '[[:space:]]'`
+echo "📅 Version: $VERSION";
+
+# Determine OS
+UNAME=`uname`;
+if [[ $UNAME == "Linux" ]];
+then
+    UBUNTU_RELEASE=`lsb_release -a 2>/dev/null`;
+    if [[ $UBUNTU_RELEASE == *"15.10"* ]];
+    then
+        OS="ubuntu1510";
+    else
+        OS="ubuntu1404";
+    fi
+else
+    echo "Unsupported Operating System: $UNAME";
+fi
+echo "🖥 Operating System: $OS";
+
+echo "📦 Installing Swiftenv"
+export SWIFTENV_ROOT="$HOME/.swiftenv"
+[[ -d "$SWIFTENV_ROOT" ]] || git clone --depth 1 https://github.com/kylef/swiftenv.git "$SWIFTENV_ROOT"
+export PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
+
+echo "📚 Installing Dependencies"
+if which apt-get > /dev/null; then
+	sudo apt-get install -y clang libicu-dev
+fi
+
+echo "🐦 Installing Swift";
+swiftenv install $VERSION --skip-existing;
+
+echo "🚀 Building";
+swift build
+if [[ $? != 0 ]]; 
+then 
+    echo "❌  Build failed";
+    exit 1; 
+fi
+
+echo "💼 Building Release";
+swift build -c release
+if [[ $? != 0 ]]; 
+then 
+    echo "❌  Build for release failed";
+    exit 1; 
+fi
+
+echo "🔎 Testing";
+
+swift test
+if [[ $? != 0 ]]; 
+then 
+    echo "❌ Tests failed";
+    exit 1; 
+fi
+
+echo "✅ Done";
+

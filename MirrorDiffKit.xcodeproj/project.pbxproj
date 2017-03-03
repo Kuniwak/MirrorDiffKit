@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		OBJ_44 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Dwifft.swift */; };
+		OBJ_51 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Diffable+CustomStringConvertible.swift */; };
+		OBJ_52 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Diffable+diff.swift */; };
+		OBJ_53 /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Diffable+from.swift */; };
+		OBJ_54 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Diffable.swift */; };
+		OBJ_55 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* DiffableConvertible.swift */; };
+		OBJ_56 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* DiffableDictionary.swift */; };
+		OBJ_57 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* DiffableSequence.swift */; };
+		OBJ_58 /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* DiffableSet.swift */; };
+		OBJ_59 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* MirrorDiffKit.swift */; };
+		OBJ_60 /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* PrettyPrintable.swift */; };
+		OBJ_61 /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* RoughEquatable.swift */; };
+		OBJ_62 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Transformer.swift */; };
+		OBJ_63 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Util.swift */; };
+		OBJ_65 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Dwifft.framework */; };
+		OBJ_72 /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* DIffable+PrettyPrintableTests.swift */; };
+		OBJ_73 /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* DiffableSequenceTests.swift */; };
+		OBJ_74 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* DiffableSetTests.swift */; };
+		OBJ_75 /* DiffableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* DiffableTests.swift */; };
+		OBJ_76 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* ExampleTests.swift */; };
+		OBJ_77 /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* MirrorDiffKitIntegrationTests.swift */; };
+		OBJ_78 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* Stubs.swift */; };
+		OBJ_79 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* TransformerTests.swift */; };
+		OBJ_81 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* Dwifft.framework */; };
+		OBJ_82 /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* MirrorDiffKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62F5C5561E6921CF00D54FC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_39;
+			remoteInfo = Dwifft;
+		};
+		62F5C5571E6921CF00D54FC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_39;
+			remoteInfo = Dwifft;
+		};
+		62F5C5581E6921CF00D54FC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = OBJ_46;
+			remoteInfo = MirrorDiffKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		62F5C55A1E6922DC00D54FC3 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MirrorDiffKit.framework; path = ../../Desktop/Carthage/Build/Mac/MirrorDiffKit.framework; sourceTree = "<group>"; };
+		OBJ_11 /* Diffable+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Diffable+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		OBJ_12 /* Diffable+diff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Diffable+diff.swift"; sourceTree = "<group>"; };
+		OBJ_13 /* Diffable+from.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Diffable+from.swift"; sourceTree = "<group>"; };
+		OBJ_14 /* Diffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
+		OBJ_15 /* DiffableConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableConvertible.swift; sourceTree = "<group>"; };
+		OBJ_16 /* DiffableDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDictionary.swift; sourceTree = "<group>"; };
+		OBJ_17 /* DiffableSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSequence.swift; sourceTree = "<group>"; };
+		OBJ_18 /* DiffableSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSet.swift; sourceTree = "<group>"; };
+		OBJ_19 /* MirrorDiffKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorDiffKit.swift; sourceTree = "<group>"; };
+		OBJ_20 /* PrettyPrintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyPrintable.swift; sourceTree = "<group>"; };
+		OBJ_21 /* RoughEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoughEquatable.swift; sourceTree = "<group>"; };
+		OBJ_22 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		OBJ_23 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		OBJ_26 /* DIffable+PrettyPrintableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIffable+PrettyPrintableTests.swift"; sourceTree = "<group>"; };
+		OBJ_27 /* DiffableSequenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSequenceTests.swift; sourceTree = "<group>"; };
+		OBJ_28 /* DiffableSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSetTests.swift; sourceTree = "<group>"; };
+		OBJ_29 /* DiffableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTests.swift; sourceTree = "<group>"; };
+		OBJ_30 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
+		OBJ_31 /* MirrorDiffKitIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorDiffKitIntegrationTests.swift; sourceTree = "<group>"; };
+		OBJ_32 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		OBJ_33 /* TransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerTests.swift; sourceTree = "<group>"; };
+		OBJ_34 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = SOURCE_ROOT; };
+		OBJ_36 /* Dwifft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dwifft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_37 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_38 /* MirrorDiffKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = MirrorDiffKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* Dwifft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwifft.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_65 /* Dwifft.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_81 /* Dwifft.framework in Frameworks */,
+				OBJ_82 /* MirrorDiffKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62F5C5591E6922DC00D54FC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62F5C55A1E6922DC00D54FC3 /* MirrorDiffKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		OBJ_10 /* MirrorDiffKit */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* Diffable+CustomStringConvertible.swift */,
+				OBJ_12 /* Diffable+diff.swift */,
+				OBJ_13 /* Diffable+from.swift */,
+				OBJ_14 /* Diffable.swift */,
+				OBJ_15 /* DiffableConvertible.swift */,
+				OBJ_16 /* DiffableDictionary.swift */,
+				OBJ_17 /* DiffableSequence.swift */,
+				OBJ_18 /* DiffableSet.swift */,
+				OBJ_19 /* MirrorDiffKit.swift */,
+				OBJ_20 /* PrettyPrintable.swift */,
+				OBJ_21 /* RoughEquatable.swift */,
+				OBJ_22 /* Transformer.swift */,
+				OBJ_23 /* Util.swift */,
+			);
+			name = MirrorDiffKit;
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_24 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_25 /* MirrorDiffKitTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		OBJ_25 /* MirrorDiffKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_26 /* DIffable+PrettyPrintableTests.swift */,
+				OBJ_27 /* DiffableSequenceTests.swift */,
+				OBJ_28 /* DiffableSetTests.swift */,
+				OBJ_29 /* DiffableTests.swift */,
+				OBJ_30 /* ExampleTests.swift */,
+				OBJ_31 /* MirrorDiffKitIntegrationTests.swift */,
+				OBJ_32 /* Stubs.swift */,
+				OBJ_33 /* TransformerTests.swift */,
+			);
+			name = MirrorDiffKitTests;
+			path = Tests/MirrorDiffKitTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_35 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_36 /* Dwifft.framework */,
+				OBJ_37 /* MirrorDiffKit.framework */,
+				OBJ_38 /* MirrorDiffKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_24 /* Tests */,
+				OBJ_34 /* Carthage */,
+				OBJ_35 /* Products */,
+				62F5C5591E6922DC00D54FC3 /* Frameworks */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Dwifft */,
+				OBJ_10 /* MirrorDiffKit */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		OBJ_8 /* Dwifft */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Dwifft.swift */,
+			);
+			name = Dwifft;
+			path = "Packages/Dwifft-0.6.0/Sources";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		OBJ_39 /* Dwifft */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_40 /* Build configuration list for PBXNativeTarget "Dwifft" */;
+			buildPhases = (
+				OBJ_43 /* Sources */,
+				OBJ_45 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dwifft;
+			productName = Dwifft;
+			productReference = OBJ_36 /* Dwifft.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		OBJ_46 /* MirrorDiffKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_47 /* Build configuration list for PBXNativeTarget "MirrorDiffKit" */;
+			buildPhases = (
+				OBJ_50 /* Sources */,
+				OBJ_64 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_66 /* PBXTargetDependency */,
+			);
+			name = MirrorDiffKit;
+			productName = MirrorDiffKit;
+			productReference = OBJ_37 /* MirrorDiffKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		OBJ_67 /* MirrorDiffKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_68 /* Build configuration list for PBXNativeTarget "MirrorDiffKitTests" */;
+			buildPhases = (
+				OBJ_71 /* Sources */,
+				OBJ_80 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_83 /* PBXTargetDependency */,
+				OBJ_84 /* PBXTargetDependency */,
+			);
+			name = MirrorDiffKitTests;
+			productName = MirrorDiffKitTests;
+			productReference = OBJ_38 /* MirrorDiffKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "MirrorDiffKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_35 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				OBJ_39 /* Dwifft */,
+				OBJ_46 /* MirrorDiffKit */,
+				OBJ_67 /* MirrorDiffKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_44 /* Dwifft.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_51 /* Diffable+CustomStringConvertible.swift in Sources */,
+				OBJ_52 /* Diffable+diff.swift in Sources */,
+				OBJ_53 /* Diffable+from.swift in Sources */,
+				OBJ_54 /* Diffable.swift in Sources */,
+				OBJ_55 /* DiffableConvertible.swift in Sources */,
+				OBJ_56 /* DiffableDictionary.swift in Sources */,
+				OBJ_57 /* DiffableSequence.swift in Sources */,
+				OBJ_58 /* DiffableSet.swift in Sources */,
+				OBJ_59 /* MirrorDiffKit.swift in Sources */,
+				OBJ_60 /* PrettyPrintable.swift in Sources */,
+				OBJ_61 /* RoughEquatable.swift in Sources */,
+				OBJ_62 /* Transformer.swift in Sources */,
+				OBJ_63 /* Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_72 /* DIffable+PrettyPrintableTests.swift in Sources */,
+				OBJ_73 /* DiffableSequenceTests.swift in Sources */,
+				OBJ_74 /* DiffableSetTests.swift in Sources */,
+				OBJ_75 /* DiffableTests.swift in Sources */,
+				OBJ_76 /* ExampleTests.swift in Sources */,
+				OBJ_77 /* MirrorDiffKitIntegrationTests.swift in Sources */,
+				OBJ_78 /* Stubs.swift in Sources */,
+				OBJ_79 /* TransformerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_39 /* Dwifft */;
+			targetProxy = 62F5C5561E6921CF00D54FC3 /* PBXContainerItemProxy */;
+		};
+		OBJ_83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_39 /* Dwifft */;
+			targetProxy = 62F5C5571E6921CF00D54FC3 /* PBXContainerItemProxy */;
+		};
+		OBJ_84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = OBJ_46 /* MirrorDiffKit */;
+			targetProxy = 62F5C5581E6921CF00D54FC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.2;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.2;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/Dwifft_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = MirrorDiffKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = "$(inherited)";
+				TARGET_NAME = Dwifft;
+			};
+			name = Debug;
+		};
+		OBJ_42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/Dwifft_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = MirrorDiffKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = "$(inherited)";
+				TARGET_NAME = Dwifft;
+			};
+			name = Release;
+		};
+		OBJ_48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/MirrorDiffKit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = MirrorDiffKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				TARGET_NAME = MirrorDiffKit;
+			};
+			name = Debug;
+		};
+		OBJ_49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/MirrorDiffKit_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = MirrorDiffKit;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				TARGET_NAME = MirrorDiffKit;
+			};
+			name = Release;
+		};
+		OBJ_69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/MirrorDiffKitTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = MirrorDiffKitTests;
+			};
+			name = Debug;
+		};
+		OBJ_70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MirrorDiffKit.xcodeproj/MirrorDiffKitTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = MirrorDiffKitTests;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "MirrorDiffKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_40 /* Build configuration list for PBXNativeTarget "Dwifft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_41 /* Debug */,
+				OBJ_42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_47 /* Build configuration list for PBXNativeTarget "MirrorDiffKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_48 /* Debug */,
+				OBJ_49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_68 /* Build configuration list for PBXNativeTarget "MirrorDiffKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_69 /* Debug */,
+				OBJ_70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
