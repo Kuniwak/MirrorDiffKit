@@ -2,7 +2,7 @@
 =============
 
 ![SPM compatible](https://img.shields.io/badge/SPM%20%7C%20Carthage-compatible-green.svg)
-[![v0.0.0](https://img.shields.io/badge/version-0.0.0-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
+[![v0.0.1](https://img.shields.io/badge/version-0.0.1-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
 [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=shield)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master)
 
