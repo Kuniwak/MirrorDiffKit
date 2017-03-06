@@ -7,16 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2475E0021A7DDCC37F737BB4 /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */; };
+		2475E0590370D6374C4146C5 /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
+		2475E05E018B6E7BD34602BC /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
+		2475E068E23A0E8B62E92ABD /* DiffableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */; };
+		2475E074447578D9EA23D0ED /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
+		2475E07738299099E0BBF127 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
+		2475E0B5C20CDBAB617F16DC /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */; };
+		2475E0CC7C02E2A884E1DF65 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
+		2475E0D2B8ADAD8150A51FF0 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
+		2475E0F6CAAD02CD70690FAE /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
+		2475E11BC79C1A8758170CCA /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
+		2475E161DC8C84DD8BE403A4 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
+		2475E169B154F08110A53A10 /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
+		2475E1926F92CC5DD8E0C256 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
+		2475E21346AF4049EDA93368 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
+		2475E22258EE196EDD943C69 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
+		2475E24082A75666B4FC4D4E /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
+		2475E2847D8FC02BF79B02B9 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
+		2475E2887DA3EBD63495590C /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
+		2475E28AF26479F0EF76BB1E /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
+		2475E2967CBDFC1F3E76012D /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
+		2475E2A55BF3C09E268B4EA8 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
+		2475E2B39EAE1416477807B9 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
+		2475E2D4F86772F7D5ED3EBD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
+		2475E2E683F9EEE5109AF6B6 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
+		2475E2FB375A5C54598AE82E /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
+		2475E357813342BCC4A43F1F /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
+		2475E3832FE428ECD51446EC /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
+		2475E39944EBDAAB4DA03482 /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
+		2475E3D727A25574A7583DFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
+		2475E41CC63F6C11220032F7 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
+		2475E42CCF9498C52DF8C766 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
+		2475E498EED3E8605F7AD8D1 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
+		2475E4A752C8888E0F58F52E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
+		2475E4CEC7626F499F7C563F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
+		2475E52262734230D4DFA81E /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
+		2475E57913C5E083CC762BBD /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
+		2475E5B0222EC649EB7B3420 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
+		2475E5E23E5B757DA92A8959 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
+		2475E5F33A232527CBAE0845 /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
+		2475E6538A6F9FA25C581877 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
+		2475E66135171B41D48D07D0 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
+		2475E6ABAD8DF9348F5A3028 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
+		2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
+		2475E71B66942EF2806F018D /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
+		2475E766A21D84D5A92EB4DC /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
+		2475E795E5263D357C00EA24 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
+		2475E82E5774572294871E48 /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
+		2475E85513F9A091CB525C07 /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
+		2475E89F382BEDD9A7E6C7F5 /* DiffableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */; };
+		2475E8A374D9584A1E5A34AA /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
+		2475E8E58C92BDB6A7BC2A74 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
+		2475E9CA33ED9943CC857ABA /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
+		2475E9FBCB01E15F28FBCCF3 /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
+		2475EA07EE6A5903F188FC2A /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
+		2475EA0F6F65A2B4D4257C9A /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
+		2475EA4FF764ACAC01995D33 /* DiffableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */; };
+		2475EAD03D7E372DF752F123 /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
+		2475EAD30889B46DD4EC7EB7 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
+		2475EAD8C209925A1859DA6F /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
+		2475EADF49EB4F91209156E0 /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
+		2475EB34A7C10789D6BC3E8C /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
+		2475EC44070AAA124CE3EC11 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
+		2475EC4661DF374C9C9FE156 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
+		2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
+		2475ECA328D49E5119BCD709 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
+		2475ED8F8CD1FCC4BCCAB666 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
+		2475EDC9D53B420705443293 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
+		2475EDCFDFCF8735DD825DD1 /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
+		2475EDD21E5135F23CCF2003 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
+		2475EDF02B748C4D96059FDF /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */; };
+		2475EE2884507B9D0ED36A4C /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
+		2475EE8D2529E83CFD1BA569 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
+		2475EEC4E83BB3F35A24CEB2 /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
+		2475EF569997D6980469B073 /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
+		2475EF59D9ACD2A391CAE753 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
+		2475EFACDD64E2A59B4D6F53 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
+		2475EFE88FA546641AAD76F2 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
+		2475EFF96CBD44AF5AF43EF5 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
 		52D6D9871BEFF229002C0205 /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* MirrorDiffKit.framework */; };
-		52D6D9981BEFF375002C0205 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */; };
-		52D6D99B1BEFF375002C0205 /* MirrorDiffKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9971BEFF375002C0205 /* MirrorDiffKitTests.swift */; };
-		52D6D9EA1BEFFFA4002C0205 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */; };
-		52D6DA091BF00081002C0205 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */; };
-		52D6DA261BF00118002C0205 /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */; };
-		DD7502861C68FDDC006590AF /* MirrorDiffKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9971BEFF375002C0205 /* MirrorDiffKitTests.swift */; };
 		DD7502881C68FEDE006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* MirrorDiffKit.framework */; };
 		DD7502921C690C7A006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* MirrorDiffKit.framework */; };
-		DD75029A1C690CBE006590AF /* MirrorDiffKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6D9971BEFF375002C0205 /* MirrorDiffKitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +116,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2475E050A29FC16D1340F755 /* DiffableConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableConvertible.swift; sourceTree = "<group>"; };
+		2475E08093ED284E24090A38 /* TransformerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerTests.swift; sourceTree = "<group>"; };
+		2475E0D0C6F529D98D395544 /* RoughEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoughEquatable.swift; sourceTree = "<group>"; };
+		2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSequenceTests.swift; sourceTree = "<group>"; };
+		2475E23B2FE90297580DAB62 /* Diffable+diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+diff.swift"; sourceTree = "<group>"; };
+		2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKit.swift; sourceTree = "<group>"; };
+		2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKitIntegrationTests.swift; sourceTree = "<group>"; };
+		2475E2E82C8E152A456073DA /* DiffableSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSetTests.swift; sourceTree = "<group>"; };
+		2475E42D3D741A2F398087E0 /* Stubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		2475E55AD7C7C9AEFEF1643C /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		2475E5B1B9EB8376144D192A /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = run; sourceTree = "<group>"; };
+		2475E78DE55347318233BC0C /* DiffableSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSet.swift; sourceTree = "<group>"; };
+		2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyPrintable.swift; sourceTree = "<group>"; };
+		2475E8ED7A24111E5500F1F4 /* Diffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
+		2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+from.swift"; sourceTree = "<group>"; };
+		2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableDictionary.swift; sourceTree = "<group>"; };
+		2475EC645A805B526D4FF547 /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DIffable+PrettyPrintableTests.swift"; sourceTree = "<group>"; };
+		2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		2475EDF4A917EDE713051BCF /* DiffableSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSequence.swift; sourceTree = "<group>"; };
+		2475EE61530F256A1D549339 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
+		2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableTests.swift; sourceTree = "<group>"; };
+		2475EF87F9F7B45846D04C65 /* ExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* MirrorDiffKit-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MirrorDiffKit-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MirrorDiffKit.swift; path = Sources/MirrorDiffKit.swift; sourceTree = "<group>"; };
-		52D6D9971BEFF375002C0205 /* MirrorDiffKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MirrorDiffKitTests.swift; path = Tests/MirrorDiffKitTests/MirrorDiffKitTests.swift; sourceTree = "<group>"; };
 		52D6D9E21BEFFF6E002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,13 +206,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2475E1405BDC834AE4460180 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2475E55AD7C7C9AEFEF1643C /* Util.swift */,
+				2475E8ED7A24111E5500F1F4 /* Diffable.swift */,
+				2475E78DE55347318233BC0C /* DiffableSet.swift */,
+				2475EC645A805B526D4FF547 /* Transformer.swift */,
+				2475E23B2FE90297580DAB62 /* Diffable+diff.swift */,
+				2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */,
+				2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */,
+				2475E0D0C6F529D98D395544 /* RoughEquatable.swift */,
+				2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */,
+				2475EDF4A917EDE713051BCF /* DiffableSequence.swift */,
+				2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */,
+				2475E050A29FC16D1340F755 /* DiffableConvertible.swift */,
+				2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2475E312B09E05FD1AB42214 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2475E5B1B9EB8376144D192A /* run */,
+				2475EE61530F256A1D549339 /* LinuxMain.swift */,
+				2475E9B7A1DFD63AED417A2A /* MirrorDiffKitTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		2475E9B7A1DFD63AED417A2A /* MirrorDiffKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				2475E42D3D741A2F398087E0 /* Stubs.swift */,
+				2475EF87F9F7B45846D04C65 /* ExampleTests.swift */,
+				2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */,
+				2475E2E82C8E152A456073DA /* DiffableSetTests.swift */,
+				2475E08093ED284E24090A38 /* TransformerTests.swift */,
+				2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */,
+				2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */,
+				2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */,
+			);
+			path = MirrorDiffKitTests;
+			sourceTree = "<group>";
+		};
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
-				52D6D9961BEFF375002C0205 /* MirrorDiffKit.swift */,
-				52D6D9971BEFF375002C0205 /* MirrorDiffKitTests.swift */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
 				52D6D97D1BEFF229002C0205 /* Products */,
+				2475E1405BDC834AE4460180 /* Sources */,
+				2475E312B09E05FD1AB42214 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -330,7 +468,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = "MirrorDiffKit";
+				ORGANIZATIONNAME = MirrorDiffKit;
 				TargetAttributes = {
 					52D6D97B1BEFF229002C0205 = {
 						CreatedOnToolsVersion = 7.1;
@@ -442,7 +580,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D6D9981BEFF375002C0205 /* MirrorDiffKit.swift in Sources */,
+				2475E4A752C8888E0F58F52E /* Util.swift in Sources */,
+				2475E21346AF4049EDA93368 /* Diffable.swift in Sources */,
+				2475E57913C5E083CC762BBD /* DiffableSet.swift in Sources */,
+				2475EFACDD64E2A59B4D6F53 /* Transformer.swift in Sources */,
+				2475E8E58C92BDB6A7BC2A74 /* Diffable+diff.swift in Sources */,
+				2475E2FB375A5C54598AE82E /* Diffable+from.swift in Sources */,
+				2475E498EED3E8605F7AD8D1 /* MirrorDiffKit.swift in Sources */,
+				2475E5F33A232527CBAE0845 /* RoughEquatable.swift in Sources */,
+				2475EE2884507B9D0ED36A4C /* PrettyPrintable.swift in Sources */,
+				2475E07738299099E0BBF127 /* DiffableSequence.swift in Sources */,
+				2475E2847D8FC02BF79B02B9 /* DiffableDictionary.swift in Sources */,
+				2475E2A55BF3C09E268B4EA8 /* DiffableConvertible.swift in Sources */,
+				2475EDD21E5135F23CCF2003 /* Diffable+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +600,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D6D99B1BEFF375002C0205 /* MirrorDiffKitTests.swift in Sources */,
+				2475E2E683F9EEE5109AF6B6 /* LinuxMain.swift in Sources */,
+				2475E795E5263D357C00EA24 /* Stubs.swift in Sources */,
+				2475EAD30889B46DD4EC7EB7 /* ExampleTests.swift in Sources */,
+				2475EA4FF764ACAC01995D33 /* DiffableTests.swift in Sources */,
+				2475EE8D2529E83CFD1BA569 /* DiffableSetTests.swift in Sources */,
+				2475EFE88FA546641AAD76F2 /* TransformerTests.swift in Sources */,
+				2475E0B5C20CDBAB617F16DC /* DiffableSequenceTests.swift in Sources */,
+				2475EF569997D6980469B073 /* DIffable+PrettyPrintableTests.swift in Sources */,
+				2475E0590370D6374C4146C5 /* MirrorDiffKitIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +616,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D6D9EA1BEFFFA4002C0205 /* MirrorDiffKit.swift in Sources */,
+				2475E3D727A25574A7583DFD /* Util.swift in Sources */,
+				2475E05E018B6E7BD34602BC /* Diffable.swift in Sources */,
+				2475E82E5774572294871E48 /* DiffableSet.swift in Sources */,
+				2475E22258EE196EDD943C69 /* Transformer.swift in Sources */,
+				2475E66135171B41D48D07D0 /* Diffable+diff.swift in Sources */,
+				2475E766A21D84D5A92EB4DC /* Diffable+from.swift in Sources */,
+				2475EAD8C209925A1859DA6F /* MirrorDiffKit.swift in Sources */,
+				2475E074447578D9EA23D0ED /* RoughEquatable.swift in Sources */,
+				2475E39944EBDAAB4DA03482 /* PrettyPrintable.swift in Sources */,
+				2475E11BC79C1A8758170CCA /* DiffableSequence.swift in Sources */,
+				2475E41CC63F6C11220032F7 /* DiffableDictionary.swift in Sources */,
+				2475E5B0222EC649EB7B3420 /* DiffableConvertible.swift in Sources */,
+				2475EF59D9ACD2A391CAE753 /* Diffable+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +636,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D6DA091BF00081002C0205 /* MirrorDiffKit.swift in Sources */,
+				2475E2D4F86772F7D5ED3EBD /* Util.swift in Sources */,
+				2475EC44070AAA124CE3EC11 /* Diffable.swift in Sources */,
+				2475E85513F9A091CB525C07 /* DiffableSet.swift in Sources */,
+				2475E71B66942EF2806F018D /* Transformer.swift in Sources */,
+				2475E5E23E5B757DA92A8959 /* Diffable+diff.swift in Sources */,
+				2475EAD03D7E372DF752F123 /* Diffable+from.swift in Sources */,
+				2475E28AF26479F0EF76BB1E /* MirrorDiffKit.swift in Sources */,
+				2475EB34A7C10789D6BC3E8C /* RoughEquatable.swift in Sources */,
+				2475EA0F6F65A2B4D4257C9A /* PrettyPrintable.swift in Sources */,
+				2475E1926F92CC5DD8E0C256 /* DiffableSequence.swift in Sources */,
+				2475EA07EE6A5903F188FC2A /* DiffableDictionary.swift in Sources */,
+				2475E0D2B8ADAD8150A51FF0 /* DiffableConvertible.swift in Sources */,
+				2475E9CA33ED9943CC857ABA /* Diffable+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +656,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D6DA261BF00118002C0205 /* MirrorDiffKit.swift in Sources */,
+				2475E4CEC7626F499F7C563F /* Util.swift in Sources */,
+				2475ED8F8CD1FCC4BCCAB666 /* Diffable.swift in Sources */,
+				2475E169B154F08110A53A10 /* DiffableSet.swift in Sources */,
+				2475E2887DA3EBD63495590C /* Transformer.swift in Sources */,
+				2475E6ABAD8DF9348F5A3028 /* Diffable+diff.swift in Sources */,
+				2475EDCFDFCF8735DD825DD1 /* Diffable+from.swift in Sources */,
+				2475E42CCF9498C52DF8C766 /* MirrorDiffKit.swift in Sources */,
+				2475EEC4E83BB3F35A24CEB2 /* RoughEquatable.swift in Sources */,
+				2475E9FBCB01E15F28FBCCF3 /* PrettyPrintable.swift in Sources */,
+				2475E0CC7C02E2A884E1DF65 /* DiffableSequence.swift in Sources */,
+				2475E161DC8C84DD8BE403A4 /* DiffableDictionary.swift in Sources */,
+				2475E6538A6F9FA25C581877 /* DiffableConvertible.swift in Sources */,
+				2475ECA328D49E5119BCD709 /* Diffable+CustomStringConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +676,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD7502861C68FDDC006590AF /* MirrorDiffKitTests.swift in Sources */,
+				2475E2967CBDFC1F3E76012D /* LinuxMain.swift in Sources */,
+				2475E357813342BCC4A43F1F /* Stubs.swift in Sources */,
+				2475E3832FE428ECD51446EC /* ExampleTests.swift in Sources */,
+				2475E89F382BEDD9A7E6C7F5 /* DiffableTests.swift in Sources */,
+				2475EDC9D53B420705443293 /* DiffableSetTests.swift in Sources */,
+				2475E8A374D9584A1E5A34AA /* TransformerTests.swift in Sources */,
+				2475EDF02B748C4D96059FDF /* DiffableSequenceTests.swift in Sources */,
+				2475EADF49EB4F91209156E0 /* DIffable+PrettyPrintableTests.swift in Sources */,
+				2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +692,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD75029A1C690CBE006590AF /* MirrorDiffKitTests.swift in Sources */,
+				2475E2B39EAE1416477807B9 /* LinuxMain.swift in Sources */,
+				2475E0F6CAAD02CD70690FAE /* Stubs.swift in Sources */,
+				2475E52262734230D4DFA81E /* ExampleTests.swift in Sources */,
+				2475E068E23A0E8B62E92ABD /* DiffableTests.swift in Sources */,
+				2475EFF96CBD44AF5AF43EF5 /* DiffableSetTests.swift in Sources */,
+				2475EC4661DF374C9C9FE156 /* TransformerTests.swift in Sources */,
+				2475E0021A7DDCC37F737BB4 /* DiffableSequenceTests.swift in Sources */,
+				2475E24082A75666B4FC4D4E /* DIffable+PrettyPrintableTests.swift in Sources */,
+				2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
