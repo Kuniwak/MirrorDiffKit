@@ -1,8 +1,7 @@
 ![MirrorDiffKit](https://raw.githubusercontent.com/Kuniwak/MirrorDiffKit/master/Documentation/Images/logo.png)
 =============
 
-![SPM compatible](https://img.shields.io/badge/SPM-compatible-green.svg)
-![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-green.svg)
+![SPM compatible](https://img.shields.io/badge/SPM%20%7C%20Carthage-compatible-green.svg)
 [![v0.0.0](https://img.shields.io/badge/version-0.0.0-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
 [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=shield)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master)
