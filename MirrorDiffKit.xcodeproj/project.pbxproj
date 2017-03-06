@@ -87,6 +87,7 @@
 		2475EFE88FA546641AAD76F2 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
 		2475EFF96CBD44AF5AF43EF5 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
 		52D6D9871BEFF229002C0205 /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* MirrorDiffKit.framework */; };
+		62B31F931E6DA07200C5650E /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B31F921E6DA07200C5650E /* Dwifft.framework */; };
 		DD7502881C68FEDE006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* MirrorDiffKit.framework */; };
 		DD7502921C690C7A006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* MirrorDiffKit.framework */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		52D6D9E21BEFFF6E002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6DA0F1BF000BD002C0205 /* MirrorDiffKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MirrorDiffKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62B31F921E6DA07200C5650E /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* MirrorDiffKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MirrorDiffKit.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* MirrorDiffKitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MirrorDiffKitTests.plist; sourceTree = "<group>"; };
 		DD75027A1C68FCFC006590AF /* MirrorDiffKit-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MirrorDiffKit-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B31F931E6DA07200C5650E /* Dwifft.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +261,7 @@
 				52D6D97D1BEFF229002C0205 /* Products */,
 				2475E1405BDC834AE4460180 /* Sources */,
 				2475E312B09E05FD1AB42214 /* Tests */,
+				62B31F911E6DA07200C5650E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,6 +286,14 @@
 				DD7502731C68FC20006590AF /* Tests */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		62B31F911E6DA07200C5650E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62B31F921E6DA07200C5650E /* Dwifft.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DD7502721C68FC1B006590AF /* Frameworks */ = {
@@ -830,6 +842,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/MirrorDiffKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -853,6 +869,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Configs/MirrorDiffKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
