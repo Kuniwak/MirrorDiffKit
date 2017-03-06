@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "MirrorDiffKit"
   s.version      = "0.1"
-  s.summary      = ""
+  s.summary      = "Structual diff between any struct/class for efficient testing"
   s.description  = <<-DESC
-    Your description here.
+    Structual diff between any struct/class for efficient testing.
   DESC
   s.homepage     = "https://github.com/Kuniwak/MirrorDiffKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
