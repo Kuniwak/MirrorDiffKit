@@ -21,6 +21,7 @@
 		2475E161DC8C84DD8BE403A4 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
 		2475E169B154F08110A53A10 /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
 		2475E1926F92CC5DD8E0C256 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
+		2475E1AB7F0EADD63B194BDF /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475E21346AF4049EDA93368 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
 		2475E22258EE196EDD943C69 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
 		2475E24082A75666B4FC4D4E /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
@@ -51,6 +52,7 @@
 		2475E66135171B41D48D07D0 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
 		2475E6ABAD8DF9348F5A3028 /* Diffable+diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable+diff.swift */; };
 		2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
+		2475E716E6256CE75B58D920 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475E71B66942EF2806F018D /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
 		2475E766A21D84D5A92EB4DC /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
 		2475E795E5263D357C00EA24 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
@@ -79,7 +81,9 @@
 		2475EDD21E5135F23CCF2003 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
 		2475EDF02B748C4D96059FDF /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */; };
 		2475EE2884507B9D0ED36A4C /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
+		2475EE531FFEDD682F7680B5 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475EE8D2529E83CFD1BA569 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
+		2475EE97D17042EA78C7DB41 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475EEC4E83BB3F35A24CEB2 /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
 		2475EF569997D6980469B073 /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
 		2475EF59D9ACD2A391CAE753 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
@@ -122,6 +126,7 @@
 		2475E0D0C6F529D98D395544 /* RoughEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoughEquatable.swift; sourceTree = "<group>"; };
 		2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSequenceTests.swift; sourceTree = "<group>"; };
 		2475E23B2FE90297580DAB62 /* Diffable+diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+diff.swift"; sourceTree = "<group>"; };
+		2475E262206573A251280E94 /* Dwifft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dwifft.swift; sourceTree = "<group>"; };
 		2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKit.swift; sourceTree = "<group>"; };
 		2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKitIntegrationTests.swift; sourceTree = "<group>"; };
 		2475E2E82C8E152A456073DA /* DiffableSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSetTests.swift; sourceTree = "<group>"; };
@@ -225,6 +230,7 @@
 				2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */,
 				2475E050A29FC16D1340F755 /* DiffableConvertible.swift */,
 				2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */,
+				2475E262206573A251280E94 /* Dwifft.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				2475E2847D8FC02BF79B02B9 /* DiffableDictionary.swift in Sources */,
 				2475E2A55BF3C09E268B4EA8 /* DiffableConvertible.swift in Sources */,
 				2475EDD21E5135F23CCF2003 /* Diffable+CustomStringConvertible.swift in Sources */,
+				2475EE531FFEDD682F7680B5 /* Dwifft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +648,7 @@
 				2475E41CC63F6C11220032F7 /* DiffableDictionary.swift in Sources */,
 				2475E5B0222EC649EB7B3420 /* DiffableConvertible.swift in Sources */,
 				2475EF59D9ACD2A391CAE753 /* Diffable+CustomStringConvertible.swift in Sources */,
+				2475EE97D17042EA78C7DB41 /* Dwifft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +669,7 @@
 				2475EA07EE6A5903F188FC2A /* DiffableDictionary.swift in Sources */,
 				2475E0D2B8ADAD8150A51FF0 /* DiffableConvertible.swift in Sources */,
 				2475E9CA33ED9943CC857ABA /* Diffable+CustomStringConvertible.swift in Sources */,
+				2475E716E6256CE75B58D920 /* Dwifft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +690,7 @@
 				2475E161DC8C84DD8BE403A4 /* DiffableDictionary.swift in Sources */,
 				2475E6538A6F9FA25C581877 /* DiffableConvertible.swift in Sources */,
 				2475ECA328D49E5119BCD709 /* Diffable+CustomStringConvertible.swift in Sources */,
+				2475E1AB7F0EADD63B194BDF /* Dwifft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

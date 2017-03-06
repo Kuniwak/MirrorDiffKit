@@ -76,7 +76,7 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return Diffable.from(y)
     }
 
-    #if arch(x86_64)
+    #if arch(x86_64) || arch(i386)
         if let y = x as? Float80 {
             return Diffable.from(y)
         }
