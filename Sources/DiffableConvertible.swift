@@ -89,11 +89,13 @@ extension Float: DiffableConvertible {
 }
 
 
-extension Float80: DiffableConvertible {
-    public var diffable: Diffable {
-        return .number(Double(self))
+#if arch(x86_64) || arch(i386)
+    extension Float80: DiffableConvertible {
+        public var diffable: Diffable {
+            return .number(Double(self))
+        }
     }
-}
+#endif
 
 
 extension Character: DiffableConvertible {

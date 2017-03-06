@@ -1,5 +1,4 @@
 import Foundation
-import Dwifft
 
 
 
@@ -118,7 +117,7 @@ class DiffableSequence {
     }
 
 
-    private static func createIndexTable(_ steps: [Dwifft.DiffStep<Diffable>]) -> [Int: Diffable] {
+    private static func createIndexTable(_ steps: [DiffStep<Diffable>]) -> [Int: Diffable] {
         var table = [Int: Diffable]()
 
         steps.forEach { step in
