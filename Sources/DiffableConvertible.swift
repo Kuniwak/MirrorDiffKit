@@ -153,3 +153,10 @@ extension Set: DiffableConvertible {
         return transform(fromAny: self as Any?)
     }
 }
+
+
+extension URL: DiffableConvertible {
+    public var diffable: Diffable {
+        return .url(self)
+    }
+}

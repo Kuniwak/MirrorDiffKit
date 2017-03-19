@@ -24,6 +24,9 @@ extension Diffable /*: CustomStringConvertible */ {
             case let .date(date):
                 return String(describing: date)
 
+            case let .url(url):
+                return String(describing: url)
+
             case let .type(type):
                 return String(describing: type)
 

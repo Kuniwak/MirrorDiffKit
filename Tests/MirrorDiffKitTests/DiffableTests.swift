@@ -34,6 +34,10 @@ class DiffableTests: XCTestCase {
                 expected: "1970-01-01 00:00:00 +0000"
             ),
             #line: TestCase(
+                input: .url(URL(string: "http://example.com")!),
+                expected: "http://example.com"
+            ),
+            #line: TestCase(
                 input: .tuple([".0": .none, "label": .none]),
                 expected: "(nil, label: nil)"
             ),

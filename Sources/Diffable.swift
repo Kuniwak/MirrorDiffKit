@@ -8,6 +8,7 @@ public indirect enum Diffable {
     case number(Double)
     case bool(Bool)
     case date(Date)
+    case url(URL)
     case type(Any.Type)
     case tuple([String: Diffable])
     case array([Diffable])
@@ -44,6 +45,8 @@ extension Diffable: Equatable {
         case let (.bool(l), .bool(r)):
             return l == r
         case let (.date(l), .date(r)):
+            return l == r
+        case let (.url(l), .url(r)):
             return l == r
         case let (.tuple(l), .tuple(r)):
             return l == r
@@ -105,6 +108,8 @@ extension Diffable: RoughEquatable {
         case let (.dictionary(l), .dictionary(r)):
             return l == r
         case let (.date(l), .date(r)):
+            return l == r
+        case let (.url(l), .url(r)):
             return l == r
         case let (.anyEnum(type: lt, value: lv, associated: le), .anyEnum(type: rt, value: rv, associated: re)):
             do {
