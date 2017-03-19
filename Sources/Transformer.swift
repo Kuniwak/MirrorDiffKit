@@ -104,6 +104,11 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
     }
 
 
+    if let y = x as? URL {
+        return Diffable.from(y)
+    }
+
+
     // XXX: Avoid the following error (at least, Swift 3.0.2 or earlier):
     //
     // > Protocol "SpecialController" can only be used as a generic constraint
