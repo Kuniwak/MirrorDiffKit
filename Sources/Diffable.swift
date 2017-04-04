@@ -20,7 +20,8 @@ public indirect enum Diffable {
     //
     case set([Diffable])
 
-    case dictionary([String: Diffable])
+    // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
+    case dictionary([Diffable])
     case anyEnum(type: Any.Type, value: Any, associated: [Diffable])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
     case anyClass(type: Any.Type, entries: [String: Diffable])
@@ -127,7 +128,7 @@ extension Diffable: RoughEquatable {
             return lt == rt
                 && le == re
         case let (.notSupported(value: r), .notSupported(value: l)):
-            // NOTE: This is an only defference between Equatable and RoughEquatable.
+            // NOTE: This is an only difference between Equatable and RoughEquatable.
             return Mirror(reflecting: l).subjectType == Mirror(reflecting: r).subjectType
               && String(describing: l) == String(describing: r)
         case (.unrecognizable, .unrecognizable):

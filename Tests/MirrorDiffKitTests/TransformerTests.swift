@@ -124,10 +124,15 @@ class TransformerTests: XCTestCase {
             ),
             #line: TestCase(
                 input: (label1: 10, label2: 20),
-                target: .tuple([
-                    ".0": .number(10),
-                    ".1": .number(20),
-                ]),
+                target: TupleRepresentation.current.isLabeled
+                    ? .tuple([
+                        "label1": .number(10),
+                        "label2": .number(20),
+                    ])
+                    : .tuple([
+                        ".0": .number(10),
+                        ".1": .number(20),
+                    ]),
                 expected: true
             ),
 
@@ -181,7 +186,7 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
 
-            
+
             // MARK: - Struct
             #line: TestCase(
                 input: StructStub.Empty(),

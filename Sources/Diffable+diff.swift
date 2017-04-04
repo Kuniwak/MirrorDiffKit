@@ -64,8 +64,8 @@ extension Diffable {
 
         case let (.dictionary(l), .dictionary(r)):
             return DiffableDictionary.diff(
-                between: DiffableDictionary(l),
-                and: DiffableDictionary(r),
+                between: DiffableDictionary.from(diffableTuples: l),
+                and: DiffableDictionary.from(diffableTuples: r),
                 forKind: .dictionary
             )
 
