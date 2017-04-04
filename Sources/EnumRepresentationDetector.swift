@@ -1,12 +1,12 @@
-@testable import MirrorDiffKit
-
-
-
+/// Since Swift 3.1, enums become labeled tuple such as (key: K, value: V).
+/// But before Swift 3.1, enums become not labeled tuple such as (K, V).
 enum TupleRepresentation {
-    /// For Swift 3.1+.
+    /// For example, (key: K, value: V) becomes ["key": K, "value" V].
+    /// This is Swift 3.1+.
     case labeled
 
-    /// For Swift 3.0.2-.
+    /// For example, (key: K, value: V) becomes [".0": K, ".1" V].
+    /// This is Swift 3.0.2-.
     case notLabeled
 
 
@@ -38,6 +38,6 @@ enum TupleRepresentation {
             return .notLabeled
         }
 
-        fatalError("Cannot detect enum representation: \(label)")
+        fatalError("Cannot detect enum representation: " + String(describing: label))
     }
 }
