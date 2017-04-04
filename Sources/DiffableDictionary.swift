@@ -19,8 +19,17 @@ struct DiffableDictionary {
             case let .tuple(keyValueDictionary):
                 // XXX: Mirror represent a dictionary as an array of
                 // tuples such as [(key: K, value: V)].
-                let key = keyValueDictionary["key"]!.description
-                let value = keyValueDictionary["value"]!
+                let key = (
+                    // NOTE: Since Swift 3.1, enums become labeled tuple such as (key: K, value: V).
+                    // But before Swift 3.1, enums become not labeled tuple such as (K, V).
+                    keyValueDictionary["key"] ?? keyValueDictionary[".0"]
+                )!.description
+
+                let value = (
+                    // NOTE: Since Swift 3.1, enums become labeled tuple such as (key: K, value: V).
+                    // But before Swift 3.1, enums become not labeled tuple such as (K, V).
+                    keyValueDictionary["value"] ?? keyValueDictionary[".1"]
+                )!
 
                 dictionary[key] = value
 

@@ -25,6 +25,7 @@
 		2475E21346AF4049EDA93368 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
 		2475E22258EE196EDD943C69 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
 		2475E24082A75666B4FC4D4E /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
+		2475E247953AD5C1A6811FCA /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E195D3753D4081171768 /* EnumRepresentationDetector.swift */; };
 		2475E2847D8FC02BF79B02B9 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
 		2475E2887DA3EBD63495590C /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
 		2475E28AF26479F0EF76BB1E /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
@@ -66,11 +67,13 @@
 		2475EA07EE6A5903F188FC2A /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
 		2475EA0F6F65A2B4D4257C9A /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
 		2475EA4FF764ACAC01995D33 /* DiffableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF7A4F7D367ED7E87048 /* DiffableTests.swift */; };
+		2475EABDB8FA23E22638439A /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E195D3753D4081171768 /* EnumRepresentationDetector.swift */; };
 		2475EAD03D7E372DF752F123 /* Diffable+from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable+from.swift */; };
 		2475EAD30889B46DD4EC7EB7 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
 		2475EAD8C209925A1859DA6F /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
 		2475EADF49EB4F91209156E0 /* DIffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */; };
 		2475EB34A7C10789D6BC3E8C /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
+		2475EB83673C6DAECEB51C7E /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E195D3753D4081171768 /* EnumRepresentationDetector.swift */; };
 		2475EC44070AAA124CE3EC11 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
 		2475EC4661DF374C9C9FE156 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
 		2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
@@ -124,6 +127,7 @@
 		2475E08093ED284E24090A38 /* TransformerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformerTests.swift; sourceTree = "<group>"; };
 		2475E0D0C6F529D98D395544 /* RoughEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoughEquatable.swift; sourceTree = "<group>"; };
 		2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSequenceTests.swift; sourceTree = "<group>"; };
+		2475E195D3753D4081171768 /* EnumRepresentationDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumRepresentationDetector.swift; sourceTree = "<group>"; };
 		2475E23B2FE90297580DAB62 /* Diffable+diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+diff.swift"; sourceTree = "<group>"; };
 		2475E262206573A251280E94 /* Dwifft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dwifft.swift; sourceTree = "<group>"; };
 		2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKit.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */,
 				2475ED3A27C5E753EA30F2A4 /* DIffable+PrettyPrintableTests.swift */,
 				2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */,
+				2475E195D3753D4081171768 /* EnumRepresentationDetector.swift */,
 			);
 			path = MirrorDiffKitTests;
 			sourceTree = "<group>";
@@ -616,6 +621,7 @@
 				2475E0B5C20CDBAB617F16DC /* DiffableSequenceTests.swift in Sources */,
 				2475EF569997D6980469B073 /* DIffable+PrettyPrintableTests.swift in Sources */,
 				2475E0590370D6374C4146C5 /* MirrorDiffKitIntegrationTests.swift in Sources */,
+				2475EB83673C6DAECEB51C7E /* EnumRepresentationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +701,7 @@
 				2475EDF02B748C4D96059FDF /* DiffableSequenceTests.swift in Sources */,
 				2475EADF49EB4F91209156E0 /* DIffable+PrettyPrintableTests.swift in Sources */,
 				2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */,
+				2475EABDB8FA23E22638439A /* EnumRepresentationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +718,7 @@
 				2475E0021A7DDCC37F737BB4 /* DiffableSequenceTests.swift in Sources */,
 				2475E24082A75666B4FC4D4E /* DIffable+PrettyPrintableTests.swift in Sources */,
 				2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */,
+				2475E247953AD5C1A6811FCA /* EnumRepresentationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
