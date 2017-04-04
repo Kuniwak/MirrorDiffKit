@@ -9,8 +9,8 @@ class DiffableTests: XCTestCase {
         let input: Diffable
         let expected: String
     }
-    
-    
+
+
     func testDescription() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
@@ -54,16 +54,30 @@ class DiffableTests: XCTestCase {
                 expected: "[\"1st\", \"2nd\"]"
             ),
             #line: TestCase(
-                input: .dictionary([:]),
+                input: .dictionary([]),
                 expected: "[:]"
             ),
             #line: TestCase(
-                input: .dictionary(["key": .string("value")]),
-                expected: "[\"key\": \"value\"]"
+                input: .dictionary([
+                    .tuple([
+                        "key": .string("KEY"),
+                        "value": .string("VALUE"),
+                    ]),
+                ]),
+                expected: "[\"KEY\": \"VALUE\"]"
             ),
             #line: TestCase(
-                input: .dictionary(["key1": .string("value1"), "key2": .string("value2")]),
-                expected: "[\"key1\": \"value1\", \"key2\": \"value2\"]"
+                input: .dictionary([
+                    .tuple([
+                        "key": .string("KEY1"),
+                        "value": .string("VALUE1"),
+                    ]),
+                    .tuple([
+                        "key": .string("KEY2"),
+                        "value": .string("VALUE2"),
+                    ]),
+                ]),
+                expected: "[\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
             ),
             #line: TestCase(
                 input: .anyEnum(
@@ -153,8 +167,8 @@ class DiffableTests: XCTestCase {
             ),
             // TODO: Generic
         ]
-    
-    
+
+
         testCases.forEach { (line, testCase) in
             let description = testCase.input.description
 

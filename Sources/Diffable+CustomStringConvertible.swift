@@ -59,12 +59,20 @@ extension Diffable /*: CustomStringConvertible */ {
 
                 return "Set [" + content + "]"
 
-            case let .dictionary(dictionary):
-                guard !dictionary.isEmpty else { return "[:]" }
+            case let .dictionary(diffables):
+                guard !diffables.isEmpty else { return "[:]" }
 
-                let content = entries(fromDictionary: dictionary)
-                    .sorted { $0.0 <= $1.0 }
-                    .map { (key, value) in "\"\(key)\": \(value.description)" }
+                let content = diffables
+                    .map { diffable -> (key: Diffable, value: Diffable) in
+                        switch diffable {
+                        case let .tuple(dictionary):
+                            return (key: dictionary["key"]!, value: dictionary["value"]!)
+                        default:
+                            fatalError(".dictionary can contain only tuples")
+                        }
+                    }
+                    .sorted { $0.key.description <= $1.key.description }
+                    .map { (key, value) in "\(key.description): \(value.description)" }
                     .joined(separator: ", ")
 
                 return "[" + content + "]"

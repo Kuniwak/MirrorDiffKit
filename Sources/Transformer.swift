@@ -152,6 +152,10 @@ func transformMirror(of x: Any) -> Diffable {
             let entries = transformFromNonLabeldMirror(of: mirror)
             return .set(entries)
 
+        case .some(.dictionary):
+            let entries = transformFromNonLabeldMirror(of: mirror)
+            return .dictionary(entries)
+
         case .some(.enum):
             let associated = transformFromTupleMirror(of: mirror)
 

@@ -38,6 +38,30 @@ class MirrorDiffKitTests: XCTestCase {
                 ].joined(separator: "\n")
             ),
             #line: TestCase(
+                diffBetween: [0, 1, 2],
+                and: [0, 2, 3],
+                is: [
+                    "",
+                    "  0.0",
+                    "- 1.0",
+                    "  2.0",
+                    "+ 3.0",
+                    "",
+                ].joined(separator: "\n")
+            ),
+            #line: TestCase(
+                diffBetween: ["key": "value1"],
+                and: ["key": "value2"],
+                is: [
+                    "",
+                    "  [",
+                    "    - \"key\": \"value1\"",
+                    "    + \"key\": \"value2\"",
+                    "  ]",
+                    "",
+                ].joined(separator: "\n")
+            ),
+            #line: TestCase(
                 diffBetween: EnumStub.NotAssociated.one,
                 and: EnumStub.NotAssociated.one,
                 is: [

@@ -11,6 +11,28 @@ struct DiffableDictionary {
     }
 
 
+    static func from(diffableTuples: [Diffable]) -> DiffableDictionary {
+        var dictionary: [String: Diffable] = [:]
+
+        diffableTuples.forEach { diffableTuple in
+            switch diffableTuple {
+            case let .tuple(keyValueDictionary):
+                // XXX: Mirror represent a dictionary as an array of
+                // tuples such as [(key: K, value: V)].
+                let key = keyValueDictionary["key"]!.description
+                let value = keyValueDictionary["value"]!
+
+                dictionary[key] = value
+
+            default:
+                fatalError("DiffableTuples must contain only tuples, but come: \(diffableTuple)")
+            }
+        }
+
+        return DiffableDictionary(dictionary)
+    }
+
+
     static func diff(between lhs: DiffableDictionary, and rhs: DiffableDictionary, forKind kind: Diffable.ChildKind) -> Diffable.Diff {
         // note: elements of [diffable] may not conform to hashable.
         // so we cannot use o(1) algorithm such as hash map.

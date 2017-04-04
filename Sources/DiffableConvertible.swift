@@ -134,6 +134,23 @@ extension Array: DiffableConvertible {
 }
 
 
+extension Dictionary: DiffableConvertible {
+    public var diffable: Diffable {
+        var result = [Diffable]()
+
+        self.forEach { (key, value) in
+            result.append(.tuple([
+                // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
+                "key": transform(fromAny: key),
+                "value": transform(fromAny: value)
+            ]))
+        }
+
+        return .dictionary(result)
+    }
+}
+
+
 extension NSNull: DiffableConvertible {
     public var diffable: Diffable {
         return .null
