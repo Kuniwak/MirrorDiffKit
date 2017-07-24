@@ -71,7 +71,7 @@ struct DiffableDictionary {
         }
 
         return Differentia(units: [
-            .child(kind: kind, result)
+            .dictionaryChanged(kind: kind, result)
         ])
     }
 }

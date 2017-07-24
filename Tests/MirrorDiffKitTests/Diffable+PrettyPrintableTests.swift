@@ -44,7 +44,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "child": Differentia(units: [])
                         ])
                     ]
@@ -54,7 +54,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .anyStruct(type: StructStub.Empty.self), [
+                        .dictionaryChanged(kind: .anyStruct(type: StructStub.Empty.self), [
                             "child": Differentia(units: [])
                         ])
                     ]
@@ -64,7 +64,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .anyClass(type: ClassStub.Empty.self), [
+                        .dictionaryChanged(kind: .anyClass(type: ClassStub.Empty.self), [
                             "child": Differentia(units: [])
                         ])
                     ]
@@ -74,7 +74,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "child": Differentia(units: [
                                 .notChanged(.string("I'm not changed")),
                             ])
@@ -90,7 +90,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "child": Differentia(units: [
                                 .deleted(.string("I'm deleted")),
                             ])
@@ -106,7 +106,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "child": Differentia(units: [
                                 .inserted(.string("I'm inserted")),
                             ])
@@ -122,7 +122,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "changed": Differentia(units: [
                                 .deleted(.string("I'm deleted")),
                                 .inserted(.string("I'm inserted")),
@@ -144,12 +144,12 @@ class Diffable_PrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: Differentia(
                     units: [
-                        .child(kind: .dictionary, [
+                        .dictionaryChanged(kind: .dictionary, [
                             "child": Differentia(units: [
                                 .notChanged(.string("I'm not changed")),
                             ]),
                             "grandChild": Differentia(units: [
-                                .child(kind: .dictionary, [
+                                .dictionaryChanged(kind: .dictionary, [
                                     "deleted": Differentia(units: [
                                         .deleted(.string("I'm deleted")),
                                     ]),

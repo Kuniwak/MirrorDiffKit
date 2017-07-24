@@ -11,7 +11,7 @@ extension DifferentiaUnit: PrettyPrintable {
             return [.line("- \(deleted.description)")]
         case let .inserted(inserted):
             return [.line("+ \(inserted.description)")]
-        case let .child(kind: kind, dictionary):
+        case let .dictionaryChanged(kind: kind, dictionary):
             return self.childPrettyLines(kind: kind, dictionary)
         }
     }
@@ -55,7 +55,7 @@ extension DifferentiaUnit: PrettyPrintable {
                         return [.line("- \(childKey): \(value.description)")]
                     case let .inserted(value):
                         return [.line("+ \(childKey): \(value.description)")]
-                    case let .child(kind: childKind, childDictionary):
+                    case let .dictionaryChanged(kind: childKind, childDictionary):
                         return self.childPrettyLinesWithKey(key: childKey, kind: childKind, childDictionary)
                     }
                 }
