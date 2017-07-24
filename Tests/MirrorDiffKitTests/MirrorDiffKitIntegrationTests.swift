@@ -166,6 +166,24 @@ class MirrorDiffKitTests: XCTestCase {
                     "",
                 ].joined(separator: "\n")
             ),
+            #line: TestCase(
+                diffBetween: [
+                    "changed": StructStub.OneEntry(key1: "I'm deleted"),
+                ],
+                and: [
+                    "changed": StructStub.OneEntry(key1: "I'm inserted"),
+                ],
+                is: [
+                    "",
+                    "  [",
+                    "      \"changed\": struct OneEntry {",
+                    "        - key1: \"I'm deleted\"",
+                    "        + key1: \"I'm inserted\"",
+                    "      }",
+                    "  ]",
+                    "",
+                ].joined(separator: "\n")
+            ),
         ]
 
 

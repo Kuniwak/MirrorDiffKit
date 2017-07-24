@@ -66,10 +66,7 @@ struct DiffableDictionary {
                     return
                 }
 
-                result[key] = Differentia(units: [
-                    .deleted(lv),
-                    .inserted(rv),
-                ])
+                result[key] = Diffable.diff(between: lv, and: rv)
             }
         }
 
