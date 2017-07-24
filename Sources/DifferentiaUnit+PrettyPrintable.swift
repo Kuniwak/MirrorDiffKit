@@ -17,7 +17,7 @@ extension DifferentiaUnit: PrettyPrintable {
     }
 
 
-    private func childPrettyLines(kind: DifferentiaUnit.ChildKind, _ dictionary: [String: Differentia]) -> [PrettyLine] {
+    private func childPrettyLines(kind: DifferentiaUnit.DictionaryType, _ dictionary: [String: Differentia]) -> [PrettyLine] {
         let lines = self.createContentLines(by: dictionary)
 
         guard !lines.isEmpty else {
@@ -30,8 +30,7 @@ extension DifferentiaUnit: PrettyPrintable {
     }
 
 
-
-    private func childPrettyLinesWithKey(key: String, kind: DifferentiaUnit.ChildKind, _ dictionary: [String: Differentia]) -> [PrettyLine] {
+    private func childPrettyLinesWithKey(key: String, kind: DifferentiaUnit.DictionaryType, _ dictionary: [String: Differentia]) -> [PrettyLine] {
         let lines = self.createContentLines(by: dictionary)
 
         guard !lines.isEmpty else {

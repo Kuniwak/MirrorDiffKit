@@ -40,7 +40,7 @@ struct DiffableDictionary {
     }
 
 
-    static func diff(between lhs: DiffableDictionary, and rhs: DiffableDictionary, forKind kind: DifferentiaUnit.ChildKind) -> Differentia {
+    static func diff(between lhs: DiffableDictionary, and rhs: DiffableDictionary, forKind kind: DifferentiaUnit.DictionaryType) -> Differentia {
         // note: elements of [diffable] may not conform to hashable.
         // so we cannot use o(1) algorithm such as hash map.
 

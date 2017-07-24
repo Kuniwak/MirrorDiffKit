@@ -30,23 +30,33 @@ class Issue10Tests: XCTestCase {
             ]
         )
 
-        XCTAssertEqual(
-            diff(between: a, and: b),
-            [
-                "",
-                "  struct Example {",
-                "      title: \"I'm not changed\"",
-                "      data: [",
-                "          \"I'm not changed\"",
-                "          \"I'm not changed\"",
-                "          \"I'm not changed\"",
-                "        - \"I'm deleted\"",
-                "        + \"I'm inserted\"",
-                "      ]",
-                "  }",
-                "",
-            ].joined(separator: "\n")
-        )
+        let actual = diff(between: a, and: b)
+        let expected = [
+            "",
+            "  struct Example {",
+            "      title: \"I'm not changed\"",
+            "      data: [",
+            "          \"I'm not changed\"",
+            "          \"I'm not changed\"",
+            "          \"I'm not changed\"",
+            "        - \"I'm deleted\"",
+            "        + \"I'm inserted\"",
+            "      ]",
+            "  }",
+            "",
+        ].joined(separator: "\n")
+
+        XCTAssertEqual(actual, expected)
+
+        // NOTE: Print verbose info for efficient debugging.
+        let wasTestFailed = actual != expected
+        if wasTestFailed {
+            print("verbose:")
+            dump(Diffable.diff(
+                between: Diffable.from(any: a),
+                and: Diffable.from(any: b)
+            ))
+        }
     }
 
 

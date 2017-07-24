@@ -6,7 +6,7 @@ indirect enum DifferentiaUnit {
     case notChanged(Diffable)
     case inserted(Diffable)
     case deleted(Diffable)
-    case child(kind: DifferentiaUnit.ChildKind, [String: Differentia])
+    case child(kind: DifferentiaUnit.DictionaryType, [String: Differentia])
 }
 
 

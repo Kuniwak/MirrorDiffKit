@@ -51,7 +51,7 @@
 		2475E4A752C8888E0F58F52E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
 		2475E4CEC7626F499F7C563F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
 		2475E52262734230D4DFA81E /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
-		2475E541D415B3DCC2A03CF2 /* DifferentiaUnit.ChildKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */; };
+		2475E541D415B3DCC2A03CF2 /* DifferentiaUnit.DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */; };
 		2475E573438370F32B4D3106 /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF30C4592782E2D0E371 /* EnumRepresentationDetector.swift */; };
 		2475E57913C5E083CC762BBD /* DiffableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E78DE55347318233BC0C /* DiffableSet.swift */; };
 		2475E5B0222EC649EB7B3420 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
@@ -62,7 +62,7 @@
 		2475E6538A6F9FA25C581877 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
 		2475E66135171B41D48D07D0 /* Diffable.diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable.diff.swift */; };
 		2475E6ABAD8DF9348F5A3028 /* Diffable.diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable.diff.swift */; };
-		2475E6EE3AB794CD1EC0BA9D /* DifferentiaUnit.ChildKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */; };
+		2475E6EE3AB794CD1EC0BA9D /* DifferentiaUnit.DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */; };
 		2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
 		2475E716E6256CE75B58D920 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475E71B66942EF2806F018D /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
@@ -86,12 +86,12 @@
 		2475EAD8C209925A1859DA6F /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
 		2475EADF49EB4F91209156E0 /* Diffable+PrettyPrintableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475ED3A27C5E753EA30F2A4 /* Diffable+PrettyPrintableTests.swift */; };
 		2475EB002E0C38547118001E /* DifferentiaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E14CDEF8BEC52D5E00CE /* DifferentiaUnit.swift */; };
-		2475EB2C3363762D07CAED98 /* DifferentiaUnit.ChildKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */; };
+		2475EB2C3363762D07CAED98 /* DifferentiaUnit.DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */; };
 		2475EB34A7C10789D6BC3E8C /* RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0D0C6F529D98D395544 /* RoughEquatable.swift */; };
 		2475EB53F8621D75FABAE1E7 /* Differentia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E3B19066BFA063A057A8 /* Differentia.swift */; };
 		2475EB709F18B8F9C5853B44 /* DifferentiaUnit+PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E15B817A9292B0B84F81 /* DifferentiaUnit+PrettyPrintable.swift */; };
 		2475EB90BCC55C01357C286D /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF30C4592782E2D0E371 /* EnumRepresentationDetector.swift */; };
-		2475EC175632640216EF7335 /* DifferentiaUnit.ChildKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */; };
+		2475EC175632640216EF7335 /* DifferentiaUnit.DictionaryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */; };
 		2475EC3E916B40DF4AB7414C /* Issue10Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF0B7F6E2A9FACA5B13D /* Issue10Tests.swift */; };
 		2475EC44070AAA124CE3EC11 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
 		2475EC4661DF374C9C9FE156 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
@@ -167,7 +167,7 @@
 		2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyPrintable.swift; sourceTree = "<group>"; };
 		2475E8ED7A24111E5500F1F4 /* Diffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
 		2475E963BDADFC88CFAE1D99 /* Diffable.from.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.from.swift; sourceTree = "<group>"; };
-		2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentiaUnit.ChildKind.swift; sourceTree = "<group>"; };
+		2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentiaUnit.DictionaryType.swift; sourceTree = "<group>"; };
 		2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableDictionary.swift; sourceTree = "<group>"; };
 		2475EC645A805B526D4FF547 /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		2475ED3A27C5E753EA30F2A4 /* Diffable+PrettyPrintableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+PrettyPrintableTests.swift"; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 				2475EF30C4592782E2D0E371 /* EnumRepresentationDetector.swift */,
 				2475E3B19066BFA063A057A8 /* Differentia.swift */,
 				2475E14CDEF8BEC52D5E00CE /* DifferentiaUnit.swift */,
-				2475EB054307543C8491D77E /* DifferentiaUnit.ChildKind.swift */,
+				2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */,
 				2475E144B76F651EFBC1F3BD /* Differentia+PrettyPrintable.swift */,
 				2475E15B817A9292B0B84F81 /* DifferentiaUnit+PrettyPrintable.swift */,
 			);
@@ -644,7 +644,7 @@
 				2475E573438370F32B4D3106 /* EnumRepresentationDetector.swift in Sources */,
 				2475EC609231BB1F16889E37 /* Differentia.swift in Sources */,
 				2475EB002E0C38547118001E /* DifferentiaUnit.swift in Sources */,
-				2475EC175632640216EF7335 /* DifferentiaUnit.ChildKind.swift in Sources */,
+				2475EC175632640216EF7335 /* DifferentiaUnit.DictionaryType.swift in Sources */,
 				2475E346CE7ADC54C22E426F /* Differentia+PrettyPrintable.swift in Sources */,
 				2475E1312041D4B87DA8AA54 /* DifferentiaUnit+PrettyPrintable.swift in Sources */,
 			);
@@ -688,7 +688,7 @@
 				2475EC76A0FF3FFD53B1300E /* EnumRepresentationDetector.swift in Sources */,
 				2475EB53F8621D75FABAE1E7 /* Differentia.swift in Sources */,
 				2475E85F28DD3C5E6AC9903A /* DifferentiaUnit.swift in Sources */,
-				2475EB2C3363762D07CAED98 /* DifferentiaUnit.ChildKind.swift in Sources */,
+				2475EB2C3363762D07CAED98 /* DifferentiaUnit.DictionaryType.swift in Sources */,
 				2475EA283A269816E1BF841A /* Differentia+PrettyPrintable.swift in Sources */,
 				2475E5DD1E1B764F9A317F1F /* DifferentiaUnit+PrettyPrintable.swift in Sources */,
 			);
@@ -715,7 +715,7 @@
 				2475E5DCE6B2629DDF3FA44E /* EnumRepresentationDetector.swift in Sources */,
 				2475EE66780EF10C9F2FF6FF /* Differentia.swift in Sources */,
 				2475E0AA42246215941652D5 /* DifferentiaUnit.swift in Sources */,
-				2475E6EE3AB794CD1EC0BA9D /* DifferentiaUnit.ChildKind.swift in Sources */,
+				2475E6EE3AB794CD1EC0BA9D /* DifferentiaUnit.DictionaryType.swift in Sources */,
 				2475E14D673A19A2CA38BDD9 /* Differentia+PrettyPrintable.swift in Sources */,
 				2475EB709F18B8F9C5853B44 /* DifferentiaUnit+PrettyPrintable.swift in Sources */,
 			);
@@ -742,7 +742,7 @@
 				2475EB90BCC55C01357C286D /* EnumRepresentationDetector.swift in Sources */,
 				2475E1004FE07F269F01B103 /* Differentia.swift in Sources */,
 				2475E47A145236943D538105 /* DifferentiaUnit.swift in Sources */,
-				2475E541D415B3DCC2A03CF2 /* DifferentiaUnit.ChildKind.swift in Sources */,
+				2475E541D415B3DCC2A03CF2 /* DifferentiaUnit.DictionaryType.swift in Sources */,
 				2475EF62D8E0B8C6EB9C8B4D /* Differentia+PrettyPrintable.swift in Sources */,
 				2475EFCA6F65DD1C7EF28C5A /* DifferentiaUnit+PrettyPrintable.swift in Sources */,
 			);
