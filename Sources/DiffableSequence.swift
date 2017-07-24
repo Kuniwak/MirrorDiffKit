@@ -11,7 +11,7 @@ class DiffableSequence {
     }
 
 
-    static func diff(between: DiffableSequence, and: DiffableSequence) -> Diffable.Diff {
+    static func diff(between: DiffableSequence, and: DiffableSequence) -> Differentia {
         var lcs = between.elements.LCS(and.elements)
         let diff = between.elements.diff(and.elements)
 
@@ -32,7 +32,7 @@ class DiffableSequence {
         var deletions = diff.deletions.sorted { $0.idx < $1.idx }
 
         var index = -1
-        var result: [Diffable.DiffUnit] = []
+        var result: [DifferentiaUnit] = []
         var wasDeleted = false
         var wasInserted = false
 
@@ -113,7 +113,7 @@ class DiffableSequence {
             }
         }
 
-        return Diffable.Diff(units: result)
+        return Differentia(units: result)
     }
 
 

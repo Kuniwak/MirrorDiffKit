@@ -4,7 +4,7 @@ import XCTest
 
 class Diffable_PrettyPrintableTests: XCTestCase {
     private struct TestCase {
-        let input: Diffable.Diff
+        let input: Differentia
         let expected: String
     }
 
@@ -12,13 +12,13 @@ class Diffable_PrettyPrintableTests: XCTestCase {
     func testPrettyLines() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: []
                 ),
                 expected: ""
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .notChanged(.string("I'm not changed"))
                     ]
@@ -26,7 +26,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 expected: "  \"I'm not changed\""
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .deleted(.string("I'm deleted"))
                     ]
@@ -34,7 +34,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 expected: "- \"I'm deleted\""
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .inserted(.string("I'm inserted"))
                     ]
@@ -42,40 +42,40 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 expected: "+ \"I'm inserted\""
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Diffable.Diff(units: [])
+                            "child": Differentia(units: [])
                         ])
                     ]
                 ),
                 expected: "  []"
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .anyStruct(type: StructStub.Empty.self), [
-                            "child": Diffable.Diff(units: [])
+                            "child": Differentia(units: [])
                         ])
                     ]
                 ),
                 expected: "  struct Empty {}"
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .anyClass(type: ClassStub.Empty.self), [
-                            "child": Diffable.Diff(units: [])
+                            "child": Differentia(units: [])
                         ])
                     ]
                 ),
                 expected: "  class Empty {}"
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Diffable.Diff(units: [
+                            "child": Differentia(units: [
                                 .notChanged(.string("I'm not changed")),
                             ])
                         ])
@@ -88,10 +88,10 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 ].joined(separator: "\n")
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Diffable.Diff(units: [
+                            "child": Differentia(units: [
                                 .deleted(.string("I'm deleted")),
                             ])
                         ])
@@ -104,10 +104,10 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 ].joined(separator: "\n")
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Diffable.Diff(units: [
+                            "child": Differentia(units: [
                                 .inserted(.string("I'm inserted")),
                             ])
                         ])
@@ -120,10 +120,10 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 ].joined(separator: "\n")
             ),
             #line: TestCase(
-                input: Diffable.Diff(
+                input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Diffable.Diff(units: [
+                            "child": Differentia(units: [
                                 .deleted(.string("I'm deleted")),
                                 .inserted(.string("I'm inserted")),
                                 .notChanged(.string("I'm not changed")),
