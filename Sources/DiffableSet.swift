@@ -11,7 +11,7 @@ struct DiffableSet {
     }
 
 
-    static func diff(between a: DiffableSet, and b: DiffableSet) -> Diffable.Diff {
+    static func diff(between a: DiffableSet, and b: DiffableSet) -> Differentia {
         // NOTE: Elements of [Diffable] may not conform to Hashable.
         // So we cannot use O(1) algorithm such as hash map.
 
@@ -27,7 +27,7 @@ struct DiffableSet {
             }
         }
 
-        return Diffable.Diff(units:
+        return Differentia(units:
             (deleted
                 .sorted { String(describing: $0) < String(describing: $1) }
                 .map { .deleted($0) })
