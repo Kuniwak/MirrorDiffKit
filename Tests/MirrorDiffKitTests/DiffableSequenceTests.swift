@@ -6,7 +6,7 @@ class DiffableSequenceTests: XCTestCase {
     private struct TestCase {
         let between: DiffableSequence
         let and: DiffableSequence
-        let expected: Differentia
+        let expected: [DifferentiaUnit]
     }
 
 
@@ -15,7 +15,7 @@ class DiffableSequenceTests: XCTestCase {
             #line: TestCase(
                 between: DiffableSequence([]),
                 and: DiffableSequence([]),
-                expected: Differentia(units: [])
+                expected: []
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -24,27 +24,27 @@ class DiffableSequenceTests: XCTestCase {
                 and: DiffableSequence([
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([]),
                 and: DiffableSequence([
                     .string("I'm inserted"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .inserted(.string("I'm inserted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
                     .string("I'm deleted"),
                 ]),
                 and: DiffableSequence([]),
-                expected: Differentia(units: [
+                expected: [
                     .deleted(.string("I'm deleted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -55,11 +55,11 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm not changed"),
                     .string("I'm inserted"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .notChanged(.string("I'm not changed")),
                     .deleted(.string("I'm deleted")),
                     .inserted(.string("I'm inserted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -70,11 +70,11 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm inserted"),
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .inserted(.string("I'm inserted")),
                     .notChanged(.string("I'm not changed")),
                     .deleted(.string("I'm deleted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -85,11 +85,11 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm inserted"),
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .deleted(.string("I'm deleted")),
                     .inserted(.string("I'm inserted")),
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -100,11 +100,11 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm not changed"),
                     .string("I'm inserted"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .deleted(.string("I'm deleted")),
                     .notChanged(.string("I'm not changed")),
                     .inserted(.string("I'm inserted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -119,12 +119,12 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm not changed 3"),
                     .string("I'm not changed 4"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .notChanged(.string("I'm not changed 1")),
                     .notChanged(.string("I'm not changed 2")),
                     .notChanged(.string("I'm not changed 3")),
                     .notChanged(.string("I'm not changed 4")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -137,13 +137,13 @@ class DiffableSequenceTests: XCTestCase {
                 and: DiffableSequence([
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .deleted(.string("I'm deleted 1")),
                     .deleted(.string("I'm deleted 2")),
                     .deleted(.string("I'm deleted 3")),
                     .deleted(.string("I'm deleted 4")),
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
             #line: TestCase(
                 between: DiffableSequence([
@@ -156,13 +156,13 @@ class DiffableSequenceTests: XCTestCase {
                     .string("I'm inserted 4"),
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .inserted(.string("I'm inserted 1")),
                     .inserted(.string("I'm inserted 2")),
                     .inserted(.string("I'm inserted 3")),
                     .inserted(.string("I'm inserted 4")),
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
         ]
 

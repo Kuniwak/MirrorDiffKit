@@ -4,37 +4,36 @@ import XCTest
 
 class Issue10Tests: XCTestCase {
     struct Example {
-        let title: String
         let data: [String]
+        let title: String
     }
 
 
     func testDiff() {
         let a = Example(
-            title: "I'm not changed",
             data: [
                 "I'm not changed",
                 "I'm not changed",
                 "I'm not changed",
                 "I'm deleted",
-            ]
+            ],
+            title: "I'm not changed"
         )
 
         let b = Example(
-            title: "I'm not changed",
             data: [
                 "I'm not changed",
                 "I'm not changed",
                 "I'm not changed",
                 "I'm inserted",
-            ]
+            ],
+            title: "I'm not changed"
         )
 
         let actual = diff(between: a, and: b)
         let expected = [
             "",
             "  struct Example {",
-            "      title: \"I'm not changed\"",
             "      data: [",
             "          \"I'm not changed\"",
             "          \"I'm not changed\"",
@@ -42,6 +41,7 @@ class Issue10Tests: XCTestCase {
             "        - \"I'm deleted\"",
             "        + \"I'm inserted\"",
             "      ]",
+            "      title: \"I'm not changed\"",
             "  }",
             "",
         ].joined(separator: "\n")

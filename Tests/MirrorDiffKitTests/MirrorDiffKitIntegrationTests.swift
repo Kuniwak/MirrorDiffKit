@@ -42,10 +42,12 @@ class MirrorDiffKitTests: XCTestCase {
                 and: [0, 2, 3],
                 is: [
                     "",
-                    "  0.0",
-                    "- 1.0",
-                    "  2.0",
-                    "+ 3.0",
+                    "  [",
+                    "      0.0",
+                    "    - 1.0",
+                    "      2.0",
+                    "    + 3.0",
+                    "  ]",
                     "",
                 ].joined(separator: "\n")
             ),

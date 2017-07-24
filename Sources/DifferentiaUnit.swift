@@ -6,7 +6,8 @@ indirect enum DifferentiaUnit {
     case notChanged(Diffable)
     case inserted(Diffable)
     case deleted(Diffable)
-    case dictionaryChanged(kind: DifferentiaUnit.DictionaryType, [String: Differentia])
+    case dictionaryChanged(kind: DifferentiaUnit.DictionaryType, [String: [DifferentiaUnit]])
+    case sequenceChanged(kind: DifferentiaUnit.SequenceType, [DifferentiaUnit])
 }
 
 
@@ -21,6 +22,10 @@ extension DifferentiaUnit: Equatable {
         case let (.deleted(l), .deleted(r)):
             return l == r
         case let (.dictionaryChanged(kind: lk, ld), .dictionaryChanged(kind: rk, rd)):
+            return lk == rk
+                && DifferentiaUnitComparableDictionary.from(dictionary: ld)
+                    == DifferentiaUnitComparableDictionary.from(dictionary: rd)
+        case let (.sequenceChanged(kind: lk, ld), .sequenceChanged(kind: rk, rd)):
             return lk == rk
                 && ld == rd
         default:

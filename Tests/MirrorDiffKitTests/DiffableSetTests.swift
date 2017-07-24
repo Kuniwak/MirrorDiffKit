@@ -8,7 +8,7 @@ class DiffableSetTests: XCTestCase {
     private struct TestCase {
         let from: DiffableSet
         let to: DiffableSet
-        let expected: Differentia
+        let expected: [DifferentiaUnit]
     }
 
 
@@ -17,7 +17,7 @@ class DiffableSetTests: XCTestCase {
             #line: TestCase(
                 from: DiffableSet([]),
                 to: DiffableSet([]),
-                expected: Differentia(units: [])
+                expected: []
             ),
             #line: TestCase(
                 from: DiffableSet([
@@ -26,27 +26,27 @@ class DiffableSetTests: XCTestCase {
                 to: DiffableSet([
                     .string("I'm not changed"),
                 ]),
-                expected: Differentia(units: [
+                expected: [
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
             #line: TestCase(
                 from: DiffableSet([
                     .string("I'm deleted"),
                 ]),
                 to: DiffableSet([]),
-                expected: Differentia(units: [
+                expected: [
                     .deleted(.string("I'm deleted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 from: DiffableSet([]),
                 to: DiffableSet([
                     .string("I'm inserted"),
                 ]),
-                expected: Differentia(units:[
+                expected: [
                     .inserted(.string("I'm inserted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 from: DiffableSet([
@@ -57,11 +57,11 @@ class DiffableSetTests: XCTestCase {
                     .string("I'm not changed"),
                     .string("I'm inserted")
                 ]),
-                expected: Differentia(units:[
+                expected: [
                     .deleted(.string("I'm deleted")),
                     .inserted(.string("I'm inserted")),
                     .notChanged(.string("I'm not changed")),
-                ])
+                ]
             ),
             #line: TestCase(
                 from: DiffableSet([
@@ -72,10 +72,10 @@ class DiffableSetTests: XCTestCase {
                 to: DiffableSet([
                     .string("I'm deleted"),
                 ]),
-                expected: Differentia(units:[
+                expected: [
                     .deleted(.string("I'm deleted")),
                     .notChanged(.string("I'm deleted")),
-                ])
+                ]
             ),
             #line: TestCase(
                 from: DiffableSet([
@@ -86,10 +86,10 @@ class DiffableSetTests: XCTestCase {
                     .string("I'm inserted"),
                     .string("I'm inserted"),
                 ]),
-                expected: Differentia(units:[
+                expected: [
                     .inserted(.string("I'm inserted")),
                     .notChanged(.string("I'm inserted")),
-                ])
+                ]
             ),
         ]
 
@@ -106,7 +106,7 @@ class DiffableSetTests: XCTestCase {
 
     static var allTests : [(String, (DiffableSetTests) -> () throws -> Void)] {
         return [
-            ("testExample", self.testDiff),
+            ("testDiff", self.testDiff),
         ]
     }
 }
