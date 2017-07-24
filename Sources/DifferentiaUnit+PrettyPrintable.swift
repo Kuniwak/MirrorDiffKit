@@ -18,6 +18,33 @@ extension DifferentiaUnit: PrettyPrintable {
 
 
     private func childPrettyLines(kind: DifferentiaUnit.ChildKind, _ dictionary: [String: Differentia]) -> [PrettyLine] {
+        let lines = self.createContentLines(by: dictionary)
+
+        guard !lines.isEmpty else {
+            return [.line("  \(kind.token.open)\(kind.token.close)")]
+        }
+
+        return [.line("  \(kind.token.open)")]
+            + lines
+            + [.line("  \(kind.token.close)")]
+    }
+
+
+
+    private func childPrettyLinesWithKey(key: String, kind: DifferentiaUnit.ChildKind, _ dictionary: [String: Differentia]) -> [PrettyLine] {
+        let lines = self.createContentLines(by: dictionary)
+
+        guard !lines.isEmpty else {
+            return [.line("  \(key): \(kind.token.open)\(kind.token.close)")]
+        }
+
+        return [.line("  \(key): \(kind.token.open)")]
+            + lines
+            + [.line("  \(kind.token.close)")]
+    }
+
+
+    private func createContentLines(by dictionary: [String: Differentia]) -> [PrettyLine] {
         let lines: [PrettyLine] = entries(fromDictionary: dictionary)
             .sorted { $0.0 < $1.0 }
             .flatMap { (childKey, childDiff) -> [PrettyLine] in
@@ -30,7 +57,7 @@ extension DifferentiaUnit: PrettyPrintable {
                     case let .inserted(value):
                         return [.line("+ \(childKey): \(value.description)")]
                     case let .child(kind: childKind, childDictionary):
-                        return self.childPrettyLines(kind: childKind, childDictionary)
+                        return self.childPrettyLinesWithKey(key: childKey, kind: childKind, childDictionary)
                     }
                 }
 
@@ -38,12 +65,6 @@ extension DifferentiaUnit: PrettyPrintable {
             }
             .map { .indent($0) }
 
-        guard !lines.isEmpty else {
-            return [.line("  \(kind.token.open)\(kind.token.close)")]
-        }
-
-        return [.line("  \(kind.token.open)")]
-            + lines
-            + [.line("  \(kind.token.close)")]
+        return lines
     }
 }

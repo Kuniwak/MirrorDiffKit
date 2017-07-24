@@ -123,9 +123,11 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 input: Differentia(
                     units: [
                         .child(kind: .dictionary, [
-                            "child": Differentia(units: [
+                            "changed": Differentia(units: [
                                 .deleted(.string("I'm deleted")),
                                 .inserted(.string("I'm inserted")),
+                            ]),
+                            "notChanged": Differentia(units: [
                                 .notChanged(.string("I'm not changed")),
                             ]),
                         ])
@@ -133,9 +135,43 @@ class Diffable_PrettyPrintableTests: XCTestCase {
                 ),
                 expected: [
                     "  [",
-                    "    - child: \"I'm deleted\"",
-                    "    + child: \"I'm inserted\"",
+                    "    - changed: \"I'm deleted\"",
+                    "    + changed: \"I'm inserted\"",
+                    "      notChanged: \"I'm not changed\"",
+                    "  ]"
+                ].joined(separator: "\n")
+            ),
+            #line: TestCase(
+                input: Differentia(
+                    units: [
+                        .child(kind: .dictionary, [
+                            "child": Differentia(units: [
+                                .notChanged(.string("I'm not changed")),
+                            ]),
+                            "grandChild": Differentia(units: [
+                                .child(kind: .dictionary, [
+                                    "deleted": Differentia(units: [
+                                        .deleted(.string("I'm deleted")),
+                                    ]),
+                                    "inserted": Differentia(units: [
+                                        .inserted(.string("I'm inserted")),
+                                    ]),
+                                    "notChanged": Differentia(units: [
+                                        .notChanged(.string("I'm not changed")),
+                                    ]),
+                                ]),
+                            ]),
+                        ]),
+                    ]
+                ),
+                expected: [
+                    "  [",
                     "      child: \"I'm not changed\"",
+                    "      grandChild: [",
+                    "        - deleted: \"I'm deleted\"",
+                    "        + inserted: \"I'm inserted\"",
+                    "          notChanged: \"I'm not changed\"",
+                    "      ]",
                     "  ]"
                 ].joined(separator: "\n")
             ),
