@@ -2,16 +2,14 @@ import Foundation
 
 
 
-protocol PrettyPrintable /*: CustomStringConvertible */ {
+protocol PrettyPrintable {
     var prettyLines: [PrettyLine] { get }
 }
 
 
-extension PrettyPrintable {
+extension PrettyPrintable /*: CustomStringConvertible */ {
     var description: String {
-        return self.prettyLines
-            .map { $0.description }
-            .joined(separator: "\n")
+        return PrettyPrinter.print(fromLines: self.prettyLines)
     }
 }
 

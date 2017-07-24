@@ -42,10 +42,12 @@ class MirrorDiffKitTests: XCTestCase {
                 and: [0, 2, 3],
                 is: [
                     "",
-                    "  0.0",
-                    "- 1.0",
-                    "  2.0",
-                    "+ 3.0",
+                    "  [",
+                    "      0.0",
+                    "    - 1.0",
+                    "      2.0",
+                    "    + 3.0",
+                    "  ]",
                     "",
                 ].joined(separator: "\n")
             ),
@@ -163,6 +165,24 @@ class MirrorDiffKitTests: XCTestCase {
                     "",
                     "- struct TwoEntries { key1: \"I'm not changed\", key2: \"I'm deleted\" }",
                     "+ class TwoEntries { key1: \"I'm not changed\", key2: \"I'm inserted\" }",
+                    "",
+                ].joined(separator: "\n")
+            ),
+            #line: TestCase(
+                diffBetween: [
+                    "changed": StructStub.OneEntry(key1: "I'm deleted"),
+                ],
+                and: [
+                    "changed": StructStub.OneEntry(key1: "I'm inserted"),
+                ],
+                is: [
+                    "",
+                    "  [",
+                    "      \"changed\": struct OneEntry {",
+                    "        - key1: \"I'm deleted\"",
+                    "        + key1: \"I'm inserted\"",
+                    "      }",
+                    "  ]",
                     "",
                 ].joined(separator: "\n")
             ),

@@ -40,11 +40,11 @@ struct DiffableDictionary {
     }
 
 
-    static func diff(between lhs: DiffableDictionary, and rhs: DiffableDictionary, forKind kind: DifferentiaUnit.ChildKind) -> Differentia {
+    static func diff(between lhs: DiffableDictionary, and rhs: DiffableDictionary) -> [String: [DifferentiaUnit]] {
         // note: elements of [diffable] may not conform to hashable.
         // so we cannot use o(1) algorithm such as hash map.
 
-        var result: [String: Differentia] = [:]
+        var result: [String: [DifferentiaUnit]] = [:]
 
         let keys = Set(lhs.dictionary.keys)
             .union(Set(rhs.dictionary.keys))
@@ -55,27 +55,22 @@ struct DiffableDictionary {
                 fatalError("This case cannot be executed.")
 
             case let (.some(lv), .none):
-                result[key] = Differentia(units: [.inserted(lv)])
+                result[key] = [.inserted(lv)]
 
             case let (.none, .some(rv)):
-                result[key] = Differentia(units: [.deleted(rv)])
+                result[key] = [.deleted(rv)]
 
             case let (.some(lv), .some(rv)):
                 guard lv != rv else {
-                    result[key] = Differentia(units: [.notChanged(lv)])
+                    result[key] = [.notChanged(lv)]
                     return
                 }
 
-                result[key] = Differentia(units: [
-                    .deleted(lv),
-                    .inserted(rv),
-                ])
+                result[key] = Diffable.diff(between: lv, and: rv)
             }
         }
 
-        return Differentia(units: [
-            .child(kind: kind, result)
-        ])
+        return result
     }
 }
 

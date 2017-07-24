@@ -11,9 +11,9 @@ class DiffableSequence {
     }
 
 
-    static func diff(between: DiffableSequence, and: DiffableSequence) -> Differentia {
-        var lcs = between.elements.LCS(and.elements)
-        let diff = between.elements.diff(and.elements)
+    static func diff(between a: DiffableSequence, and b: DiffableSequence) -> [DifferentiaUnit] {
+        var lcs = a.elements.LCS(b.elements)
+        let diff = a.elements.diff(b.elements)
 
         // NOTE; This algorithm is based on the following table:
         //
@@ -113,7 +113,7 @@ class DiffableSequence {
             }
         }
 
-        return Differentia(units: result)
+        return result
     }
 
 
