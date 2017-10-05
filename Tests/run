@@ -29,7 +29,7 @@
 set -e
 set -o pipefail
 
-echo "Swift 3 Circle CI Installer";
+echo "Swift 4 Circle CI Installer";
 
 # Determine version
 VERSION_FILE=".swift-version"
