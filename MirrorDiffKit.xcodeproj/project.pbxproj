@@ -33,13 +33,11 @@
 		2475E2847D8FC02BF79B02B9 /* DiffableDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB2B1D820FCDC5957FC3 /* DiffableDictionary.swift */; };
 		2475E2887DA3EBD63495590C /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
 		2475E28AF26479F0EF76BB1E /* MirrorDiffKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E27C1F43721CD0A6BFD0 /* MirrorDiffKit.swift */; };
-		2475E2967CBDFC1F3E76012D /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
 		2475E2A55BF3C09E268B4EA8 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
-		2475E2B39EAE1416477807B9 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
 		2475E2D4F86772F7D5ED3EBD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
-		2475E2E683F9EEE5109AF6B6 /* LinuxMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EE61530F256A1D549339 /* LinuxMain.swift */; };
 		2475E2FB375A5C54598AE82E /* Diffable.from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable.from.swift */; };
 		2475E357813342BCC4A43F1F /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
+		2475E35A8B1DF9A7C8467196 /* Issue13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */; };
 		2475E3832FE428ECD51446EC /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF87F9F7B45846D04C65 /* ExampleTests.swift */; };
 		2475E39944EBDAAB4DA03482 /* PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E7D5313E857DB19ECDCA /* PrettyPrintable.swift */; };
 		2475E3D727A25574A7583DFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E55AD7C7C9AEFEF1643C /* Util.swift */; };
@@ -103,6 +101,8 @@
 		2475EC76A0FF3FFD53B1300E /* EnumRepresentationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF30C4592782E2D0E371 /* EnumRepresentationDetector.swift */; };
 		2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */; };
 		2475ECA328D49E5119BCD709 /* Diffable+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDD7BFE0FD8514BA620E /* Diffable+CustomStringConvertible.swift */; };
+		2475ECB027FB34CC4D3AB4AC /* Issue13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */; };
+		2475ED066CDAA1E1B03D0FA7 /* Issue13Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */; };
 		2475ED8F8CD1FCC4BCCAB666 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E8ED7A24111E5500F1F4 /* Diffable.swift */; };
 		2475EDC9D53B420705443293 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
 		2475EDCFDFCF8735DD825DD1 /* Diffable.from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable.from.swift */; };
@@ -164,6 +164,7 @@
 		2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MirrorDiffKitIntegrationTests.swift; sourceTree = "<group>"; };
 		2475E2E82C8E152A456073DA /* DiffableSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffableSetTests.swift; sourceTree = "<group>"; };
 		2475E42D3D741A2F398087E0 /* Stubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue13Tests.swift; sourceTree = "<group>"; };
 		2475E5087E79D9A4E8170014 /* DifferentiaUnit.SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentiaUnit.SequenceType.swift; sourceTree = "<group>"; };
 		2475E55AD7C7C9AEFEF1643C /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		2475E5B1B9EB8376144D192A /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = run; sourceTree = "<group>"; };
@@ -300,6 +301,7 @@
 				2475ED3A27C5E753EA30F2A4 /* DifferentiaUnit+PrettyPrintableTests.swift */,
 				2475E2CB822ABAA3DC298818 /* MirrorDiffKitIntegrationTests.swift */,
 				2475EF0B7F6E2A9FACA5B13D /* Issue10Tests.swift */,
+				2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */,
 			);
 			path = MirrorDiffKitTests;
 			sourceTree = "<group>";
@@ -661,7 +663,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2475E2E683F9EEE5109AF6B6 /* LinuxMain.swift in Sources */,
 				2475E795E5263D357C00EA24 /* Stubs.swift in Sources */,
 				2475EAD30889B46DD4EC7EB7 /* ExampleTests.swift in Sources */,
 				2475EA4FF764ACAC01995D33 /* DiffableTests.swift in Sources */,
@@ -671,6 +672,7 @@
 				2475EF569997D6980469B073 /* DifferentiaUnit+PrettyPrintableTests.swift in Sources */,
 				2475E0590370D6374C4146C5 /* MirrorDiffKitIntegrationTests.swift in Sources */,
 				2475EC3E916B40DF4AB7414C /* Issue10Tests.swift in Sources */,
+				2475ECB027FB34CC4D3AB4AC /* Issue13Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +764,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2475E2967CBDFC1F3E76012D /* LinuxMain.swift in Sources */,
 				2475E357813342BCC4A43F1F /* Stubs.swift in Sources */,
 				2475E3832FE428ECD51446EC /* ExampleTests.swift in Sources */,
 				2475E89F382BEDD9A7E6C7F5 /* DiffableTests.swift in Sources */,
@@ -772,6 +773,7 @@
 				2475EADF49EB4F91209156E0 /* DifferentiaUnit+PrettyPrintableTests.swift in Sources */,
 				2475EC82D19663BF468E4014 /* MirrorDiffKitIntegrationTests.swift in Sources */,
 				2475E9346E5C544E2DC16735 /* Issue10Tests.swift in Sources */,
+				2475E35A8B1DF9A7C8467196 /* Issue13Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,7 +781,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2475E2B39EAE1416477807B9 /* LinuxMain.swift in Sources */,
 				2475E0F6CAAD02CD70690FAE /* Stubs.swift in Sources */,
 				2475E52262734230D4DFA81E /* ExampleTests.swift in Sources */,
 				2475E068E23A0E8B62E92ABD /* DiffableTests.swift in Sources */,
@@ -789,6 +790,7 @@
 				2475E24082A75666B4FC4D4E /* DifferentiaUnit+PrettyPrintableTests.swift in Sources */,
 				2475E71653DD16AA64B578AF /* MirrorDiffKitIntegrationTests.swift in Sources */,
 				2475E082185996AC064348F1 /* Issue10Tests.swift in Sources */,
+				2475ED066CDAA1E1B03D0FA7 /* Issue13Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
