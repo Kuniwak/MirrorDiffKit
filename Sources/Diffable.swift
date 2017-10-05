@@ -56,7 +56,7 @@ extension Diffable: Equatable {
         case let (.set(l), .set(r)):
             return DiffableSet(l) == DiffableSet(r)
         case let (.dictionary(l), .dictionary(r)):
-            return l == r
+            return DiffableSet(l) == DiffableSet(r)
         case let (.anyEnum(type: lt, value: lv, associated: le), .anyEnum(type: rt, value: rv, associated: re)):
             do {
                 return try lt == rt
@@ -76,7 +76,7 @@ extension Diffable: Equatable {
             return lt == rt
                 && le == re
         case (.notSupported, .notSupported):
-            // NOTE: This is an only only defference between Equatable and RoughEquatable.
+            // NOTE: This is an only only difference between Equatable and RoughEquatable.
             return false
         case (.unrecognizable, .unrecognizable):
             return false
@@ -107,7 +107,7 @@ extension Diffable: RoughEquatable {
         case let (.set(l), .set(r)):
             return DiffableSet(l) == DiffableSet(r)
         case let (.dictionary(l), .dictionary(r)):
-            return l == r
+            return DiffableSet(l) == DiffableSet(r)
         case let (.date(l), .date(r)):
             return l == r
         case let (.url(l), .url(r)):

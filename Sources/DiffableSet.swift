@@ -42,6 +42,21 @@ struct DiffableSet {
 
 extension DiffableSet: Equatable {
     static func == (_ lhs: DiffableSet, _ rhs: DiffableSet) -> Bool {
-        return lhs.nonHashables == rhs.nonHashables
+        // NOTE: Elements of [Diffable] may not conform to Hashable.
+        // So we cannot use O(1) algorithm such as hash map.
+
+        guard lhs.nonHashables.count == rhs.nonHashables.count else {
+            return false
+        }
+
+        var isEqual = true
+
+        lhs.nonHashables.forEach { l in
+            if !rhs.nonHashables.contains(l) {
+                isEqual = false
+            }
+        }
+
+        return isEqual
     }
 }
