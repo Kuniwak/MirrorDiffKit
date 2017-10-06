@@ -13,4 +13,6 @@ XCTMain([
     testCase(MirrorDiffKitOperatorsTests.allTests),
     testCase(PrettyLineTests.allTests),
     testCase(PrettyLinesTests.allTests),
+    testCase(DiffablePrettyPrintableTests.allTests),
+    testCase(MirrorDiffKitDrainTests.allTests),
 ])

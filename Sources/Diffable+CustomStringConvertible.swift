@@ -30,17 +30,9 @@ extension Diffable /*: CustomStringConvertible */ {
             case let .type(type):
                 return String(describing: type)
 
-            case let .tuple(dictionary):
-                let content = entries(fromDictionary: dictionary)
-                    .sorted { $0.0 <= $1.0 }
-                    .map { (key, value) in
-                        let hasLabel = key[key.startIndex] != "."
-                        if hasLabel {
-                            return "\(key): \(value.description)"
-                        }
-
-                        return value.description
-                    }
+            case let .tuple(entries):
+                let content = entries
+                    .map { $0.description }
                     .joined(separator: ", ")
 
                 return "(" + content + ")"
@@ -63,14 +55,6 @@ extension Diffable /*: CustomStringConvertible */ {
                 guard !diffables.isEmpty else { return "[:]" }
 
                 let content = diffables
-                    .map { diffable -> (key: Diffable, value: Diffable) in
-                        switch diffable {
-                        case let .tuple(dictionary):
-                            return (key: dictionary["key"]!, value: dictionary["value"]!)
-                        default:
-                            fatalError(".dictionary can contain only tuples")
-                        }
-                    }
                     .sorted { $0.key.description <= $1.key.description }
                     .map { (key, value) in "\(key.description): \(value.description)" }
                     .joined(separator: ", ")
@@ -85,10 +69,7 @@ extension Diffable /*: CustomStringConvertible */ {
                 // INPUT: one("value")
                 let caseName = try getEnumCaseName(value)
                 let tuplePart = associated
-                    .map { value in
-                        // NOTE: value is a tuple but it has no labels.
-                        return value.description
-                    }
+                    .map { $0.description }
                     .joined(separator: ", ")
 
                 return "\(type).\(caseName)(\(tuplePart))"
@@ -101,7 +82,7 @@ extension Diffable /*: CustomStringConvertible */ {
                 }
 
                 let content = array
-                    .sorted { $0.0 < $1.0 }
+                    .sorted { $0.key < $1.key }
                     .map { (key, value) in "\(key): \(value.description)" }
                     .joined(separator: ", ")
 
@@ -115,19 +96,19 @@ extension Diffable /*: CustomStringConvertible */ {
                 }
 
                 let content = array
-                    .sorted { $0.0 < $1.0 }
+                    .sorted { $0.key < $1.key }
                     .map { (key, value) in "\(key): \(value.description)" }
                     .joined(separator: ", ")
 
                 return "class \(type) { \(content) }"
 
             case let .generic(type: type, entries: dictionary):
-                let array = entries(fromDictionary: dictionary)
-                guard !array.isEmpty else { return "generic \(type) {}"
+                guard !dictionary.isEmpty else {
+                    return "generic \(type) {}"
                 }
 
-                let content = array
-                    .sorted { $0.0 < $1.0 }
+                let content = entries(fromDictionary: dictionary)
+                    .sorted { $0.key < $1.key }
                     .map { (key, value) in "\(key): \(value.description)" }
                     .joined(separator: ", ")
 

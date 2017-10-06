@@ -33,24 +33,29 @@ indirect enum PrettyLine /*: CustomStringConvertible */ {
     }
 
 
-    static func concat(_ a: PrettyLine, and b: PrettyLine, with separator: String) -> PrettyLine {
+    static func addIndentLevel(lines: [PrettyLine], count: Int) -> [PrettyLine] {
+        return lines.map { $0.addIndentLevel(count: count) }
+    }
+
+
+    static func concatKeyLineAndValueLines(_ a: PrettyLine, and b: PrettyLine, with separator: String) -> PrettyLine {
         switch (a, b) {
         case let (.line(a), .line(b)):
             return .line(a + separator + b)
 
         case let (.indent(a), .line(b)):
-            return .indent(self.concat(a, and: .line(b), with: separator))
+            return .indent(self.concatKeyLineAndValueLines(a, and: .line(b), with: separator))
 
         case let (.line(a), .indent(b)):
-            return self.concat(.line(a), and: b, with: separator)
+            return self.concatKeyLineAndValueLines(.line(a), and: b, with: separator)
 
         case let (.indent(a), .indent(b)):
-            return .indent(self.concat(a, and: b, with: separator))
+            return .indent(self.concatKeyLineAndValueLines(a, and: b, with: separator))
         }
     }
 
 
-    static func concat(_ a: [PrettyLine], and b: [PrettyLine], with separator: String) -> [PrettyLine] {
+    static func concatKeyLineAndValueLines(_ a: [PrettyLine], and b: [PrettyLine], with separator: String) -> [PrettyLine] {
         let lastAndRest = self.splitLast(a)
         guard let last = lastAndRest.last else {
             return b
@@ -64,7 +69,7 @@ indirect enum PrettyLine /*: CustomStringConvertible */ {
         let previousIndentLevel = last.indentLevel
 
         return lastAndRest.rest
-            + [self.concat(last, and: first, with: separator)]
+            + [self.concatKeyLineAndValueLines(last, and: first, with: separator)]
             + firstAndRest.rest.map { $0.addIndentLevel(count: previousIndentLevel)}
     }
 

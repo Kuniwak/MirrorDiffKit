@@ -34,11 +34,18 @@ class DiffableTests: XCTestCase {
                 expected: "1970-01-01 00:00:00 +0000"
             ),
             #line: TestCase(
-                input: .url(URL(string: "http://example.com")!),
-                expected: "http://example.com"
+                input: .url(URL(string: "http://example.com/path/?q=v#f")!),
+                expected: "http://example.com/path/?q=v#f"
             ),
             #line: TestCase(
-                input: .tuple([".0": .none, "label": .none]),
+                input: .tuple([]),
+                expected: "()"
+            ),
+            #line: TestCase(
+                input: .tuple([
+                    .notLabeled(index: 0, value: .none),
+                    .labeled(label: "label", value: .none),
+                ]),
                 expected: "(nil, label: nil)"
             ),
             #line: TestCase(
@@ -59,23 +66,23 @@ class DiffableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .dictionary([
-                    .tuple([
-                        "key": .string("KEY"),
-                        "value": .string("VALUE"),
-                    ]),
+                    (
+                        key: .string("KEY"),
+                        value: .string("VALUE")
+                    ),
                 ]),
                 expected: "[\"KEY\": \"VALUE\"]"
             ),
             #line: TestCase(
                 input: .dictionary([
-                    .tuple([
-                        "key": .string("KEY1"),
-                        "value": .string("VALUE1"),
-                    ]),
-                    .tuple([
-                        "key": .string("KEY2"),
-                        "value": .string("VALUE2"),
-                    ]),
+                    (
+                        key: .string("KEY1"),
+                        value: .string("VALUE1")
+                    ),
+                    (
+                        key: .string("KEY2"),
+                        value: .string("VALUE2")
+                    ),
                 ]),
                 expected: "[\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
             ),
@@ -99,19 +106,29 @@ class DiffableTests: XCTestCase {
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
                     value: EnumStub.AssociatedBySameKeys.one(key: "value"),
-                    associated: [.string("value")]
+                    associated: [.labeled(label: "key", value: .string("value"))]
                 ),
-                // NOTE: the label has gone away. X-(
+                expected: "AssociatedBySameKeys.one(key: \"value\")"
+            ),
+            #line: TestCase(
+                input: .anyEnum(
+                    type: EnumStub.AssociatedBySameKeys.self,
+                    value: EnumStub.AssociatedBySameKeys.one(key: "value"),
+                    associated: [.notLabeled(index: 0, value: .string("value"))]
+                ),
+                // NOTE: For Swift 3.0-. the label has gone away. X-(
                 expected: "AssociatedBySameKeys.one(\"value\")"
             ),
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.AssociatedByNotSameKeys.self,
                     value: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b"),
-                    associated: [.string("value1b"), .string("value2b")]
+                    associated: [
+                        .labeled(label: "key1b", value: .string("value1b")),
+                        .labeled(label: "key2b", value: .string("value2b")),
+                    ]
                 ),
-                // NOTE: the label has gone away. X-(
-                expected: "AssociatedByNotSameKeys.two(\"value1b\", \"value2b\")"
+                expected: "AssociatedByNotSameKeys.two(key1b: \"value1b\", key2b: \"value2b\")"
             ),
             #line: TestCase(
                 input: .anyStruct(

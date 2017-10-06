@@ -145,19 +145,19 @@ func transformMirror(of x: Any) -> Diffable {
             return .none
 
         case .some(.tuple):
-            let entries = try transformFromLabeledMirror(of: mirror)
+            let entries = transformFromTupleMirror(of: mirror)
             return .tuple(entries)
 
         case .some(.set):
-            let entries = transformFromNonLabeldMirror(of: mirror)
+            let entries = transformFromNonLabeledMirror(of: mirror)
             return .set(entries)
 
         case .some(.dictionary):
-            let entries = transformFromNonLabeldMirror(of: mirror)
+            let entries = try transformFromDictionaryEntryMirror(of: mirror)
             return .dictionary(entries)
 
         case .some(.enum):
-            let associated = transformFromTupleMirror(of: mirror)
+            let associated = transformFromEnumMirror(of: mirror)
 
             return .anyEnum(
                 type: mirror.subjectType,
@@ -205,12 +205,62 @@ private func transformFromLabeledMirror(of mirror: Mirror) throws -> [String: Di
 
 
 
-private func transformFromNonLabeldMirror(of mirror: Mirror) -> [Diffable] {
+private func transformFromDictionaryEntryMirror(of mirror: Mirror) throws -> [(key: Diffable, value: Diffable)] {
+    return try mirror.children.map { (_, value) -> (key: Diffable, value: Diffable) in
+        guard let tuple = value as? (Any, Any) else {
+            throw TransformError.unexpectedNotTuple(debugInfo: "\(value)")
+        }
+
+        return (
+            key: transform(fromAny: tuple.0),
+            value: transform(fromAny: tuple.1)
+        )
+    }
+}
+
+
+
+private func transformFromNonLabeledMirror(of mirror: Mirror) -> [Diffable] {
     return mirror.children.map { (_, value) in transform(fromAny: value) }
 }
 
 
-private func transformFromTupleMirror(of mirror: Mirror) -> [Diffable] {
+private func transformFromTupleMirror(of mirror: Mirror) -> [Diffable.TupleEntry] {
+    // NOTE: Tuple's children of mirror do not have consistent representations:
+    //
+    //   - void tuple's children = [T] (empty)
+    //   - unary tuple's children = T
+    //   - N-ary tuple's children = [T]
+
+    // It is a N-ary tuple. (N >= 2)
+    return mirror.children
+        .enumerated()
+        .map { (entry) in
+            let (index, child) = entry
+
+            // XXX: In this case, the label is a associated value name.
+            //
+            //      MyEnum.myCase(label: "value")
+            //                    ^^^^^
+            //
+            // XXX: The labels are ".0", ".1" when given MyEnum.myCase(Any, Any)
+            if let label = child.label, label != ".\(index)" {
+                return .labeled(
+                    label: label,
+                    value: transform(fromAny: child.value)
+                )
+            }
+            else {
+                return .notLabeled(
+                    index: index,
+                    value: transform(fromAny: child.value)
+                )
+            }
+        }
+}
+
+
+private func transformFromEnumMirror(of mirror: Mirror) -> [Diffable.TupleEntry] {
     // NOTE: Tuple's children of mirror do not have consistent representations:
     //
     //   - void tuple's children = [T] (empty)
@@ -226,12 +276,40 @@ private func transformFromTupleMirror(of mirror: Mirror) -> [Diffable] {
 
     guard childMirror.displayStyle == .tuple else {
         // It is an unary tuple.
-        return [transform(fromAny: firstChild.value)]
+        // XXX: The label is ".0" when given MyEnum.myCase(Any)
+        return [
+            .notLabeled(
+                index: 0,
+                value: transform(fromAny: firstChild.value)
+            )
+        ]
     }
 
     // It is a N-ary tuple. (N >= 2)
     return childMirror.children
-        .map { transform(fromAny: $0.value) }
+        .enumerated()
+        .map { (entry) in
+            let (index, child) = entry
+
+            // XXX: In this case, the label is a associated value name.
+            //
+            //      MyEnum.myCase(label: "value")
+            //                    ^^^^^
+            //
+            // XXX: The labels are ".0", ".1" when given MyEnum.myCase(Any, Any)
+            if let label = child.label, label != ".\(index)" {
+                return .labeled(
+                    label: label,
+                    value: transform(fromAny: child.value)
+                )
+            }
+            else {
+                return .notLabeled(
+                    index: index,
+                    value: transform(fromAny: child.value)
+                )
+            }
+        }
 }
 
 
@@ -239,6 +317,7 @@ private func transformFromTupleMirror(of mirror: Mirror) -> [Diffable] {
 enum TransformError: Error {
     case unexpectedNilLabel(debugInfo: String)
     case unexpectedMirrorStructureForAssociatedTuple(debugInfo: String)
+    case unexpectedNotTuple(debugInfo: String)
 }
 
 

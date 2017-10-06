@@ -136,14 +136,16 @@ extension Array: DiffableConvertible {
 
 extension Dictionary: DiffableConvertible {
     public var diffable: Diffable {
-        var result = [Diffable]()
+        var result = [(key: Diffable, value: Diffable)]()
 
-        self.forEach { (key, value) in
-            result.append(.tuple([
+        self.forEach { entry in
+            let (key, value) = entry
+
+            result.append((
                 // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
-                "key": transform(fromAny: key),
-                "value": transform(fromAny: value)
-            ]))
+                key: transform(fromAny: key),
+                value: transform(fromAny: value)
+            ))
         }
 
         return .dictionary(result)

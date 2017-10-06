@@ -55,7 +55,7 @@ class PrettyLineTests: XCTestCase {
         testCases.forEach { entry in
             let (line, testCase) = entry
             XCTAssertEqual(
-                PrettyLine.concat(
+                PrettyLine.concatKeyLineAndValueLines(
                     testCase.a,
                     and: testCase.b,
                     with: testCase.separator

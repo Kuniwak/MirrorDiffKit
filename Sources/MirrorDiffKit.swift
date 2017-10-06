@@ -2,12 +2,12 @@ infix operator =~: ComparisonPrecedence
 infix operator !~: ComparisonPrecedence
 
 
-func =~<T> (_ lhs: T, _ rhs: T) -> Bool {
+public func =~<T> (_ lhs: T, _ rhs: T) -> Bool {
     return Diffable.from(any: lhs) =~ Diffable.from(any: rhs)
 }
 
 
-func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
+public func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
     return Diffable.from(any: lhs) !~ Diffable.from(any: rhs)
 }
 
@@ -23,4 +23,11 @@ public func diff(between a: Any, and b: Any) -> String {
     }
 
     return "\n\(PrettyPrinter.print(fromLines: prettyLines))\n"
+}
+
+
+public func drain(_ any: Any) -> String {
+    return PrettyPrinter.print(
+        fromLines: Diffable.from(any: any).prettyLines
+    )
 }

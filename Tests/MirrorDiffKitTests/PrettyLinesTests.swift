@@ -87,7 +87,7 @@ class PrettyLinesTests: XCTestCase {
         testCases.forEach { entry in
             let (line, testCase) = entry
 
-            let actual = PrettyLine.concat(
+            let actual = PrettyLine.concatKeyLineAndValueLines(
                 testCase.a,
                 and: testCase.b,
                 with: testCase.separator
