@@ -31,10 +31,7 @@ class ExampleTests: XCTestCase {
         //     key2: "I'm inserted"
         // )
         //
-        // XCTAssert(
-        //     Diffable.from(any: a) =~ Diffable.from(any: b),
-        //     diff(between: a, and: b)
-        // )
+        // XCTAssert(a =~ b, diff(between: a, and: b))
     }
 
 

@@ -167,7 +167,8 @@ class DiffableSequenceTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let diff = DiffableSequence.diff(
                 between: testCase.between,
                 and: testCase.and

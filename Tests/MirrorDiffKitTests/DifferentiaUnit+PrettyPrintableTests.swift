@@ -2,7 +2,7 @@ import XCTest
 @testable import MirrorDiffKit
 
 
-class Diffable_PrettyPrintableTests: XCTestCase {
+class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
     private struct TestCase {
         let input: DifferentiaUnit
         let expected: String
@@ -158,7 +158,8 @@ class Diffable_PrettyPrintableTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let actual = PrettyPrinter.print(fromLines: testCase.input.prettyLines)
             XCTAssertEqual(actual, testCase.expected, line: line)
         }
@@ -166,7 +167,7 @@ class Diffable_PrettyPrintableTests: XCTestCase {
 
 
 
-    static var allTests : [(String, (Diffable_PrettyPrintableTests) -> () throws -> Void)] {
+    static var allTests : [(String, (DifferentiaUnit_PrettyPrintableTests) -> () throws -> Void)] {
         return [
             ("testPrettyLines", self.testPrettyLines),
         ]

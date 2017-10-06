@@ -1,3 +1,17 @@
+infix operator =~: ComparisonPrecedence
+infix operator !~: ComparisonPrecedence
+
+
+func =~<T> (_ lhs: T, _ rhs: T) -> Bool {
+    return Diffable.from(any: lhs) =~ Diffable.from(any: rhs)
+}
+
+
+func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
+    return Diffable.from(any: lhs) !~ Diffable.from(any: rhs)
+}
+
+
 public func diff(between a: Any, and b: Any) -> String {
     let diff = Diffable.diff(
         between: Diffable.from(any: a),
