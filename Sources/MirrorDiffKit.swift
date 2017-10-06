@@ -2,12 +2,12 @@ infix operator =~: ComparisonPrecedence
 infix operator !~: ComparisonPrecedence
 
 
-func =~<T> (_ lhs: T, _ rhs: T) -> Bool {
+public func =~<T> (_ lhs: T, _ rhs: T) -> Bool {
     return Diffable.from(any: lhs) =~ Diffable.from(any: rhs)
 }
 
 
-func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
+public func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
     return Diffable.from(any: lhs) !~ Diffable.from(any: rhs)
 }
 

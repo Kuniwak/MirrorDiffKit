@@ -3,7 +3,7 @@ import Foundation
 
 
 extension Diffable {
-    static func diff (between a: Diffable, and b: Diffable) -> [DifferentiaUnit] {
+    public static func diff(between a: Diffable, and b: Diffable) -> [DifferentiaUnit] {
         guard a != b else {
             return [.notChanged(a)]
         }

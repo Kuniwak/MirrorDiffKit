@@ -3,7 +3,7 @@ import Foundation
 
 
 extension DifferentiaUnit {
-    enum DictionaryType {
+    public enum DictionaryType {
         case dictionary
         case anyStruct(type: Any.Type)
         case anyClass(type: Any.Type)
@@ -35,7 +35,7 @@ extension DifferentiaUnit {
 
 
 extension DifferentiaUnit.DictionaryType: Equatable {
-    static func == (_ lhs: DifferentiaUnit.DictionaryType, _ rhs: DifferentiaUnit.DictionaryType) -> Bool {
+    public static func == (_ lhs: DifferentiaUnit.DictionaryType, _ rhs: DifferentiaUnit.DictionaryType) -> Bool {
         switch (lhs, rhs) {
         case (.dictionary, .dictionary):
             return true

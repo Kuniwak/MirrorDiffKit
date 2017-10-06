@@ -3,7 +3,7 @@ import Foundation
 
 
 extension DifferentiaUnit {
-    enum SequenceType {
+    public enum SequenceType {
         case array
         case set
     }
@@ -12,7 +12,7 @@ extension DifferentiaUnit {
 
 
 extension DifferentiaUnit.SequenceType: Equatable {
-    static func ==(lhs: DifferentiaUnit.SequenceType, rhs: DifferentiaUnit.SequenceType) -> Bool {
+    public static func ==(lhs: DifferentiaUnit.SequenceType, rhs: DifferentiaUnit.SequenceType) -> Bool {
         switch (lhs, rhs) {
         case (.array, .array):
             return true
