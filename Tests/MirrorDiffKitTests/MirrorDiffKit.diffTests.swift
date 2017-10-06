@@ -1,5 +1,5 @@
 import XCTest
-@testable import MirrorDiffKit
+import MirrorDiffKit
 
 
 class MirrorDiffKitDiffTests: XCTestCase {

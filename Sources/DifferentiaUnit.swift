@@ -2,7 +2,7 @@ import Foundation
 
 
 
-indirect enum DifferentiaUnit {
+public indirect enum DifferentiaUnit {
     case notChanged(Diffable)
     case inserted(Diffable)
     case deleted(Diffable)
@@ -13,7 +13,7 @@ indirect enum DifferentiaUnit {
 
 
 extension DifferentiaUnit: Equatable {
-    static func == (_ lhs: DifferentiaUnit, _ rhs: DifferentiaUnit) -> Bool {
+    public static func == (_ lhs: DifferentiaUnit, _ rhs: DifferentiaUnit) -> Bool {
         switch (lhs, rhs) {
         case let (.notChanged(l), .notChanged(r)):
             return l == r
