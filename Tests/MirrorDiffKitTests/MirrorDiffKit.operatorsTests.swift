@@ -76,4 +76,12 @@ class MirrorDiffKitOperatorsTests: XCTestCase {
             )
         }
     }
+
+
+    static var allTests : [(String, (MirrorDiffKitOperatorsTests) -> () throws -> Void)] {
+        return [
+            ("testEqualityOperator", self.testEqualityOperator),
+            ("testDifferenceOperator", self.testDifferenceOperator),
+        ]
+    }
 }
