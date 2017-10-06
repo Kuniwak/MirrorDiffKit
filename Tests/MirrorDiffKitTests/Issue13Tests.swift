@@ -18,4 +18,11 @@ class Issue13Tests: XCTestCase {
             diff(between: b, and: a)
         )
     }
+
+
+    static var allTests: [(String, (Issue13Tests) -> () throws -> Void)] {
+        return [
+            ("testDictEquality", self.testDictEquality),
+        ]
+    }
 }
