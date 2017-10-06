@@ -2,7 +2,7 @@ import XCTest
 @testable import MirrorDiffKit
 
 
-class MirrorDiffKitTests: XCTestCase {
+class MirrorDiffKitDiffTests: XCTestCase {
     private struct TestCase {
         let a: Any
         let b: Any
@@ -16,7 +16,7 @@ class MirrorDiffKitTests: XCTestCase {
     }
 
 
-    func testIntegration() {
+    func testDiff() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
                 diffBetween: 3.1416,
@@ -189,7 +189,8 @@ class MirrorDiffKitTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let actual = diff(between: testCase.a, and: testCase.b)
             let expected = testCase.expected
 
@@ -214,9 +215,9 @@ class MirrorDiffKitTests: XCTestCase {
     }
 
 
-    static var allTests : [(String, (MirrorDiffKitTests) -> () throws -> Void)] {
+    static var allTests : [(String, (MirrorDiffKitDiffTests) -> () throws -> Void)] {
         return [
-            ("testIntegration", self.testIntegration),
+            ("testDiff", self.testDiff),
         ]
     }
 }

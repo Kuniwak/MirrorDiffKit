@@ -10,7 +10,7 @@
 
 A tool for providing the 2 features for efficient testing:
 
-- Output diff bewtween 2 any types
+- Output diff between 2 any types
 - Default implementation of Equatable for any types
 
 
@@ -43,7 +43,7 @@ XCTAssertEqual(a, b, diff(between: a, and: b))
 ```
 
 
-### `RoughEquatable =~ RoughEquatable`
+### `Any =~ Any` and `Any !~ Any`
 
 ```swift
 a = NotEquatable(
@@ -56,10 +56,7 @@ b = NotEquatable(
 )
 
 
-XCTAssert(
-    Diffable.from(any: a) =~ Diffable.from(any: b),
-    diff(between: a, and: b)
-)
+XCTAssert(a =~ b, diff(between: a, and: b))
 
 // XCTAssertTrue failed - 
 //     struct NotEquatable {

@@ -158,7 +158,8 @@ class Diffable_PrettyPrintableTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let actual = PrettyPrinter.print(fromLines: testCase.input.prettyLines)
             XCTAssertEqual(actual, testCase.expected, line: line)
         }

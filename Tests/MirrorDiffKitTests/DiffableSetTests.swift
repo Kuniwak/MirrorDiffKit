@@ -94,7 +94,8 @@ class DiffableSetTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             XCTAssertEqual(
                 DiffableSet.diff(between: testCase.from, and: testCase.to),
                 testCase.expected,

@@ -169,7 +169,8 @@ class DiffableTests: XCTestCase {
         ]
 
 
-        testCases.forEach { (line, testCase) in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let description = testCase.input.description
 
             XCTAssertEqual(description, testCase.expected, line: line)
@@ -179,7 +180,7 @@ class DiffableTests: XCTestCase {
 
     static var allTests : [(String, (DiffableTests) -> () throws -> Void)] {
         return [
-            // ("testExample", testExample),
+            ("testDescription", self.testDescription),
         ]
     }
 }

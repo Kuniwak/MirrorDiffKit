@@ -352,7 +352,8 @@ class TransformerTests: XCTestCase {
 
 
         // MARK: - Test body
-        testCases.forEach { line, testCase in
+        testCases.forEach { entry in
+            let (line, testCase) = entry
             let transformed = transform(fromAny: testCase.input)
             let target = testCase.target
             let expected = testCase.expected
