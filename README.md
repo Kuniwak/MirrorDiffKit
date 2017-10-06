@@ -18,7 +18,7 @@ A tool for providing the 2 features for efficient testing:
 Usage
 -----
 
-### `diff(between:_, and:_)`
+### `diff(between: Any, and: Any)`
 
 ```swift
 // Input 2 structs or classes implements Equatable:
@@ -64,6 +64,26 @@ XCTAssert(a =~ b, diff(between: a, and: b))
 //       - key2: "I'm deleted"
 //       + key2: "I'm inserted"
 //     }
+```
+
+
+### `drain(_: Any)`
+
+This is a function similar to [`dump(_)`](https://developer.apple.com/documentation/swift/1539127-dump#), but it returns a string.
+
+```swift
+// Input 2 structs or classes implements Equatable:
+let a = Example(
+    key1: "value1",
+    key2: "value2"
+)
+
+print(drain(a))
+
+// class Example {
+//     key1: "value1"
+//     key2: "value2"
+// }
 ```
 
 
