@@ -134,7 +134,7 @@ func transformMirror(of x: Any) -> Diffable {
                 return .none
             }
 
-            return .unrecognizable(debugInfo: "\(x)")
+            return transform(fromAny: mirror.children.first!.value)
 
         case .some(.tuple):
             let entries = transformFromTupleMirror(of: mirror)
