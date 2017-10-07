@@ -24,3 +24,11 @@ public func diff(between a: Any, and b: Any) -> String {
 
     return "\n\(PrettyPrinter.print(fromLines: prettyLines))\n"
 }
+
+
+// Debugging for MirrorDiffKit transformation.
+internal func drain(_ any: Any) -> String {
+    return PrettyPrinter.print(
+        fromLines: Diffable.from(any: any).prettyLines
+    )
+}

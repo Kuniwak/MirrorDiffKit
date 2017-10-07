@@ -11,29 +11,12 @@ struct DiffableDictionary {
     }
 
 
-    static func from(diffableTuples: [Diffable]) -> DiffableDictionary {
+    static func from(diffableTuples: [(key: Diffable, value: Diffable)]) -> DiffableDictionary {
         var dictionary: [String: Diffable] = [:]
 
         diffableTuples.forEach { diffableTuple in
-            switch diffableTuple {
-            case let .tuple(keyValueDictionary):
-                // XXX: Mirror represent a dictionary as an array of
-                // tuples such as [(key: K, value: V)].
-                let key = (TupleRepresentation.current.isLabeled
-                    ? keyValueDictionary["key"]
-                    : keyValueDictionary[".0"]
-                )!
-
-                let value = (TupleRepresentation.current.isLabeled
-                    ? keyValueDictionary["value"]
-                    : keyValueDictionary[".1"]
-                )!
-
-                dictionary[key.description] = value
-
-            default:
-                fatalError("DiffableTuples must contain only tuples, but come: \(diffableTuple)")
-            }
+            let (key, value) = diffableTuple
+            dictionary[key.description] = value
         }
 
         return DiffableDictionary(dictionary)

@@ -21,6 +21,11 @@ struct StructStub {
         let key1: String
         let key2: String
     }
+
+    struct Nested {
+        let key1: String
+        let key2: Any
+    }
 }
 
 
@@ -41,6 +46,16 @@ struct ClassStub {
         let key2: String
 
         init(key1: String, key2: String) {
+            self.key1 = key1
+            self.key2 = key2
+        }
+    }
+
+    class Nested {
+        let key1: String
+        let key2: Any
+
+        init(key1: String, key2: Any) {
             self.key1 = key1
             self.key2 = key2
         }
@@ -67,6 +82,11 @@ struct EnumStub {
     enum AssociatedByNotSameKeys {
         case one(key1a: String)
         case two(key1b: String, key2b: String)
+    }
+
+    enum Nested {
+        case one(key: String)
+        case two(key: Any)
     }
 }
 

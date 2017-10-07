@@ -96,7 +96,7 @@ class MirrorDiffKitDiffTests: XCTestCase {
                 and: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b"),
                 is: [
                     "",
-                    "  AssociatedByNotSameKeys.two(\"value1b\", \"value2b\")", // NOTE: Label has gone away X-(
+                    "  AssociatedByNotSameKeys.two(key1b: \"value1b\", key2b: \"value2b\")",
                     "",
                 ].joined(separator: "\n")
             ),
@@ -206,10 +206,7 @@ class MirrorDiffKitDiffTests: XCTestCase {
                 dump(expected.components(separatedBy: "\n"))
 
                 print("\nverbose:")
-                dump(Diffable.diff(
-                    between: Diffable.from(any: testCase.a),
-                    and: Diffable.from(any: testCase.b)
-                ))
+                dump(diff(between: testCase.a, and: testCase.b))
             }
         }
     }
