@@ -19,6 +19,7 @@
 		2475E0B5C20CDBAB617F16DC /* DiffableSequenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E181CA7D757D18DEC5E2 /* DiffableSequenceTests.swift */; };
 		2475E0CC7C02E2A884E1DF65 /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
 		2475E0D2B8ADAD8150A51FF0 /* DiffableConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E050A29FC16D1340F755 /* DiffableConvertible.swift */; };
+		2475E0E8A362A5E697A888C0 /* Issue22Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E9D5B6FD63FBBEA3CE29 /* Issue22Tests.swift */; };
 		2475E0F6CAAD02CD70690FAE /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
 		2475E11BC79C1A8758170CCA /* DiffableSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EDF4A917EDE713051BCF /* DiffableSequence.swift */; };
 		2475E1312041D4B87DA8AA54 /* DifferentiaUnit+PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E15B817A9292B0B84F81 /* DifferentiaUnit+PrettyPrintable.swift */; };
@@ -82,6 +83,7 @@
 		2475E71653DD16AA64B578AF /* MirrorDiffKit.diffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2CB822ABAA3DC298818 /* MirrorDiffKit.diffTests.swift */; };
 		2475E716E6256CE75B58D920 /* Dwifft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E262206573A251280E94 /* Dwifft.swift */; };
 		2475E71B66942EF2806F018D /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC645A805B526D4FF547 /* Transformer.swift */; };
+		2475E71D83906B540219C374 /* Issue22Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E9D5B6FD63FBBEA3CE29 /* Issue22Tests.swift */; };
 		2475E73F8240EA3C72856736 /* Diffable+RoughEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E5B2FD9639D9591CA945 /* Diffable+RoughEquatable.swift */; };
 		2475E766A21D84D5A92EB4DC /* Diffable.from.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E963BDADFC88CFAE1D99 /* Diffable.from.swift */; };
 		2475E795E5263D357C00EA24 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E42D3D741A2F398087E0 /* Stubs.swift */; };
@@ -96,6 +98,7 @@
 		2475E8E58C92BDB6A7BC2A74 /* Diffable.diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E23B2FE90297580DAB62 /* Diffable.diff.swift */; };
 		2475E909B3A3740A4CD0C9B1 /* PrettyPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E0DC8CBF4477606DA8F2 /* PrettyPrinter.swift */; };
 		2475E9346E5C544E2DC16735 /* Issue10Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EF0B7F6E2A9FACA5B13D /* Issue10Tests.swift */; };
+		2475E93DD7224451896564C3 /* Issue22Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E9D5B6FD63FBBEA3CE29 /* Issue22Tests.swift */; };
 		2475E971863459464D5E5B69 /* ComparableDifferentiaUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E89FF094AA0E2FA8A881 /* ComparableDifferentiaUnits.swift */; };
 		2475E9979894F02C5EF0386A /* Diffable.EnumEntry+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EBB8063758106F053B9F /* Diffable.EnumEntry+Equatable.swift */; };
 		2475E9C4C0B62C428C2661E2 /* PrettyLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EC9BF1766B09475F3467 /* PrettyLineTests.swift */; };
@@ -224,6 +227,7 @@
 		2475E8ED7A24111E5500F1F4 /* Diffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
 		2475E963BDADFC88CFAE1D99 /* Diffable.from.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.from.swift; sourceTree = "<group>"; };
 		2475E9A7563C052C2BED985A /* Diffable+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+Equatable.swift"; sourceTree = "<group>"; };
+		2475E9D5B6FD63FBBEA3CE29 /* Issue22Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue22Tests.swift; sourceTree = "<group>"; };
 		2475EA41C24DBD90FB876789 /* Diffable+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+Hashable.swift"; sourceTree = "<group>"; };
 		2475EB054307543C8491D77E /* DifferentiaUnit.DictionaryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentiaUnit.DictionaryType.swift; sourceTree = "<group>"; };
 		2475EB2612EBD9B39D1B4013 /* Diffable+PrettyPrintableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+PrettyPrintableTests.swift"; sourceTree = "<group>"; };
@@ -375,6 +379,7 @@
 				2475E6141777D989D8211D6F /* PrettyLinesTests.swift */,
 				2475EB2612EBD9B39D1B4013 /* Diffable+PrettyPrintableTests.swift */,
 				2475E7869A9F7EED3BF22710 /* MirrorDiffKit.drainTests.swift */,
+				2475E9D5B6FD63FBBEA3CE29 /* Issue22Tests.swift */,
 			);
 			path = MirrorDiffKitTests;
 			sourceTree = "<group>";
@@ -760,6 +765,7 @@
 				2475E64B79487A176C6028F8 /* PrettyLinesTests.swift in Sources */,
 				2475E094057B458EC20EE84C /* Diffable+PrettyPrintableTests.swift in Sources */,
 				2475EF4F935D471711CF5B79 /* MirrorDiffKit.drainTests.swift in Sources */,
+				2475E0E8A362A5E697A888C0 /* Issue22Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +893,7 @@
 				2475EBD4E0029C289C6EE418 /* PrettyLinesTests.swift in Sources */,
 				2475E9E55D0644306F92656E /* Diffable+PrettyPrintableTests.swift in Sources */,
 				2475E1846A255E42EB0FF14E /* MirrorDiffKit.drainTests.swift in Sources */,
+				2475E93DD7224451896564C3 /* Issue22Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,6 +916,7 @@
 				2475E4DACCDA2987ED4269AE /* PrettyLinesTests.swift in Sources */,
 				2475EDD9DEB426A2C87ACAF7 /* Diffable+PrettyPrintableTests.swift in Sources */,
 				2475ECFCB3F5C388B2AD52DD /* MirrorDiffKit.drainTests.swift in Sources */,
+				2475E71D83906B540219C374 /* Issue22Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
