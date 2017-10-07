@@ -12,7 +12,7 @@ public func !~<T> (_ lhs: T, _ rhs: T) -> Bool {
 }
 
 
-public func diff(between a: Any, and b: Any) -> String {
+public func diff<T>(between a: T, and b: T) -> String {
     let diff = Diffable.diff(
         between: Diffable.from(any: a),
         and: Diffable.from(any: b)
