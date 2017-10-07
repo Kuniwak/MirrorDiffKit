@@ -67,26 +67,6 @@ XCTAssert(a =~ b, diff(between: a, and: b))
 ```
 
 
-### `drain(_: Any)`
-
-This is a function similar to [`dump(_)`](https://developer.apple.com/documentation/swift/1539127-dump#), but it returns a string.
-
-```swift
-// Input 2 structs or classes implements Equatable:
-let a = Example(
-    key1: "value1",
-    key2: "value2"
-)
-
-print(drain(a))
-
-// class Example {
-//     key1: "value1"
-//     key2: "value2"
-// }
-```
-
-
 Installation
 ------------
 ### Swift Package Manager
