@@ -19,7 +19,6 @@ public indirect enum Diffable {
     // types that have a type restrictions.
     case set([Diffable])
 
-    // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
     case dictionary([(key: Diffable, value: Diffable)])
     case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
