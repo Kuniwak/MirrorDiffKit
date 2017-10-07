@@ -223,6 +223,29 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
             #line: TestCase(
+                input: StructStub.Optional(value: nil),
+                target: .anyStruct(
+                    type: StructStub.Optional.self,
+                    entries: [
+                        "value": .none,
+                    ]
+                ),
+                expected: true
+            ),
+            #line: TestCase(
+                input: StructStub.Optional(value: StructStub.Empty()),
+                target: .anyStruct(
+                    type: StructStub.Optional.self,
+                    entries: [
+                        "value": .anyStruct(
+                            type: StructStub.Empty.self,
+                            entries: [:]
+                        ),
+                    ]
+                ),
+                expected: true
+            ),
+            #line: TestCase(
                 input: 0 ..< 5,
                 target: .generic(
                     type: CountableRange<Int>.self,
