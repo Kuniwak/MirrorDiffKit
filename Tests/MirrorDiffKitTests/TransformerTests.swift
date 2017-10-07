@@ -277,7 +277,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.NotAssociated.one,
                 target: .anyEnum(
                     type: EnumStub.NotAssociated.self,
-                    value: EnumStub.NotAssociated.one,
+                    caseName: EnumCaseName("one"),
                     associated: []
                 ),
                 expected: true
@@ -286,7 +286,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.NotAssociated.one,
                 target: .anyEnum(
                     type: EnumStub.NotAssociated.self,
-                    value: EnumStub.NotAssociated.two,
+                    caseName: EnumCaseName("two"),
                     associated: []
                 ),
                 expected: false
@@ -295,7 +295,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.NotAssociatedButTyped.one,
                 target: .anyEnum(
                     type: EnumStub.NotAssociatedButTyped.self,
-                    value: EnumStub.NotAssociatedButTyped.one,
+                    caseName: EnumCaseName("one"),
                     associated: []
                 ),
                 expected: true
@@ -304,7 +304,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.NotAssociatedButTyped.one,
                 target: .anyEnum(
                     type: EnumStub.NotAssociatedButTyped.self,
-                    value: EnumStub.NotAssociatedButTyped.two,
+                    caseName: EnumCaseName("two"),
                     associated: []
                 ),
                 expected: false
@@ -316,7 +316,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.AssociatedBySameKeys.one(key: "value"),
                 target: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
-                    value: EnumStub.AssociatedBySameKeys.one(key: "value") as Any,
+                    caseName: EnumCaseName("one"),
                     associated: [
                          // NOTE: Label has gone away X-(
                         .notLabeled(index: 0, value: .string("value")),
@@ -328,7 +328,7 @@ class TransformerTests: XCTestCase {
                 input: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b"),
                 target: .anyEnum(
                     type: EnumStub.AssociatedByNotSameKeys.self,
-                    value: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b") as Any,
+                    caseName: EnumCaseName("two"),
                     associated: TupleRepresentation.current.isLabeled
                         ? [
                             .labeled(label: "key1b", value: .string("value1b")),

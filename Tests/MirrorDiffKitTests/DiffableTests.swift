@@ -89,7 +89,7 @@ class DiffableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.NotAssociated.self,
-                    value: EnumStub.NotAssociated.one,
+                    caseName: EnumCaseName("one"),
                     associated: []
                 ),
                 expected: "NotAssociated.one"
@@ -97,7 +97,7 @@ class DiffableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.NotAssociatedButTyped.self,
-                    value: EnumStub.NotAssociatedButTyped.one,
+                    caseName: EnumCaseName("one"),
                     associated: []
                 ),
                 expected: "NotAssociatedButTyped.one"
@@ -105,7 +105,7 @@ class DiffableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
-                    value: EnumStub.AssociatedBySameKeys.one(key: "value"),
+                    caseName: EnumCaseName("one"),
                     associated: [.labeled(label: "key", value: .string("value"))]
                 ),
                 expected: "AssociatedBySameKeys.one(key: \"value\")"
@@ -113,7 +113,7 @@ class DiffableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
-                    value: EnumStub.AssociatedBySameKeys.one(key: "value"),
+                    caseName: EnumCaseName("one"),
                     associated: [.notLabeled(index: 0, value: .string("value"))]
                 ),
                 // NOTE: For Swift 3.0-. the label has gone away. X-(
@@ -122,7 +122,7 @@ class DiffableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.AssociatedByNotSameKeys.self,
-                    value: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b"),
+                    caseName: EnumCaseName("two"),
                     associated: [
                         .labeled(label: "key1b", value: .string("value1b")),
                         .labeled(label: "key2b", value: .string("value2b")),

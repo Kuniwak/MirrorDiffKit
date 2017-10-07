@@ -21,7 +21,7 @@ public indirect enum Diffable {
 
     // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
     case dictionary([(key: Diffable, value: Diffable)])
-    case anyEnum(type: Any.Type, value: Any, associated: [TupleEntry])
+    case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
     case anyClass(type: Any.Type, entries: [String: Diffable])
     case generic(type: Any.Type, entries: [String: Diffable])

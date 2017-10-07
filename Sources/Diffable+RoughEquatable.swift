@@ -50,15 +50,10 @@ extension Diffable: RoughEquatable {
         case let (.url(l), .url(r)):
             return l == r
 
-        case let (.anyEnum(type: lt, value: lv, associated: le), .anyEnum(type: rt, value: rv, associated: re)):
-            do {
-                return try lt == rt
-                    && getEnumCaseName(lv) == getEnumCaseName(rv)
-                    && le == re
-            }
-            catch {
-                fatalError("\(error)")
-            }
+        case let (.anyEnum(type: lt, caseName: lc, associated: le), .anyEnum(type: rt, caseName: rc, associated: re)):
+            return lt == rt
+                && lc == rc
+                && le == re
 
         case let (.anyStruct(type: lt, entries: le), .anyStruct(type: rt, entries: re)):
             return lt == rt

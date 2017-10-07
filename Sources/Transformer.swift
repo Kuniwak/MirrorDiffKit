@@ -161,7 +161,7 @@ func transformMirror(of x: Any) -> Diffable {
 
             return .anyEnum(
                 type: mirror.subjectType,
-                value: x,
+                caseName: try .from(mirror: mirror, original: x),
                 associated: associated
             )
 

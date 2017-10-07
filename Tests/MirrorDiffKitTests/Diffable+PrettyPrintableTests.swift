@@ -200,7 +200,7 @@ class DiffablePrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.NotAssociated.self,
-                    value: EnumStub.NotAssociated.one,
+                    caseName: EnumCaseName("one"),
                     associated: []
                 ),
                 expected: [
@@ -210,7 +210,7 @@ class DiffablePrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
-                    value: EnumStub.AssociatedBySameKeys.one(key: "value"),
+                    caseName: EnumCaseName("one"),
                     associated: [
                         .labeled(label: "key", value: .string("value")),
                     ]
@@ -224,31 +224,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
             #line: TestCase(
                 input: .anyEnum(
                     type: EnumStub.Nested.self,
-                    value: EnumStub.Nested.two(
-                        key: EnumStub.Nested.two(
-                            key: EnumStub.Nested.one(
-                                key: "value"
-                            )
-                        )
-                    ),
+                    caseName: EnumCaseName("two"),
                     associated: [
                         .labeled(
                             label: "key",
                             value: .anyEnum(
                                 type: EnumStub.Nested.self,
-                                value: EnumStub.Nested.two(
-                                    key: EnumStub.Nested.one(
-                                        key: "value"
-                                    )
-                                ),
+                                caseName: EnumCaseName("two"),
                                 associated: [
                                     .labeled(
                                         label: "key",
                                         value: .anyEnum(
                                             type: EnumStub.Nested.self,
-                                            value: EnumStub.Nested.one(
-                                                key: "value"
-                                            ),
+                                            caseName: EnumCaseName("one"),
                                             associated: [
                                                 .labeled(
                                                     label: "key",

@@ -37,7 +37,7 @@ extension Diffable: Hashable {
         case let .dictionary(entries):
             return entries.map { $0.key }.reduce(0, { (prev, key) in prev + key.hashValue })
 
-        case let .anyEnum(type: type, value: _, associated: associated):
+        case let .anyEnum(type: type, caseName: _, associated: associated):
             return String(describing: type).hashValue
                 + associated.reduce(0, { (prev, element) in prev + element.value.hashValue })
 
