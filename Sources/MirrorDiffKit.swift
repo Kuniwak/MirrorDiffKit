@@ -26,7 +26,8 @@ public func diff(between a: Any, and b: Any) -> String {
 }
 
 
-public func drain(_ any: Any) -> String {
+// Debugging for MirrorDiffKit transformation.
+internal func drain(_ any: Any) -> String {
     return PrettyPrinter.print(
         fromLines: Diffable.from(any: any).prettyLines
     )
