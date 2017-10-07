@@ -275,8 +275,7 @@ private func transformFromEnumMirror(of mirror: Mirror) -> [Diffable.TupleEntry]
     let childMirror = Mirror(reflecting: firstChild.value)
 
     guard childMirror.displayStyle == .tuple else {
-        // It is an unary tuple.
-        // XXX: The label is ".0" when given MyEnum.myCase(Any)
+        // XXX: It is an unary tuple.
         return [
             .notLabeled(
                 index: 0,

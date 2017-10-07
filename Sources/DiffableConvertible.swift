@@ -142,7 +142,6 @@ extension Dictionary: DiffableConvertible {
             let (key, value) = entry
 
             result.append((
-                // XXX: Mirror represent a dictionary as an array of tuples such as [(key: K, value: V)].
                 key: transform(fromAny: key),
                 value: transform(fromAny: value)
             ))
