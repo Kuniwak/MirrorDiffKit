@@ -123,26 +123,18 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
     return transformMirror(of: x)
 }
 
-
-
 func transformMirror(of x: Any) -> Diffable {
     do {
         let mirror = Mirror(reflecting: x)
 
         switch mirror.displayStyle {
-            // XXX: Handle `nil` in a variable typed Any here.
-            //
-            // (lldb) po let $var: Any? = nil
-            // (lldb) po let $container: Any = $var
-            // (lldb) po $container == nil
-            // false <- FUUUUUUUUUUUUU
-            //
-            // (lldb) po Mirror(reflecting: $container)
-            // Mirror for Optional<Any>
-            //
-            // Therefore we can handle it by only using Mirrors.
+
         case .some(.optional):
-            return .none
+            if isHiddenNil(x) {
+                return .none
+            }
+
+            return .unrecognizable(debugInfo: "\(x)")
 
         case .some(.tuple):
             let entries = transformFromTupleMirror(of: mirror)
@@ -331,4 +323,23 @@ extension TransformError: Equatable {
             return false
         }
     }
+}
+
+
+// XXX: Handle `nil` in a variable typed Any here.
+//
+// (lldb) po let $var: Any? = nil
+// (lldb) po let $container: Any = $var
+// (lldb) po $container == nil
+// false <- FUUUUUUUUUUUUU
+//
+// (lldb) po Mirror(reflecting: $container)
+// Mirror for Optional<Any>
+//
+// Therefore we can handle it by only using Mirrors.
+private func isHiddenNil(_ x: Any) -> Bool {
+    if x as? CustomStringConvertible != nil {
+        return false
+    }
+    return "\(x)" == "nil"
 }
