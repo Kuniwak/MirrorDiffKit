@@ -8,6 +8,7 @@ XCTMain([
     testCase(DifferentiaUnit_PrettyPrintableTests.allTests),
     testCase(Issue10Tests.allTests),
     testCase(Issue13Tests.allTests),
+    testCase(Issue22Tests.allTests),
     testCase(TransformerTests.allTests),
     testCase(MirrorDiffKitDiffTests.allTests),
     testCase(MirrorDiffKitOperatorsTests.allTests),

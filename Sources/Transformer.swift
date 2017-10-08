@@ -123,13 +123,13 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
     return transformMirror(of: x)
 }
 
-
-
 func transformMirror(of x: Any) -> Diffable {
     do {
         let mirror = Mirror(reflecting: x)
 
         switch mirror.displayStyle {
+
+        case .some(.optional):
             // XXX: Handle `nil` in a variable typed Any here.
             //
             // (lldb) po let $var: Any? = nil
@@ -141,8 +141,12 @@ func transformMirror(of x: Any) -> Diffable {
             // Mirror for Optional<Any>
             //
             // Therefore we can handle it by only using Mirrors.
-        case .some(.optional):
-            return .none
+            if let firstChild = mirror.children.first {
+                return transform(fromAny: firstChild.value)
+            }
+            else {
+                return .none
+            }
 
         case .some(.tuple):
             let entries = transformFromTupleMirror(of: mirror)

@@ -26,6 +26,10 @@ struct StructStub {
         let key1: String
         let key2: Any
     }
+
+    struct Optional {
+        let value: Empty?
+    }
 }
 
 
