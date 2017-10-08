@@ -148,7 +148,6 @@ func transformMirror(of x: Any) -> Diffable {
                 return .none
             }
 
-
         case .some(.tuple):
             let entries = transformFromTupleMirror(of: mirror)
             return .tuple(entries)
