@@ -170,6 +170,12 @@
 		2475EFE88FA546641AAD76F2 /* TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E08093ED284E24090A38 /* TransformerTests.swift */; };
 		2475EFF96CBD44AF5AF43EF5 /* DiffableSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475E2E82C8E152A456073DA /* DiffableSetTests.swift */; };
 		52D6D9871BEFF229002C0205 /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* MirrorDiffKit.framework */; };
+		62D9B23F1F89CF7C003EB20D /* PrettyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB5125B835EDE3649573 /* PrettyLine.swift */; };
+		62D9B2401F89CF7D003EB20D /* PrettyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB5125B835EDE3649573 /* PrettyLine.swift */; };
+		62D9B2411F89CF7E003EB20D /* PrettyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EB5125B835EDE3649573 /* PrettyLine.swift */; };
+		62D9B2421F89CF9A003EB20D /* Diffable+PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EFB17462C4A09EBF5CDD /* Diffable+PrettyPrintable.swift */; };
+		62D9B2431F89CF9B003EB20D /* Diffable+PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EFB17462C4A09EBF5CDD /* Diffable+PrettyPrintable.swift */; };
+		62D9B2441F89CF9C003EB20D /* Diffable+PrettyPrintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475EFB17462C4A09EBF5CDD /* Diffable+PrettyPrintable.swift */; };
 		DD7502881C68FEDE006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* MirrorDiffKit.framework */; };
 		DD7502921C690C7A006590AF /* MirrorDiffKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* MirrorDiffKit.framework */; };
 /* End PBXBuildFile section */
@@ -784,6 +790,7 @@
 				2475E39944EBDAAB4DA03482 /* PrettyPrintable.swift in Sources */,
 				2475E11BC79C1A8758170CCA /* DiffableSequence.swift in Sources */,
 				2475E41CC63F6C11220032F7 /* DiffableDictionary.swift in Sources */,
+				62D9B2401F89CF7D003EB20D /* PrettyLine.swift in Sources */,
 				2475E5B0222EC649EB7B3420 /* DiffableConvertible.swift in Sources */,
 				2475EF59D9ACD2A391CAE753 /* Diffable+CustomStringConvertible.swift in Sources */,
 				2475EE97D17042EA78C7DB41 /* Dwifft.swift in Sources */,
@@ -796,6 +803,7 @@
 				2475E909B3A3740A4CD0C9B1 /* PrettyPrinter.swift in Sources */,
 				2475EA8061F43E21A17AE336 /* Diffable+Hashable.swift in Sources */,
 				2475E305224E557797F81866 /* Diffable+Equatable.swift in Sources */,
+				62D9B2431F89CF9B003EB20D /* Diffable+PrettyPrintable.swift in Sources */,
 				2475E73F8240EA3C72856736 /* Diffable+RoughEquatable.swift in Sources */,
 				2475E60CE7FEDDB5F43FFF8B /* Diffable.EnumEntry+Equatable.swift in Sources */,
 				2475E19CFD5EE6A88EA5310A /* Diffable.EnumEntry+CustomStringConvertible.swift in Sources */,
@@ -819,6 +827,7 @@
 				2475EA0F6F65A2B4D4257C9A /* PrettyPrintable.swift in Sources */,
 				2475E1926F92CC5DD8E0C256 /* DiffableSequence.swift in Sources */,
 				2475EA07EE6A5903F188FC2A /* DiffableDictionary.swift in Sources */,
+				62D9B2411F89CF7E003EB20D /* PrettyLine.swift in Sources */,
 				2475E0D2B8ADAD8150A51FF0 /* DiffableConvertible.swift in Sources */,
 				2475E9CA33ED9943CC857ABA /* Diffable+CustomStringConvertible.swift in Sources */,
 				2475E716E6256CE75B58D920 /* Dwifft.swift in Sources */,
@@ -831,6 +840,7 @@
 				2475EA09F19732DF8CC356AB /* PrettyPrinter.swift in Sources */,
 				2475E2C0EBBE6C0ECF4BA94C /* Diffable+Hashable.swift in Sources */,
 				2475E2E72D41510F1B424DC2 /* Diffable+Equatable.swift in Sources */,
+				62D9B2441F89CF9C003EB20D /* Diffable+PrettyPrintable.swift in Sources */,
 				2475EAAA6C97ED5BC4D7A361 /* Diffable+RoughEquatable.swift in Sources */,
 				2475E9979894F02C5EF0386A /* Diffable.EnumEntry+Equatable.swift in Sources */,
 				2475EA65762A4EFA07BAF86A /* Diffable.EnumEntry+CustomStringConvertible.swift in Sources */,
@@ -854,6 +864,7 @@
 				2475E9FBCB01E15F28FBCCF3 /* PrettyPrintable.swift in Sources */,
 				2475E0CC7C02E2A884E1DF65 /* DiffableSequence.swift in Sources */,
 				2475E161DC8C84DD8BE403A4 /* DiffableDictionary.swift in Sources */,
+				62D9B23F1F89CF7C003EB20D /* PrettyLine.swift in Sources */,
 				2475E6538A6F9FA25C581877 /* DiffableConvertible.swift in Sources */,
 				2475ECA328D49E5119BCD709 /* Diffable+CustomStringConvertible.swift in Sources */,
 				2475E1AB7F0EADD63B194BDF /* Dwifft.swift in Sources */,
@@ -866,6 +877,7 @@
 				2475E13F335DF769C891FC28 /* PrettyPrinter.swift in Sources */,
 				2475EEB3B30F858F29824A62 /* Diffable+Hashable.swift in Sources */,
 				2475E4AB7CE2EBAE3B0AADD9 /* Diffable+Equatable.swift in Sources */,
+				62D9B2421F89CF9A003EB20D /* Diffable+PrettyPrintable.swift in Sources */,
 				2475EA9E00DDF8A97160165A /* Diffable+RoughEquatable.swift in Sources */,
 				2475ECFBBDBD5DF757A11017 /* Diffable.EnumEntry+Equatable.swift in Sources */,
 				2475EC6449E2FC7E44F910E8 /* Diffable.EnumEntry+CustomStringConvertible.swift in Sources */,
