@@ -1,9 +1,9 @@
 ![MirrorDiffKit](https://raw.githubusercontent.com/Kuniwak/MirrorDiffKit/master/Documentation/Images/logo.png)
 =============
 
-![Swift 4 compatible](https://img.shields.io/badge/swift-4-brightgreen.svg)
+![Swift 4 compatible](https://img.shields.io/badge/Swift%20version-4-green.svg)
 ![Swift Package Manager and Carthage and CocoaPods compatible](https://img.shields.io/badge/SPM%20%7C%20Carthage%20%7C%20CocoaPods-compatible-green.svg)
-[![v1.1.1](https://img.shields.io/badge/version-1.1.1-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
+[![v2.0.0](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
 [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=shield)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master)
 
