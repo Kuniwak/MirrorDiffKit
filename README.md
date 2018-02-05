@@ -21,6 +21,8 @@ Usage
 ### `diff(between: Any, and: Any)`
 
 ```swift
+import MirrorDiffKit
+
 // Input 2 structs or classes implements Equatable:
 let a = Example(
     key1: "I'm not changed",
@@ -46,6 +48,8 @@ XCTAssertEqual(a, b, diff(between: a, and: b))
 ### `Any =~ Any` and `Any !~ Any`
 
 ```swift
+import MirrorDiffKit
+
 a = NotEquatable(
     key1: "I'm not changed",
     key2: "I'm deleted"
