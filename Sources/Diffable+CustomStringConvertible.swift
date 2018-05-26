@@ -36,12 +36,12 @@ extension Diffable /*: CustomStringConvertible */ {
 
             return "(" + content + ")"
 
-        case let .array(array):
-            let content = array
+        case let .collection(type: type, elements: entries):
+            let content = entries
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "[" + content + "]"
+            return "\(type) [" + content + "]"
 
         case let .set(array):
             let content = array

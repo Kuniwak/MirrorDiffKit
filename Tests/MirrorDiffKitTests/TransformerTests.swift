@@ -152,15 +152,15 @@ class TransformerTests: XCTestCase {
             ),
 
 
-            // MARK: Array
+            // MARK: Collection
             #line: TestCase(
-                input: [],
-                target: .array([]),
+                input: [Int](),
+                target: .collection(type: Array<Int>.self, elements: []),
                 expected: true
             ),
             #line: TestCase(
                 input: [1, 1, 2, 3, 5],
-                target: .array([
+                target: .collection(type: Array<Int>.self, elements: [
                     .number(1),
                     .number(1),
                     .number(2),
@@ -171,17 +171,18 @@ class TransformerTests: XCTestCase {
             ),
             #line: TestCase(
                 input: [[0, -1], [1, 0]],
-                target: .array([
-                    .array([.number(0), .number(-1)]),
-                    .array([.number(1), .number(0)]),
+                target: .collection(type: Array<Array<Int>>.self, elements: [
+                    .collection(type: Array<Int>.self, elements: [.number(0), .number(-1)]),
+                    .collection(type: Array<Int>.self, elements: [.number(1), .number(0)]),
                 ]),
                 expected: true
             ),
             #line: TestCase(
-                input: [[0, -1], [1, 0]],
-                target: .array([
-                    .array([.number(0), .number(-1)]),
-                    .array([.number(1), .number(0)]),
+                input: [0, 1, 2][0...2],
+                target: .collection(type: ArraySlice<Int>.self, elements: [
+                    .number(0),
+                    .number(1),
+                    .number(2),
                 ]),
                 expected: true
             ),

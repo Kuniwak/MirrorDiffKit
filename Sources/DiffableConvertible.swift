@@ -129,7 +129,7 @@ extension Date: DiffableConvertible {
 
 extension Array: DiffableConvertible {
     public var diffable: Diffable {
-        return .array(self.map(transform(fromAny:)))
+        return .collection(type: type(of: self), elements: self.map(transform(fromAny:)))
     }
 }
 

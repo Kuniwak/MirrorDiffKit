@@ -28,8 +28,8 @@ extension Diffable: Hashable {
         case let .tuple(entries):
             return entries.reduce(0, { (prev, entry) in prev + entry.value.hashValue })
 
-        case let .array(array):
-            return array.reduce(0, { (prev, element) in prev + element.hashValue })
+        case let .collection(type: type, elements: elements):
+            return elements.reduce(String(describing: type).hashValue, { (prev, element) in prev + element.hashValue })
 
         case let .set(array):
             return array.reduce(0, { (prev, element) in prev + element.hashValue })

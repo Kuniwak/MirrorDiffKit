@@ -9,13 +9,13 @@ extension Diffable {
         }
 
         switch (a, b) {
-        case let (.array(l), .array(r)):
+        case let (.collection(type: lt, le), .collection(rt, re)):
             return [
                 .sequenceChanged(
                     kind: .array,
                     DiffableSequence.diff(
-                        between: DiffableSequence(l),
-                        and: DiffableSequence(r)
+                        between: DiffableSequence(type: lt, elements: le),
+                        and: DiffableSequence(type: rt, elements: re)
                     )
                 )
             ]

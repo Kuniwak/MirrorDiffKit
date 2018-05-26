@@ -49,16 +49,16 @@ class DiffableTests: XCTestCase {
                 expected: "(nil, label: nil)"
             ),
             #line: TestCase(
-                input: .array([Diffable]()),
-                expected: "[]"
+                input: .collection(type: Array<Any>.self, elements: [Diffable]()),
+                expected: "Array<Any> []"
             ),
             #line: TestCase(
-                input: .array([.none]),
-                expected: "[nil]"
+                input: .collection(type: Array<Optional<Any>>.self, elements: [.none]),
+                expected: "Array<Optional<Any>> [nil]"
             ),
             #line: TestCase(
-                input: .array([.string("1st"), .string("2nd")]),
-                expected: "[\"1st\", \"2nd\"]"
+                input: .collection(type: Array<String>.self, elements: [.string("1st"), .string("2nd")]),
+                expected: "Array<String> [\"1st\", \"2nd\"]"
             ),
             #line: TestCase(
                 input: .dictionary([]),

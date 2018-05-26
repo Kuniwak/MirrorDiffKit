@@ -61,20 +61,20 @@ extension Diffable: PrettyPrintable {
 
             return [head] + content + [tail]
 
-        case let .array(array):
-            guard !array.isEmpty else {
-                return [.line("[]")]
+        case let .collection(type: type, elements: elements):
+            guard !elements.isEmpty else {
+                return [.line("\(type) []")]
             }
 
             // NOTE: The expected output format is:
-            // [
+            // T [
             //     "single-line"
-            //     [
+            //     T [
             //         "multiple-lines"
             //         "multiple-lines"
             //     ]
             // ]
-            let content: [PrettyLine] = array
+            let content: [PrettyLine] = elements
                 .flatMap { value -> [PrettyLine] in
                 return PrettyLine.addIndentLevel(
                     lines: value.prettyLines,
@@ -82,7 +82,7 @@ extension Diffable: PrettyPrintable {
                 )
             }
 
-            let head: PrettyLine = .line("[")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]

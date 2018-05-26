@@ -72,19 +72,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .array([]),
+                input: .collection(type: Array<Any>.self, elements: []),
                 expected: [
-                    .line("[]"),
+                    .line("Array<Any> []"),
                 ]
             ),
             #line: TestCase(
-                input: .array([
+                input: .collection(type: Array<String>.self, elements: [
                     .string("1"),
                     .string("2"),
                     .string("3"),
                 ]),
                 expected: [
-                    .line("["),
+                    .line("Array<String> ["),
                     .indent(.line("\"1\"")),
                     .indent(.line("\"2\"")),
                     .indent(.line("\"3\"")),
@@ -92,21 +92,21 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .array([
+                input: .collection(type: Array<Any>.self, elements: [
                     .string("1"),
-                    .array([
+                    .collection(type: Array<Any>.self, elements: [
                         .string("2"),
-                        .array([
+                        .collection(type: Array<Any>.self, elements: [
                             .string("3"),
                         ])
                     ])
                 ]),
                 expected: [
-                    .line("["),
+                    .line("Array<Any> ["),
                     .indent(.line("\"1\"")),
-                    .indent(.line("[")),
+                    .indent(.line("Array<Any> [")),
                     .indent(.indent(.line("\"2\""))),
-                    .indent(.indent(.line("["))),
+                    .indent(.indent(.line("Array<Any> ["))),
                     .indent(.indent(.indent(.line("\"3\"")))),
                     .indent(.indent(.line("]"))),
                     .indent(.line("]")),

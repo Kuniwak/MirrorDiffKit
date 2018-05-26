@@ -13,15 +13,23 @@ class DiffableSequenceTests: XCTestCase {
     func testDiff() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
-                between: DiffableSequence([]),
-                and: DiffableSequence([]),
+                between: DiffableSequence(type: Array<Int>.self, elements: []),
+                and: DiffableSequence(type: Array<Int>.self, elements: []),
                 expected: []
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<Int>.self, elements: []),
+                and: DiffableSequence(type: Array<Double>.self, elements: []),
+                expected: [
+                    .deleted(.collection(type: Array<Int>.self, elements: [])),
+                    .inserted(.collection(type: Array<Double>.self, elements: [])),
+                ]
+            ),
+            #line: TestCase(
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                 ]),
                 expected: [
@@ -29,8 +37,8 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([]),
-                and: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: []),
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm inserted"),
                 ]),
                 expected: [
@@ -38,20 +46,20 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm deleted"),
                 ]),
-                and: DiffableSequence([]),
+                and: DiffableSequence(type: Array<String>.self, elements: []),
                 expected: [
                     .deleted(.string("I'm deleted")),
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                     .string("I'm deleted"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                     .string("I'm inserted"),
                 ]),
@@ -62,11 +70,11 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                     .string("I'm deleted"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm inserted"),
                     .string("I'm not changed"),
                 ]),
@@ -77,11 +85,11 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm deleted"),
                     .string("I'm not changed"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm inserted"),
                     .string("I'm not changed"),
                 ]),
@@ -92,11 +100,11 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm deleted"),
                     .string("I'm not changed"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                     .string("I'm inserted"),
                 ]),
@@ -107,13 +115,13 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed 1"),
                     .string("I'm not changed 2"),
                     .string("I'm not changed 3"),
                     .string("I'm not changed 4"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed 1"),
                     .string("I'm not changed 2"),
                     .string("I'm not changed 3"),
@@ -127,14 +135,14 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm deleted 1"),
                     .string("I'm deleted 2"),
                     .string("I'm deleted 3"),
                     .string("I'm deleted 4"),
                     .string("I'm not changed"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                 ]),
                 expected: [
@@ -146,10 +154,10 @@ class DiffableSequenceTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                between: DiffableSequence([
+                between: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm not changed"),
                 ]),
-                and: DiffableSequence([
+                and: DiffableSequence(type: Array<String>.self, elements: [
                     .string("I'm inserted 1"),
                     .string("I'm inserted 2"),
                     .string("I'm inserted 3"),

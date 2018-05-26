@@ -108,18 +108,6 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return Diffable.from(y)
     }
 
-
-    // XXX: Avoid the following error (at least, Swift 3.0.2 or earlier):
-    //
-    // > Protocol "SpecialController" can only be used as a generic constraint
-    // > because it has Self or associated type requirements.
-    //
-    // So, we can only try to cast concrete collection types. See all concrete
-    // types in SDK: http://swiftdoc.org/v3.0/protocol/Collection/hierarchy/
-    if let y = x as? [Any] {
-        return Diffable.from(y)
-    }
-
     return transformMirror(of: x)
 }
 
@@ -156,6 +144,10 @@ func transformMirror(of x: Any) -> Diffable {
             let entries = transformFromNonLabeledMirror(of: mirror)
             return .set(entries)
 
+        case .some(.collection):
+            let elements = transformFromNonLabeledMirror(of: mirror)
+            return .collection(type: mirror.subjectType, elements: elements)
+
         case .some(.dictionary):
             let entries = try transformFromDictionaryEntryMirror(of: mirror)
             return .dictionary(entries)
@@ -182,8 +174,6 @@ func transformMirror(of x: Any) -> Diffable {
             let entries = try transformFromLabeledMirror(of: mirror)
             return .generic(type: mirror.subjectType, entries: entries)
 
-        default:
-            return .notSupported(value: x)
         }
     }
     catch {

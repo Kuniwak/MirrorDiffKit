@@ -11,7 +11,7 @@ public indirect enum Diffable {
     case url(URL)
     case type(Any.Type)
     case tuple([TupleEntry])
-    case array([Diffable])
+    case collection(type: Any.Type, elements: [Diffable])
 
     // XXX: We can collect only Hashable values into Sets, but we cannot know
     // whether Diffable is a Hashable or not. And also we cannot cast to

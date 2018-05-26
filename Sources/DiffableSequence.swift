@@ -3,15 +3,24 @@ import Foundation
 
 
 class DiffableSequence {
+    let type: Any.Type
     let elements: [Diffable]
 
 
-    init(_ elements: [Diffable]) {
+    init(type: Any.Type, elements: [Diffable]) {
+        self.type = type
         self.elements = elements
     }
 
 
     static func diff(between a: DiffableSequence, and b: DiffableSequence) -> [DifferentiaUnit] {
+        guard a.type == b.type else {
+            return [
+                .deleted(a.asDiffable),
+                .inserted(b.asDiffable),
+            ]
+        }
+
         var lcs = a.elements.LCS(b.elements)
         let diff = a.elements.diff(b.elements)
 
@@ -125,5 +134,13 @@ class DiffableSequence {
         }
 
         return table
+    }
+
+
+    private var asDiffable: Diffable {
+        return .collection(
+            type: self.type,
+            elements: self.elements
+        )
     }
 }
