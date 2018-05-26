@@ -3,8 +3,8 @@ extension Diffable: RoughEquatable {
         switch (lhs, rhs) {
         // NOTE: This is an only difference between Equatable and RoughEquatable.
         case let (.notSupported(value: r), .notSupported(value: l)):
-            return Mirror(reflecting: l).subjectType == Mirror(reflecting: r).subjectType
-                && String(describing: l) == String(describing: r)
+            return Swift.type(of: r) == Swift.type(of: l)
+                && String(describing: r) == String(describing: l)
 
         default:
             return lhs == rhs
