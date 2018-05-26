@@ -17,71 +17,10 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return Diffable.from(y)
     }
 
-    // MARK: - Integer subtypes
-    if let y = x as? Int {
-        return Diffable.from(y)
+    // MARK: - Integer subtypes and FloatingPoint subtypes
+    if isNumberLike(x) {
+        return .number(type: type(of: x), value: "\(x)")
     }
-
-    if let y = x as? Int8 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Int16 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Int32 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Int64 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? UInt {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? UInt8 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? UInt16 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? UInt32 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? UInt64 {
-        return Diffable.from(y)
-    }
-
-
-    // MARK: - FloatingPoint subtypes
-    if let y = x as? Double {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Float {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Float32 {
-        return Diffable.from(y)
-    }
-
-    if let y = x as? Float64 {
-        return Diffable.from(y)
-    }
-
-    #if arch(x86_64) || arch(i386)
-        if let y = x as? Float80 {
-            return Diffable.from(y)
-        }
-    #endif
-
 
     // MARK: - String related types
     if let y = x as? Character {

@@ -78,6 +78,14 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
             #line: TestCase(
+                input: 3.14 as CGFloat,
+                target: .number(type: CGFloat.self, value: "3.14"),
+                expected: true
+            ),
+
+
+            // MARK: String
+            #line: TestCase(
                 input: "",
                 target: .string(""),
                 expected: true
