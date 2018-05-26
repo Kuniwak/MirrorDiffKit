@@ -4,7 +4,8 @@ import Foundation
 public indirect enum Diffable {
     case null
     case none
-    case string(String)
+    case character(Character)
+    case string(type: Any.Type, content: String)
     case number(type: Any.Type, value: String)
     case bool(Bool)
     case date(Date)

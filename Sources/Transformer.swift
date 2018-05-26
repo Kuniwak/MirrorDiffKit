@@ -23,32 +23,25 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return .null
     }
 
-    // MARK: - Integer subtypes and FloatingPoint subtypes
     if isNumberLike(x) {
         return .number(type: type, value: "\(x)")
     }
 
-    // MARK: - String related types
     if let y = x as? Character {
-        // FIXME: .string(String) should be .string(type: Any.Type, content: String)
-        return .string("\(y)")
+        return .character(y)
     }
 
-    if let y = x as? String {
-        return .string("\(y)")
+    if isStringLike(x) {
+        return .string(type: type, content: "\(x)")
     }
 
-
-    // MARK: - Bool subtypes
     if let y = x as? Bool {
         return .bool(y)
     }
 
-
     if let y = x as? Date {
         return .date(y)
     }
-
 
     if let y = x as? URL {
         return .url(y)

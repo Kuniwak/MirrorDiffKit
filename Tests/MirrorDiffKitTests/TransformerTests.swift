@@ -84,17 +84,31 @@ class TransformerTests: XCTestCase {
             ),
 
 
+            // MARK: Character
+            #line: TestCase(
+                input: "a".first!,
+                target: .character("a".first!),
+                expected: true
+            ),
+
             // MARK: String
             #line: TestCase(
                 input: "",
-                target: .string(""),
+                target: .string(type: String.self, content: ""),
                 expected: true
             ),
             #line: TestCase(
                 input: "string",
-                target: .string("string"),
+                target: .string(type: String.self, content: "string"),
                 expected: true
             ),
+            #line: TestCase(
+                input: "substring".prefix(3),
+                target: .string(type: Substring.self, content: "sub"),
+                expected: true
+            ),
+
+            // MARK: Bool
             #line: TestCase(
                 input: true,
                 target: .bool(true),
@@ -222,7 +236,7 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: StructStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: true
@@ -235,8 +249,8 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: StructStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: true
@@ -287,7 +301,7 @@ class TransformerTests: XCTestCase {
                 target: .anyClass(
                     type: ClassStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: true
@@ -300,8 +314,8 @@ class TransformerTests: XCTestCase {
                 target: .anyClass(
                     type: ClassStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: true
@@ -355,7 +369,7 @@ class TransformerTests: XCTestCase {
                     caseName: EnumCaseName("one"),
                     associated: [
                          // NOTE: Label has gone away X-(
-                        .notLabeled(index: 0, value: .string("value")),
+                        .notLabeled(index: 0, value: .string(type: String.self, content: "value")),
                     ]
                 ),
                 expected: true
@@ -367,12 +381,12 @@ class TransformerTests: XCTestCase {
                     caseName: EnumCaseName("two"),
                     associated: TupleRepresentation.current.isLabeled
                         ? [
-                            .labeled(label: "key1b", value: .string("value1b")),
-                            .labeled(label: "key2b", value: .string("value2b")),
+                            .labeled(label: "key1b", value: .string(type: String.self, content: "value1b")),
+                            .labeled(label: "key2b", value: .string(type: String.self, content: "value2b")),
                         ]
                         : [
-                            .notLabeled(index: 0, value: .string("value1b")),
-                            .notLabeled(index: 1, value: .string("value2b")),
+                            .notLabeled(index: 0, value: .string(type: String.self, content: "value1b")),
+                            .notLabeled(index: 1, value: .string(type: String.self, content: "value2b")),
                         ]
                 ),
                 expected: true
@@ -385,7 +399,7 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: GenericStub<String>.self,
                     entries: [
-                        "value": .string("string"),
+                        "value": .string(type: String.self, content: "string"),
                     ]
                 ),
                 expected: true

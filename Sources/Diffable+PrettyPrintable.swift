@@ -7,8 +7,14 @@ extension Diffable: PrettyPrintable {
         case .none:
             return [.line("nil")]
 
-        case let .string(string):
-            return [.line("\"\(string)\"")]
+        case let .character(character):
+            return [.line("Character(\"\(character)\")")]
+
+        case let .string(type: type, content: content):
+            if type == String.self {
+                return [.line("\"\(content)\"")]
+            }
+            return [.line("\(type)(\"\(content)\")")]
 
         case let .number(type: type, value: value):
             return [.line("\(type)(\(value))")]

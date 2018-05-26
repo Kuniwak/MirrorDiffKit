@@ -7,8 +7,12 @@ extension Diffable: Equatable {
         case (.none, .none):
             return true
 
-        case let (.string(l), .string(r)):
+        case let (.character(l), .character(r)):
             return l == r
+
+        case let (.string(type: lt, content: lc), .string(type: rt, content: rc)):
+            return lt == rt
+                && lc == rc
 
         case let (.number(type: lt, value: lv), .number(type: rt, value: rv)):
             return lt == rt

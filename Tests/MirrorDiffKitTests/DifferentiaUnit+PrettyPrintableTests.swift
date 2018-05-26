@@ -12,17 +12,17 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
     func testPrettyLines() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
-                input: .notChanged(.string("I'm not changed")),
+                input: .notChanged(.string(type: String.self, content: "I'm not changed")),
                 expected: "  \"I'm not changed\""
             ),
 
             #line: TestCase(
-                input: .deleted(.string("I'm deleted")),
+                input: .deleted(.string(type: String.self, content: "I'm deleted")),
                 expected: "- \"I'm deleted\""
             ),
 
             #line: TestCase(
-                input: .inserted(.string("I'm inserted")),
+                input: .inserted(.string(type: String.self, content: "I'm inserted")),
                 expected: "+ \"I'm inserted\""
             ),
 
@@ -58,7 +58,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .notChanged(.string("I'm not changed")),
+                            .notChanged(.string(type: String.self, content: "I'm not changed")),
                         ],
                     ]
                 ),
@@ -74,7 +74,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .deleted(.string("I'm deleted")),
+                            .deleted(.string(type: String.self, content: "I'm deleted")),
                         ],
                     ]
                 ),
@@ -90,7 +90,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .inserted(.string("I'm inserted")),
+                            .inserted(.string(type: String.self, content: "I'm inserted")),
                         ]
                     ]
                 ),
@@ -106,11 +106,11 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "changed": [
-                            .deleted(.string("I'm deleted")),
-                            .inserted(.string("I'm inserted")),
+                            .deleted(.string(type: String.self, content: "I'm deleted")),
+                            .inserted(.string(type: String.self, content: "I'm inserted")),
                         ],
                         "notChanged": [
-                            .notChanged(.string("I'm not changed")),
+                            .notChanged(.string(type: String.self, content: "I'm not changed")),
                         ],
                     ]
                 ),
@@ -127,18 +127,18 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .notChanged(.string("I'm not changed")),
+                            .notChanged(.string(type: String.self, content: "I'm not changed")),
                         ],
                         "grandChild": [
                             .dictionaryChanged(kind: .dictionary, [
                                 "deleted": [
-                                    .deleted(.string("I'm deleted")),
+                                    .deleted(.string(type: String.self, content: "I'm deleted")),
                                 ],
                                 "inserted": [
-                                    .inserted(.string("I'm inserted")),
+                                    .inserted(.string(type: String.self, content: "I'm inserted")),
                                 ],
                                 "notChanged": [
-                                    .notChanged(.string("I'm not changed")),
+                                    .notChanged(.string(type: String.self, content: "I'm not changed")),
                                 ],
                             ]),
                         ],

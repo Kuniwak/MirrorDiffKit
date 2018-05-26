@@ -11,8 +11,14 @@ extension Diffable /*: CustomStringConvertible */ {
         case .none:
             return "nil"
 
-        case let .string(string):
-            return "\"\(string)\""
+        case let .character(character):
+            return "Character(\"\(character)\")"
+
+        case let .string(type: type, content: content):
+            if type == String.self {
+                return "\"\(content)\""
+            }
+            return "\(type)(\"\(content)\")"
 
         case let .number(type: type, value: value):
             return "\(type)(\(value))"

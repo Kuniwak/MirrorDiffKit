@@ -9,6 +9,11 @@ internal func entries<K, V>(fromDictionary dictionary: [K: V]) -> [(key: K, valu
 }
 
 
+internal func hashValue(from type: Any.Type) -> Int {
+    return "\(type)".hashValue
+}
+
+
 internal func isNumberLike(_ x: Any) -> Bool {
     if isNumberType(type(of: x)) {
         return true
@@ -45,4 +50,15 @@ private func isNumberType(_ type: Any.Type) -> Bool {
     #endif
 
     return false
+}
+
+
+internal func isStringLike(_ x: Any) -> Bool {
+    if type(of: x) == String.self {
+        return true
+    }
+
+    // XXX: For string like types such as Substring.
+    //      The type have .customMirror like a mirror of strings.
+    return Mirror(reflecting: x).subjectType == String.self
 }

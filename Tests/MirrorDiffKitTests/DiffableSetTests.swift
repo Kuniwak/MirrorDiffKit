@@ -21,74 +21,74 @@ class DiffableSetTests: XCTestCase {
             ),
             #line: TestCase(
                 from: DiffableSet([
-                    .string("I'm not changed"),
+                    .string(type: String.self, content: "I'm not changed"),
                 ]),
                 to: DiffableSet([
-                    .string("I'm not changed"),
+                    .string(type: String.self, content: "I'm not changed"),
                 ]),
                 expected: [
-                    .notChanged(.string("I'm not changed")),
+                    .notChanged(.string(type: String.self, content: "I'm not changed")),
                 ]
             ),
             #line: TestCase(
                 from: DiffableSet([
-                    .string("I'm deleted"),
+                    .string(type: String.self, content: "I'm deleted"),
                 ]),
                 to: DiffableSet([]),
                 expected: [
-                    .deleted(.string("I'm deleted")),
+                    .deleted(.string(type: String.self, content: "I'm deleted")),
                 ]
             ),
             #line: TestCase(
                 from: DiffableSet([]),
                 to: DiffableSet([
-                    .string("I'm inserted"),
+                    .string(type: String.self, content: "I'm inserted"),
                 ]),
                 expected: [
-                    .inserted(.string("I'm inserted")),
+                    .inserted(.string(type: String.self, content: "I'm inserted")),
                 ]
             ),
             #line: TestCase(
                 from: DiffableSet([
-                    .string("I'm not changed"),
-                    .string("I'm deleted")
+                    .string(type: String.self, content: "I'm not changed"),
+                    .string(type: String.self, content: "I'm deleted")
                 ]),
                 to: DiffableSet([
-                    .string("I'm not changed"),
-                    .string("I'm inserted")
+                    .string(type: String.self, content: "I'm not changed"),
+                    .string(type: String.self, content: "I'm inserted")
                 ]),
                 expected: [
-                    .deleted(.string("I'm deleted")),
-                    .inserted(.string("I'm inserted")),
-                    .notChanged(.string("I'm not changed")),
+                    .deleted(.string(type: String.self, content: "I'm deleted")),
+                    .inserted(.string(type: String.self, content: "I'm inserted")),
+                    .notChanged(.string(type: String.self, content: "I'm not changed")),
                 ]
             ),
             #line: TestCase(
                 from: DiffableSet([
                     // NOTE: Elements are possible to duplicate.
-                    .string("I'm deleted"),
-                    .string("I'm deleted"),
+                    .string(type: String.self, content: "I'm deleted"),
+                    .string(type: String.self, content: "I'm deleted"),
                 ]),
                 to: DiffableSet([
-                    .string("I'm deleted"),
+                    .string(type: String.self, content: "I'm deleted"),
                 ]),
                 expected: [
-                    .deleted(.string("I'm deleted")),
-                    .notChanged(.string("I'm deleted")),
+                    .deleted(.string(type: String.self, content: "I'm deleted")),
+                    .notChanged(.string(type: String.self, content: "I'm deleted")),
                 ]
             ),
             #line: TestCase(
                 from: DiffableSet([
-                    .string("I'm inserted"),
+                    .string(type: String.self, content: "I'm inserted"),
                 ]),
                 to: DiffableSet([
                     // NOTE: Elements are possible to duplicate.
-                    .string("I'm inserted"),
-                    .string("I'm inserted"),
+                    .string(type: String.self, content: "I'm inserted"),
+                    .string(type: String.self, content: "I'm inserted"),
                 ]),
                 expected: [
-                    .inserted(.string("I'm inserted")),
-                    .notChanged(.string("I'm inserted")),
+                    .inserted(.string(type: String.self, content: "I'm inserted")),
+                    .notChanged(.string(type: String.self, content: "I'm inserted")),
                 ]
             ),
         ]
