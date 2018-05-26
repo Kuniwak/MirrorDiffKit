@@ -252,42 +252,6 @@ extension Diffable: PrettyPrintable {
 
             return [head] + content + [tail]
 
-        case let .generic(type: type, entries: dictionary):
-            if dictionary.isEmpty {
-                return [.line("generic \(type) {}")]
-            }
-
-            // NOTE: The expected output format is:
-            // generic T {
-            //     key: "single-line"
-            //     key: [
-            //         "multiple-lines"
-            //         "multiple-lines"
-            //     ]
-            // }
-
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .flatMap { entry -> [PrettyLine] in
-                    let (key, value) = entry
-                    let keyLines: [PrettyLine] = [.line("\(key):")]
-                    let valueLines: [PrettyLine] = value.prettyLines
-
-                    return PrettyLine.addIndentLevel(
-                        lines: PrettyLine.concatKeyLineAndValueLines(
-                            keyLines,
-                            and: valueLines,
-                            with: " "
-                        ),
-                        count: 1
-                    )
-                }
-
-            let head: PrettyLine = .line("generic \(type) {")
-            let tail: PrettyLine = .line("}")
-
-            return [head] + content + [tail]
-
         case let .notSupported(value: x):
             return [.line("notSupported<<value: \(x)>>")]
 

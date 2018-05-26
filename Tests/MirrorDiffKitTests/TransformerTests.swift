@@ -248,14 +248,8 @@ class TransformerTests: XCTestCase {
             ),
             #line: TestCase(
                 input: 0 ..< 5,
-                target: .generic(
-                    type: CountableRange<Int>.self,
-                    entries: [
-                        "lowerBound": .number(0),
-                        "upperBound": .number(5),
-                    ]
-                ),
-                expected: true
+                target: .notSupported(value: 0 ..< 5),
+                expected: false
             ),
 
 

@@ -54,10 +54,6 @@ extension Diffable: Equatable {
             return lt == rt
                 && le == re
 
-        case let (.generic(type: lt, entries: le), .generic(type: rt, entries: re)):
-            return lt == rt
-                && le == re
-
         case (.notSupported, .notSupported):
             // NOTE: This is an only only difference between Equatable and RoughEquatable.
             return false

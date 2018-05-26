@@ -100,18 +100,6 @@ extension Diffable /*: CustomStringConvertible */ {
 
             return "class \(type) { \(content) }"
 
-        case let .generic(type: type, entries: dictionary):
-            guard !dictionary.isEmpty else {
-                return "generic \(type) {}"
-            }
-
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .map { (key, value) in "\(key): \(value.description)" }
-                .joined(separator: ", ")
-
-            return "generic \(type) { (\(content)) }"
-
         case let .notSupported(value: x):
             return "notSupported<<value: \(x)>>"
 

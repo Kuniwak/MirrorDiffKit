@@ -49,10 +49,6 @@ extension Diffable: Hashable {
             return String(describing: type).hashValue
                 + entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
 
-        case let .generic(type: type, entries: entries):
-            return String(describing: type).hashValue
-                + entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
-
         case let .notSupported(value: value):
             return String(describing: value).hashValue
 

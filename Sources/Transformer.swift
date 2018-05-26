@@ -170,9 +170,7 @@ func transformMirror(of x: Any) -> Diffable {
             return .anyClass(type: mirror.subjectType, entries: entries)
 
         case .none:
-            // XXX: I don't know why but Generic structs and classes do not have .displayStyle.
-            let entries = try transformFromLabeledMirror(of: mirror)
-            return .generic(type: mirror.subjectType, entries: entries)
+            return .notSupported(value: x)
 
         }
     }

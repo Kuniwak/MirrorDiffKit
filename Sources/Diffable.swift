@@ -23,7 +23,6 @@ public indirect enum Diffable {
     case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
     case anyClass(type: Any.Type, entries: [String: Diffable])
-    case generic(type: Any.Type, entries: [String: Diffable])
     case notSupported(value: Any)
     case unrecognizable(debugInfo: String)
 
