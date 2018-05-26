@@ -13,6 +13,10 @@ func transform(fromAny x: Any?) -> Diffable {
 
 
 private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
+    if let y = x as? DiffableConvertible {
+        return y.diffable
+    }
+
     let type = Swift.type(of: x)
 
     if type == NSNull.self {
