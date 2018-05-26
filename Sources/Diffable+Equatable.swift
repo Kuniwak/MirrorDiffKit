@@ -10,8 +10,9 @@ extension Diffable: Equatable {
         case let (.string(l), .string(r)):
             return l == r
 
-        case let (.number(l), .number(r)):
-            return l == r
+        case let (.number(type: lt, value: lv), .number(type: rt, value: rv)):
+            return lt == rt
+                && lv == rv
 
         case let (.bool(l), .bool(r)):
             return l == r

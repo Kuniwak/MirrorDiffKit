@@ -14,8 +14,8 @@ extension Diffable /*: CustomStringConvertible */ {
         case let .string(string):
             return "\"\(string)\""
 
-        case let .number(number):
-            return number.description
+        case let .number(type: type, value: value):
+            return "\(type)(\(value))"
 
         case let .bool(bool):
             return bool.description

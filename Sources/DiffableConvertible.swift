@@ -7,84 +7,84 @@ public protocol DiffableConvertible {
 
 extension Int: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Int8: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Int16: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Int32: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Int64: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension UInt: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension UInt8: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension UInt16: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension UInt32: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension UInt64: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Double: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(self)
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
 
 extension Float: DiffableConvertible {
     public var diffable: Diffable {
-        return .number(Double(self))
+        return .number(type: type(of: self), value: self.description)
     }
 }
 
@@ -92,7 +92,7 @@ extension Float: DiffableConvertible {
 #if arch(x86_64) || arch(i386)
     extension Float80: DiffableConvertible {
         public var diffable: Diffable {
-            return .number(Double(self))
+            return .number(type: type(of: self), value: self.description)
         }
     }
 #endif

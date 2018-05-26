@@ -5,7 +5,7 @@ public indirect enum Diffable {
     case null
     case none
     case string(String)
-    case number(Double)
+    case number(type: Any.Type, value: String)
     case bool(Bool)
     case date(Date)
     case url(URL)

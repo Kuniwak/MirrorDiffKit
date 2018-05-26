@@ -30,9 +30,9 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .number(123.4),
+                input: .number(type: Double.self, value: "123.4"),
                 expected: [
-                    .line("123.4"),
+                    .line("Double(123.4)"),
                 ]
             ),
             #line: TestCase(

@@ -10,8 +10,8 @@ extension Diffable: Hashable {
         case let .string(string):
             return string.hashValue
 
-        case let .number(number):
-            return number.hashValue
+        case let .number(type: type, value: value):
+            return String(describing: type).hashValue ^ value.hashValue
 
         case let .bool(bool):
             return bool.hashValue

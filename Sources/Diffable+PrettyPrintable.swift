@@ -10,8 +10,8 @@ extension Diffable: PrettyPrintable {
         case let .string(string):
             return [.line("\"\(string)\"")]
 
-        case let .number(number):
-            return [.line(number.description)]
+        case let .number(type: type, value: value):
+            return [.line("\(type)(\(value))")]
 
         case let .bool(bool):
             return [.line(bool.description)]

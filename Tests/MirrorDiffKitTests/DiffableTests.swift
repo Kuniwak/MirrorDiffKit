@@ -26,8 +26,8 @@ class DiffableTests: XCTestCase {
                 expected: "\"STRING\""
             ),
             #line: TestCase(
-                input: .number(10.0),
-                expected: "10.0"
+                input: .number(type: Double.self, value: "10.0"),
+                expected: "Double(10.0)"
             ),
             #line: TestCase(
                 input: .date(Date(timeIntervalSince1970: 0)),

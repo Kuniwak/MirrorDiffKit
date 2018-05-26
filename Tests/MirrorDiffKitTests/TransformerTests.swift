@@ -29,42 +29,52 @@ class TransformerTests: XCTestCase {
                 input: OptionalStub.some as Any,
                 // XXX: We cannot know whether the not nil type is an optional or not.
                 // Therefore, all not nil values are transformed as non-optional types.
-                target: .number(10),
-                expected: true
-            ),
-            #line: TestCase(
-                input: 10,
-                target: .number(10.0),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as Int,
-                target: .number(10.0),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as Int8,
-                target: .number(10.0),
+                target: .number(type: Int8.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as UInt,
-                target: .number(10.0),
+                target: .number(type: UInt.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as UInt8,
-                target: .number(10.0),
+                target: .number(type: UInt8.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: -10,
-                target: .number(-10),
+                target: .number(type: Int.self, value: "-10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 3.14,
-                target: .number(3.14),
+                target: .number(type: Double.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as Float,
+                target: .number(type: Float.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as Float32,
+                target: .number(type: Float32.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as Float64,
+                target: .number(type: Float64.self, value: "3.14"),
                 expected: true
             ),
             #line: TestCase(
@@ -111,27 +121,27 @@ class TransformerTests: XCTestCase {
             #line: TestCase(
                 input: (10, 20),
                 target: .tuple([
-                    .notLabeled(index: 0, value: .number(10)),
-                    .notLabeled(index: 1, value: .number(20)),
+                    .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
+                    .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                 ]),
                 expected: true
             ),
             #line: TestCase(
                 input: (label: 10),
                 // XXX: Unary labeled tuple is not a tuple! ;-(
-                target: .number(10),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: (label1: 10, label2: 20),
                 target: TupleRepresentation.current.isLabeled
                     ? .tuple([
-                        .labeled(label: "label1", value: .number(10)),
-                        .labeled(label: "label2", value: .number(20)),
+                        .labeled(label: "label1", value: .number(type: Int.self, value: "10")),
+                        .labeled(label: "label2", value: .number(type: Int.self, value: "20")),
                     ])
                     : .tuple([
-                        .notLabeled(index: 0, value: .number(10)),
-                        .notLabeled(index: 1, value: .number(20)),
+                        .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
+                        .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                     ]),
                 expected: true
             ),
@@ -146,7 +156,7 @@ class TransformerTests: XCTestCase {
             #line: TestCase(
                 input: Set([1]),
                 target: .set([
-                    .number(1),
+                    .number(type: Int.self, value: "1"),
                 ]),
                 expected: true
             ),
@@ -161,28 +171,28 @@ class TransformerTests: XCTestCase {
             #line: TestCase(
                 input: [1, 1, 2, 3, 5],
                 target: .collection(type: Array<Int>.self, elements: [
-                    .number(1),
-                    .number(1),
-                    .number(2),
-                    .number(3),
-                    .number(5),
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "2"),
+                    .number(type: Int.self, value: "3"),
+                    .number(type: Int.self, value: "5"),
                 ]),
                 expected: true
             ),
             #line: TestCase(
                 input: [[0, -1], [1, 0]],
                 target: .collection(type: Array<Array<Int>>.self, elements: [
-                    .collection(type: Array<Int>.self, elements: [.number(0), .number(-1)]),
-                    .collection(type: Array<Int>.self, elements: [.number(1), .number(0)]),
+                    .collection(type: Array<Int>.self, elements: [.number(type: Int.self, value: "0"), .number(type: Int.self, value: "-1")]),
+                    .collection(type: Array<Int>.self, elements: [.number(type: Int.self, value: "1"), .number(type: Int.self, value: "0")]),
                 ]),
                 expected: true
             ),
             #line: TestCase(
                 input: [0, 1, 2][0...2],
                 target: .collection(type: ArraySlice<Int>.self, elements: [
-                    .number(0),
-                    .number(1),
-                    .number(2),
+                    .number(type: Int.self, value: "0"),
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "2"),
                 ]),
                 expected: true
             ),
