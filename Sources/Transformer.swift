@@ -146,7 +146,10 @@ func transformMirror(of x: Any) -> Diffable {
 
         case .some(.collection):
             let elements = transformFromNonLabeledMirror(of: mirror)
-            return .collection(type: mirror.subjectType, elements: elements)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .collection(type: trulyType, elements: elements)
 
         case .some(.dictionary):
             let entries = try transformFromDictionaryEntryMirror(of: mirror)
@@ -154,20 +157,29 @@ func transformMirror(of x: Any) -> Diffable {
 
         case .some(.enum):
             let associated = transformFromEnumMirror(of: mirror)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
 
             return .anyEnum(
-                type: mirror.subjectType,
+                type: trulyType,
                 caseName: try .from(mirror: mirror, original: x),
                 associated: associated
             )
 
         case .some(.struct):
             let entries = try transformFromLabeledMirror(of: mirror)
-            return .anyStruct(type: mirror.subjectType, entries: entries)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .anyStruct(type: trulyType, entries: entries)
 
         case .some(.class):
             let entries = try transformFromLabeledMirror(of: mirror)
-            return .anyClass(type: mirror.subjectType, entries: entries)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .anyClass(type: trulyType, entries: entries)
 
         case .none:
             return .notSupported(value: x)
