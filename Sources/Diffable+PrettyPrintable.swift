@@ -93,9 +93,9 @@ extension Diffable: PrettyPrintable {
 
             return [head] + content + [tail]
 
-        case let .set(array):
-            guard !array.isEmpty else {
-                return [.line("Set []")]
+        case let .set(type: type, elements: elements):
+            guard !elements.isEmpty else {
+                return [.line("\(type) []")]
             }
 
             // NOTE: The expected output format is:
@@ -106,7 +106,7 @@ extension Diffable: PrettyPrintable {
             //         "multiple-lines"
             //     ]
             // ]
-            let content: [PrettyLine] = array
+            let content: [PrettyLine] = elements
                 .sorted { String(describing: $0) < String(describing: $1) }
                 .flatMap { value -> [PrettyLine] in
                     return PrettyLine.addIndentLevel(
@@ -115,14 +115,14 @@ extension Diffable: PrettyPrintable {
                     )
                 }
 
-            let head: PrettyLine = .line("Set [")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]
 
-        case let .dictionary(entries):
+        case let .dictionary(type: type, entries: entries):
             guard !entries.isEmpty else {
-                return [.line("[:]")]
+                return [.line("\(type) [:]")]
             }
 
             // NOTE: The expected output format is:
@@ -154,7 +154,7 @@ extension Diffable: PrettyPrintable {
                     )
                 }
 
-            let head: PrettyLine = .line("[")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]

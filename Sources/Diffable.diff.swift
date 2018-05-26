@@ -20,24 +20,24 @@ extension Diffable {
                 )
             ]
 
-        case let (.set(l), .set(r)):
+        case let (.set(type: lt, elements: le), .set(type: rt, elements: re)):
             return [
                 .sequenceChanged(
                     kind: .set,
                     DiffableSet.diff(
-                        between: DiffableSet(l),
-                        and: DiffableSet(r)
+                        between: DiffableSet(type: lt, elements: le),
+                        and: DiffableSet(type: rt, elements: re)
                     )
                 )
             ]
 
-        case let (.dictionary(l), .dictionary(r)):
+        case let (.dictionary(type: lt, entries: le), .dictionary(type: rt, entries: re)):
             return [
                 .dictionaryChanged(
                     kind: .dictionary,
                     DiffableDictionary.diff(
-                        between: DiffableDictionary.from(diffableTuples: l),
-                        and: DiffableDictionary.from(diffableTuples: r)
+                        between: DiffableDictionary.from(type: lt, diffableTuples: le),
+                        and: DiffableDictionary.from(type: rt, diffableTuples: re)
                     )
                 )
             ]
@@ -51,8 +51,8 @@ extension Diffable {
                 .dictionaryChanged(
                     kind: .anyStruct(type: lt),
                     DiffableDictionary.diff(
-                        between: DiffableDictionary(ld),
-                        and: DiffableDictionary(rd)
+                        between: DiffableDictionary(type: lt, dictionary: ld),
+                        and: DiffableDictionary(type: rt, dictionary: rd)
                     )
                 )
             ]
@@ -66,8 +66,8 @@ extension Diffable {
                 .dictionaryChanged(
                     kind: .anyClass(type: lt),
                     DiffableDictionary.diff(
-                        between: DiffableDictionary(ld),
-                        and: DiffableDictionary(rd)
+                        between: DiffableDictionary(type: lt, dictionary: ld),
+                        and: DiffableDictionary(type: rt, dictionary: rd)
                     )
                 )
             ]

@@ -15,15 +15,15 @@ class DiffableSetTests: XCTestCase {
     func testDiff() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
-                from: DiffableSet([]),
-                to: DiffableSet([]),
+                from: DiffableSet(type: Set<String>.self, elements: []),
+                to: DiffableSet(type: Set<String>.self, elements: []),
                 expected: []
             ),
             #line: TestCase(
-                from: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm not changed"),
                 ]),
-                to: DiffableSet([
+                to: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm not changed"),
                 ]),
                 expected: [
@@ -31,17 +31,17 @@ class DiffableSetTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                from: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm deleted"),
                 ]),
-                to: DiffableSet([]),
+                to: DiffableSet(type: Set<String>.self, elements: []),
                 expected: [
                     .deleted(.string(type: String.self, content: "I'm deleted")),
                 ]
             ),
             #line: TestCase(
-                from: DiffableSet([]),
-                to: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: []),
+                to: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm inserted"),
                 ]),
                 expected: [
@@ -49,11 +49,11 @@ class DiffableSetTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                from: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm not changed"),
                     .string(type: String.self, content: "I'm deleted")
                 ]),
-                to: DiffableSet([
+                to: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm not changed"),
                     .string(type: String.self, content: "I'm inserted")
                 ]),
@@ -64,12 +64,12 @@ class DiffableSetTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                from: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: [
                     // NOTE: Elements are possible to duplicate.
                     .string(type: String.self, content: "I'm deleted"),
                     .string(type: String.self, content: "I'm deleted"),
                 ]),
-                to: DiffableSet([
+                to: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm deleted"),
                 ]),
                 expected: [
@@ -78,10 +78,10 @@ class DiffableSetTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                from: DiffableSet([
+                from: DiffableSet(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "I'm inserted"),
                 ]),
-                to: DiffableSet([
+                to: DiffableSet(type: Set<String>.self, elements: [
                     // NOTE: Elements are possible to duplicate.
                     .string(type: String.self, content: "I'm inserted"),
                     .string(type: String.self, content: "I'm inserted"),

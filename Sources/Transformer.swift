@@ -80,8 +80,11 @@ func transformMirror(of x: Any) -> Diffable {
             return .tuple(entries)
 
         case .some(.set):
-            let entries = transformFromNonLabeledMirror(of: mirror)
-            return .set(entries)
+            let elements = transformFromNonLabeledMirror(of: mirror)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .set(type: trulyType, elements: elements)
 
         case .some(.collection):
             let elements = transformFromNonLabeledMirror(of: mirror)
@@ -92,7 +95,10 @@ func transformMirror(of x: Any) -> Diffable {
 
         case .some(.dictionary):
             let entries = try transformFromDictionaryEntryMirror(of: mirror)
-            return .dictionary(entries)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .dictionary(type: trulyType, entries: entries)
 
         case .some(.enum):
             let associated = transformFromEnumMirror(of: mirror)

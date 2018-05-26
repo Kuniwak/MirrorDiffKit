@@ -3,15 +3,17 @@ import Foundation
 
 
 struct DiffableDictionary {
+    let type: Any.Type
     let dictionary: [String: Diffable]
 
 
-    init(_ dictionary: [String: Diffable]) {
+    init(type: Any.Type, dictionary: [String: Diffable]) {
+        self.type = type
         self.dictionary = dictionary
     }
 
 
-    static func from(diffableTuples: [(key: Diffable, value: Diffable)]) -> DiffableDictionary {
+    static func from(type: Any.Type, diffableTuples: [(key: Diffable, value: Diffable)]) -> DiffableDictionary {
         var dictionary: [String: Diffable] = [:]
 
         diffableTuples.forEach { diffableTuple in
@@ -19,7 +21,7 @@ struct DiffableDictionary {
             dictionary[key.description] = value
         }
 
-        return DiffableDictionary(dictionary)
+        return DiffableDictionary(type: type, dictionary: dictionary)
     }
 
 

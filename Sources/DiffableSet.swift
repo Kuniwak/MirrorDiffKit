@@ -3,10 +3,12 @@ import Foundation
 
 
 struct DiffableSet {
+    let type: Any.Type
     let nonHashables: [Diffable]
 
 
-    init(_ elements: [Diffable]) {
+    init(type: Any.Type, elements: [Diffable]) {
+        self.type = type
         self.nonHashables = elements
     }
 

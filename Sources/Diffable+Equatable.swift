@@ -37,14 +37,14 @@ extension Diffable: Equatable {
             return lt == rt
                 && le == re
 
-        case let (.set(l), .set(r)):
-            return DiffableSet(l) == DiffableSet(r)
+        case let (.set(type: lt, elements: le), .set(type: rt, elements: re)):
+            return DiffableSet(type: lt, elements: le) == DiffableSet(type: rt, elements: re)
 
-        case let (.dictionary(l), .dictionary(r)):
-            guard l.count == r.count else { return false }
+        case let (.dictionary(type: lt, entries: le), .dictionary(type: rt, entries: re)):
+            guard le.count == re.count else { return false }
 
-            return DiffableSet(l.map { $0.key }) == DiffableSet(r.map { $0.key })
-                && DiffableSet(l.map { $0.value }) == DiffableSet(r.map { $0.value })
+            return DiffableSet(type: lt, elements: le.map { $0.key }) == DiffableSet(type: rt, elements: re.map { $0.key })
+                && DiffableSet(type: lt, elements: le.map { $0.value }) == DiffableSet(type: rt, elements: re.map { $0.value })
 
         case let (.anyEnum(type: lt, caseName: lc, associated: le), .anyEnum(type: rt, caseName: rc, associated: re)):
             return lt == rt

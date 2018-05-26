@@ -49,22 +49,22 @@ extension Diffable /*: CustomStringConvertible */ {
 
             return "\(type) [" + content + "]"
 
-        case let .set(array):
-            let content = array
+        case let .set(type: type, elements: elements):
+            let content = elements
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "Set [" + content + "]"
+            return "\(type) [" + content + "]"
 
-        case let .dictionary(diffables):
-            guard !diffables.isEmpty else { return "[:]" }
+        case let .dictionary(type: type, entries: entries):
+            guard !entries.isEmpty else { return "\(type) [:]" }
 
-            let content = diffables
+            let content = entries
                 .sorted { $0.key.description <= $1.key.description }
                 .map { (key, value) in "\(key.description): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "[" + content + "]"
+            return "\(type) [" + content + "]"
 
         case let .anyEnum(type: type, caseName: caseName, associated: associated):
             if associated.isEmpty {

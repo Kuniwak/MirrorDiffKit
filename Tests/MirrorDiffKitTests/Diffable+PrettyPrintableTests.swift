@@ -126,19 +126,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .set([]),
+                input: .set(type: Set<String>.self, elements: []),
                 expected: [
-                    .line("Set []"),
+                    .line("Set<String> []"),
                 ]
             ),
             #line: TestCase(
-                input: .set([
+                input: .set(type: Set<String>.self, elements: [
                     .string(type: String.self, content: "1"),
                     .string(type: String.self, content: "2"),
                     .string(type: String.self, content: "3"),
                 ]),
                 expected: [
-                    .line("Set ["),
+                    .line("Set<String> ["),
                     .indent(.line("\"1\"")),
                     .indent(.line("\"2\"")),
                     .indent(.line("\"3\"")),
@@ -146,19 +146,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .set([
+                input: .set(type: Set<AnyHashable>.self, elements: [
                     .string(type: String.self, content: "1"),
-                    .set([
+                    .set(type: Set<AnyHashable>.self, elements: [
                         .string(type: String.self, content: "2"),
-                        .set([
+                        .set(type: Set<AnyHashable>.self, elements: [
                             .string(type: String.self, content: "3"),
                         ])
                     ])
                 ]),
                 expected: [
-                    .line("Set ["),
-                    .indent(.line("Set [")),
-                    .indent(.indent(.line("Set ["))),
+                    .line("Set<AnyHashable> ["),
+                    .indent(.line("Set<AnyHashable> [")),
+                    .indent(.indent(.line("Set<AnyHashable> ["))),
                     .indent(.indent(.indent(.line("\"3\"")))),
                     .indent(.indent(.line("]"))),
                     .indent(.indent(.line("\"2\""))),
@@ -168,19 +168,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .dictionary([]),
+                input: .dictionary(type: [String: String].self, entries: []),
                 expected: [
-                    .line("[:]")
+                    .line("Dictionary<String, String> [:]")
                 ]
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: String].self, entries: [
                     (key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
                     (key: .string(type: String.self, content: "key2"), value: .string(type: String.self, content: "value2")),
                     (key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
                 ]),
                 expected: [
-                    .line("["),
+                    .line("Dictionary<String, String> ["),
                     .indent(.line("\"key1\": \"value1\"")),
                     .indent(.line("\"key2\": \"value2\"")),
                     .indent(.line("\"key3\": \"value3\"")),
@@ -188,21 +188,21 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: Any].self, entries: [
                     (key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
-                    (key: .string(type: String.self, content: "key2"), value: .dictionary([
+                    (key: .string(type: String.self, content: "key2"), value: .dictionary(type: [String: Any].self, entries: [
                         (key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
-                        (key: .string(type: String.self, content: "key4"), value: .dictionary([
+                        (key: .string(type: String.self, content: "key4"), value: .dictionary(type: [String: Any].self, entries: [
                             (key: .string(type: String.self, content: "key5"), value: .string(type: String.self, content: "value5")),
                         ])),
                     ]))
                 ]),
                 expected: [
-                    .line("["),
+                    .line("Dictionary<String, Any> ["),
                     .indent(.line("\"key1\": \"value1\"")),
-                    .indent(.line("\"key2\": [")),
+                    .indent(.line("\"key2\": Dictionary<String, Any> [")),
                     .indent(.indent(.line("\"key3\": \"value3\""))),
-                    .indent(.indent(.line("\"key4\": ["))),
+                    .indent(.indent(.line("\"key4\": Dictionary<String, Any> ["))),
                     .indent(.indent(.indent(.line("\"key5\": \"value5\"")))),
                     .indent(.indent(.line("]"))),
                     .indent(.line("]")),

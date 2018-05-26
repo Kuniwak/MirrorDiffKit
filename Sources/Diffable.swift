@@ -18,9 +18,9 @@ public indirect enum Diffable {
     // whether Diffable is a Hashable or not. And also we cannot cast to
     // Hashable because it is a generic protocol. Therefore we cannot handle
     // types that have a type restrictions.
-    case set([Diffable])
+    case set(type: Any.Type, elements: [Diffable])
 
-    case dictionary([(key: Diffable, value: Diffable)])
+    case dictionary(type: Any.Type, entries: [(key: Diffable, value: Diffable)])
     case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
     case anyClass(type: Any.Type, entries: [String: Diffable])

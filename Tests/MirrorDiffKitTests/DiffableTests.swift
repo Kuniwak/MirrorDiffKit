@@ -66,20 +66,20 @@ class DiffableTests: XCTestCase {
                 expected: "Array<String> [\"1st\", \"2nd\"]"
             ),
             #line: TestCase(
-                input: .dictionary([]),
-                expected: "[:]"
+                input: .dictionary(type: [String: String].self, entries: []),
+                expected: "Dictionary<String, String> [:]"
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: String].self, entries: [
                     (
                         key: .string(type: String.self, content: "KEY"),
                         value: .string(type: String.self, content: "VALUE")
                     ),
                 ]),
-                expected: "[\"KEY\": \"VALUE\"]"
+                expected: "Dictionary<String, String> [\"KEY\": \"VALUE\"]"
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: String].self, entries: [
                     (
                         key: .string(type: String.self, content: "KEY1"),
                         value: .string(type: String.self, content: "VALUE1")
@@ -89,7 +89,7 @@ class DiffableTests: XCTestCase {
                         value: .string(type: String.self, content: "VALUE2")
                     ),
                 ]),
-                expected: "[\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
+                expected: "Dictionary<String, String> [\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
             ),
             #line: TestCase(
                 input: .anyEnum(

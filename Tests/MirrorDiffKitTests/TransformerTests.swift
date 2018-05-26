@@ -172,12 +172,12 @@ class TransformerTests: XCTestCase {
             // MARK: Set
             #line: TestCase(
                 input: Set<Int>([]),
-                target: .set([]),
+                target: .set(type: Set<Int>.self, elements: []),
                 expected: true
             ),
             #line: TestCase(
                 input: Set([1]),
-                target: .set([
+                target: .set(type: Set<Int>.self, elements: [
                     .number(type: Int.self, value: "1"),
                 ]),
                 expected: true

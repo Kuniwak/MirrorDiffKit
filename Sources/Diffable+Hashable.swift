@@ -35,11 +35,13 @@ extension Diffable: Hashable {
             return MirrorDiffKit.hashValue(from: type)
                 ^ elements.reduce(0, { (prev, element) in prev + element.hashValue })
 
-        case let .set(array):
-            return array.reduce(0, { (prev, element) in prev + element.hashValue })
+        case let .set(type: type, elements: elements):
+            return MirrorDiffKit.hashValue(from: type)
+                ^ elements.reduce(0, { (prev, element) in prev + element.hashValue })
 
-        case let .dictionary(entries):
-            return entries.map { $0.key }.reduce(0, { (prev, key) in prev + key.hashValue })
+        case let .dictionary(type: type, entries: entries):
+            return MirrorDiffKit.hashValue(from: type)
+                ^ entries.map { $0.key }.reduce(0, { (prev, key) in prev + key.hashValue })
 
         case let .anyEnum(type: type, caseName: _, associated: associated):
             return MirrorDiffKit.hashValue(from: type)
