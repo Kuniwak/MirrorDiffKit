@@ -7,6 +7,9 @@ extension Diffable: Hashable {
         case .none:
             return 1
 
+        case let .unicodeScalar(unicodeScalar):
+            return unicodeScalar.hashValue
+
         case let .character(character):
             return character.hashValue
 

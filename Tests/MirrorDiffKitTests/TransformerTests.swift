@@ -83,6 +83,12 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
 
+            // MARK: UnicodeScalar
+            #line: TestCase(
+                input: "a".unicodeScalars.first!,
+                target: .unicodeScalar("a".unicodeScalars.first!),
+                expected: true
+            ),
 
             // MARK: Character
             #line: TestCase(

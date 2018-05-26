@@ -7,6 +7,9 @@ extension Diffable: Equatable {
         case (.none, .none):
             return true
 
+        case let (.unicodeScalar(l), .unicodeScalar(r)):
+            return l == r
+
         case let (.character(l), .character(r)):
             return l == r
 

@@ -7,6 +7,9 @@ extension Diffable: PrettyPrintable {
         case .none:
             return [.line("nil")]
 
+        case let .unicodeScalar(unicodeScalar):
+            return [.line("UnicodeScalar(\"\(unicodeScalar)\")")]
+
         case let .character(character):
             return [.line("Character(\"\(character)\")")]
 

@@ -11,6 +11,9 @@ extension Diffable /*: CustomStringConvertible */ {
         case .none:
             return "nil"
 
+        case let .unicodeScalar(unicodeScalar):
+            return "UnicodeScalar(\"\(unicodeScalar)\")"
+
         case let .character(character):
             return "Character(\"\(character)\")"
 

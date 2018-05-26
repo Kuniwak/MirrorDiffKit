@@ -27,6 +27,10 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return .number(type: type, value: "\(x)")
     }
 
+    if let y = x as? UnicodeScalar {
+        return .unicodeScalar(y)
+    }
+
     if let y = x as? Character {
         return .character(y)
     }

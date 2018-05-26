@@ -24,6 +24,12 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
+                input: .unicodeScalar("a".unicodeScalars.first!),
+                expected: [
+                    .line("UnicodeScalar(\"a\")"),
+                ]
+            ),
+            #line: TestCase(
                 input: .character("a".first!),
                 expected: [
                     .line("Character(\"a\")"),
