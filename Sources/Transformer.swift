@@ -13,38 +13,41 @@ func transform(fromAny x: Any?) -> Diffable {
 
 
 private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
-    if let y = x as? NSNull {
-        return Diffable.from(y)
+    let type = Swift.type(of: x)
+
+    if type == NSNull.self {
+        return .null
     }
 
     // MARK: - Integer subtypes and FloatingPoint subtypes
     if isNumberLike(x) {
-        return .number(type: type(of: x), value: "\(x)")
+        return .number(type: type, value: "\(x)")
     }
 
     // MARK: - String related types
     if let y = x as? Character {
-        return Diffable.from(y)
+        // FIXME: .string(String) should be .string(type: Any.Type, content: String)
+        return .string("\(y)")
     }
 
     if let y = x as? String {
-        return Diffable.from(y)
+        return .string("\(y)")
     }
 
 
     // MARK: - Bool subtypes
     if let y = x as? Bool {
-        return Diffable.from(y)
+        return .bool(y)
     }
 
 
     if let y = x as? Date {
-        return Diffable.from(y)
+        return .date(y)
     }
 
 
     if let y = x as? URL {
-        return Diffable.from(y)
+        return .url(y)
     }
 
     return transformMirror(of: x)
