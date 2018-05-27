@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MirrorDiffKit"
-  s.version      = "2.0.0"
+  s.version      = "3.0.0"
   s.summary      = "Structual diff between any struct/class for efficient testing"
   s.description  = <<-DESC
     Structual diff between any struct/class for efficient testing.
