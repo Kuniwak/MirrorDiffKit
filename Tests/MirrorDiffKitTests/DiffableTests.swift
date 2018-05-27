@@ -22,12 +22,12 @@ class DiffableTests: XCTestCase {
                 expected: "nil"
             ),
             #line: TestCase(
-                input: .string("STRING"),
+                input: .string(type: String.self, content: "STRING"),
                 expected: "\"STRING\""
             ),
             #line: TestCase(
-                input: .number(10.0),
-                expected: "10.0"
+                input: .number(type: Double.self, value: "10.0"),
+                expected: "Double(10.0)"
             ),
             #line: TestCase(
                 input: .date(Date(timeIntervalSince1970: 0)),
@@ -38,53 +38,58 @@ class DiffableTests: XCTestCase {
                 expected: "http://example.com/path/?q=v#f"
             ),
             #line: TestCase(
-                input: .tuple([]),
+                input: .tuple(type: Void.self, entries: []),
                 expected: "()"
             ),
             #line: TestCase(
-                input: .tuple([
+                input: .tuple(type: (Optional<Any>, label: Optional<Any>).self, entries: [
                     .notLabeled(index: 0, value: .none),
                     .labeled(label: "label", value: .none),
                 ]),
                 expected: "(nil, label: nil)"
             ),
             #line: TestCase(
-                input: .array([Diffable]()),
-                expected: "[]"
+                input: .collection(type: Array<Any>.self, elements: [Diffable]()),
+                expected: "Array<Any> []"
             ),
             #line: TestCase(
-                input: .array([.none]),
-                expected: "[nil]"
+                input: .collection(type: Array<Optional<Any>>.self, elements: [.none]),
+                expected: "Array<Optional<Any>> [nil]"
             ),
             #line: TestCase(
-                input: .array([.string("1st"), .string("2nd")]),
-                expected: "[\"1st\", \"2nd\"]"
+                input: .collection(
+                    type: Array<String>.self,
+                    elements: [
+                        .string(type: String.self, content: "1st"),
+                        .string(type: String.self, content: "2nd"),
+                    ]),
+                expected: "Array<String> [\"1st\", \"2nd\"]"
             ),
             #line: TestCase(
-                input: .dictionary([]),
-                expected: "[:]"
+                input: .dictionary(type: [String: String].self, entries: []),
+                expected: "Dictionary<String, String> [:]"
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: String].self, entries: [
                     (
-                        key: .string("KEY"),
-                        value: .string("VALUE")
+                        key: .string(type: String.self, content: "KEY"),
+                        value: .string(type: String.self, content: "VALUE")
                     ),
                 ]),
-                expected: "[\"KEY\": \"VALUE\"]"
+                expected: "Dictionary<String, String> [\"KEY\": \"VALUE\"]"
             ),
             #line: TestCase(
-                input: .dictionary([
+                input: .dictionary(type: [String: String].self, entries: [
                     (
-                        key: .string("KEY1"),
-                        value: .string("VALUE1")
+                        key: .string(type: String.self, content: "KEY1"),
+                        value: .string(type: String.self, content: "VALUE1")
                     ),
                     (
-                        key: .string("KEY2"),
-                        value: .string("VALUE2")
+                        key: .string(type: String.self, content: "KEY2"),
+                        value: .string(type: String.self, content: "VALUE2")
                     ),
                 ]),
-                expected: "[\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
+                expected: "Dictionary<String, String> [\"KEY1\": \"VALUE1\", \"KEY2\": \"VALUE2\"]"
             ),
             #line: TestCase(
                 input: .anyEnum(
@@ -106,7 +111,7 @@ class DiffableTests: XCTestCase {
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
                     caseName: EnumCaseName("one"),
-                    associated: [.labeled(label: "key", value: .string("value"))]
+                    associated: [.labeled(label: "key", value: .string(type: String.self, content: "value"))]
                 ),
                 expected: "AssociatedBySameKeys.one(key: \"value\")"
             ),
@@ -114,7 +119,7 @@ class DiffableTests: XCTestCase {
                 input: .anyEnum(
                     type: EnumStub.AssociatedBySameKeys.self,
                     caseName: EnumCaseName("one"),
-                    associated: [.notLabeled(index: 0, value: .string("value"))]
+                    associated: [.notLabeled(index: 0, value: .string(type: String.self, content: "value"))]
                 ),
                 // NOTE: For Swift 3.0-. the label has gone away. X-(
                 expected: "AssociatedBySameKeys.one(\"value\")"
@@ -124,8 +129,8 @@ class DiffableTests: XCTestCase {
                     type: EnumStub.AssociatedByNotSameKeys.self,
                     caseName: EnumCaseName("two"),
                     associated: [
-                        .labeled(label: "key1b", value: .string("value1b")),
-                        .labeled(label: "key2b", value: .string("value2b")),
+                        .labeled(label: "key1b", value: .string(type: String.self, content: "value1b")),
+                        .labeled(label: "key2b", value: .string(type: String.self, content: "value2b")),
                     ]
                 ),
                 expected: "AssociatedByNotSameKeys.two(key1b: \"value1b\", key2b: \"value2b\")"
@@ -141,7 +146,7 @@ class DiffableTests: XCTestCase {
                 input: .anyStruct(
                     type: StructStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: "struct OneEntry { key1: \"value1\" }"
@@ -150,8 +155,8 @@ class DiffableTests: XCTestCase {
                 input: .anyStruct(
                     type: StructStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: "struct TwoEntries { key1: \"value1\", key2: \"value2\" }"
@@ -167,7 +172,7 @@ class DiffableTests: XCTestCase {
                 input: .anyClass(
                     type: ClassStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: "class OneEntry { key1: \"value1\" }"
@@ -176,8 +181,8 @@ class DiffableTests: XCTestCase {
                 input: .anyClass(
                     type: ClassStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: "class TwoEntries { key1: \"value1\", key2: \"value2\" }"

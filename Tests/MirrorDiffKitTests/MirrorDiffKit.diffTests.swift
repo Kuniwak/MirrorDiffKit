@@ -23,7 +23,7 @@ class MirrorDiffKitDiffTests: XCTestCase {
                 and: 3.1416,
                 is: [
                     "",
-                    "  3.1416",
+                    "  Double(3.1416)",
                     "",
                 ].joined(separator: "\n")
             ),
@@ -32,8 +32,8 @@ class MirrorDiffKitDiffTests: XCTestCase {
                 and: 2.7183,
                 is: [
                     "",
-                    "- 3.1416",
-                    "+ 2.7183",
+                    "- Double(3.1416)",
+                    "+ Double(2.7183)",
                     "",
                 ].joined(separator: "\n")
             ),
@@ -43,10 +43,10 @@ class MirrorDiffKitDiffTests: XCTestCase {
                 is: [
                     "",
                     "  [",
-                    "      0.0",
-                    "    - 1.0",
-                    "      2.0",
-                    "    + 3.0",
+                    "      Int(0)",
+                    "    - Int(1)",
+                    "      Int(2)",
+                    "    + Int(3)",
                     "  ]",
                     "",
                 ].joined(separator: "\n")

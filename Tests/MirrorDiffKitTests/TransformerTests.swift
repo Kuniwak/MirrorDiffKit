@@ -1,5 +1,6 @@
 import XCTest
 import Foundation
+import CoreGraphics
 @testable import MirrorDiffKit
 
 
@@ -29,54 +30,78 @@ class TransformerTests: XCTestCase {
                 input: OptionalStub.some as Any,
                 // XXX: We cannot know whether the not nil type is an optional or not.
                 // Therefore, all not nil values are transformed as non-optional types.
-                target: .number(10),
-                expected: true
-            ),
-            #line: TestCase(
-                input: 10,
-                target: .number(10.0),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as Int,
-                target: .number(10.0),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as Int8,
-                target: .number(10.0),
+                target: .number(type: Int8.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as UInt,
-                target: .number(10.0),
+                target: .number(type: UInt.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 10 as UInt8,
-                target: .number(10.0),
+                target: .number(type: UInt8.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: -10,
-                target: .number(-10),
+                target: .number(type: Int.self, value: "-10"),
                 expected: true
             ),
             #line: TestCase(
                 input: 3.14,
-                target: .number(3.14),
+                target: .number(type: Double.self, value: "3.14"),
                 expected: true
             ),
             #line: TestCase(
+                input: 3.14 as Float,
+                target: .number(type: Float.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as Float32,
+                target: .number(type: Float32.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as Float64,
+                target: .number(type: Float64.self, value: "3.14"),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 3.14 as CGFloat,
+                target: .number(type: CGFloat.self, value: "3.14"),
+                expected: true
+            ),
+
+            // MARK: String
+            #line: TestCase(
                 input: "",
-                target: .string(""),
+                target: .string(type: String.self, content: ""),
                 expected: true
             ),
             #line: TestCase(
                 input: "string",
-                target: .string("string"),
+                target: .string(type: String.self, content: "string"),
                 expected: true
             ),
+            #line: TestCase(
+                input: "substring".prefix(3),
+                target: .string(type: Substring.self, content: "sub"),
+                expected: true
+            ),
+
+            // MARK: Bool
             #line: TestCase(
                 input: true,
                 target: .bool(true),
@@ -105,33 +130,33 @@ class TransformerTests: XCTestCase {
             // MARK: Tuple
             #line: TestCase(
                 input: (),
-                target: .tuple([]),
+                target: .tuple(type: Void.self, entries: []),
                 expected: true
             ),
             #line: TestCase(
                 input: (10, 20),
-                target: .tuple([
-                    .notLabeled(index: 0, value: .number(10)),
-                    .notLabeled(index: 1, value: .number(20)),
+                target: .tuple(type: (Int, Int).self, entries: [
+                    .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
+                    .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                 ]),
                 expected: true
             ),
             #line: TestCase(
                 input: (label: 10),
                 // XXX: Unary labeled tuple is not a tuple! ;-(
-                target: .number(10),
+                target: .number(type: Int.self, value: "10"),
                 expected: true
             ),
             #line: TestCase(
                 input: (label1: 10, label2: 20),
                 target: TupleRepresentation.current.isLabeled
-                    ? .tuple([
-                        .labeled(label: "label1", value: .number(10)),
-                        .labeled(label: "label2", value: .number(20)),
+                    ? .tuple(type: (label1: Int, label2: Int).self, entries: [
+                        .labeled(label: "label1", value: .number(type: Int.self, value: "10")),
+                        .labeled(label: "label2", value: .number(type: Int.self, value: "20")),
                     ])
-                    : .tuple([
-                        .notLabeled(index: 0, value: .number(10)),
-                        .notLabeled(index: 1, value: .number(20)),
+                    : .tuple(type: (label1: Int, label2: Int).self, entries: [
+                        .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
+                        .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                     ]),
                 expected: true
             ),
@@ -140,48 +165,49 @@ class TransformerTests: XCTestCase {
             // MARK: Set
             #line: TestCase(
                 input: Set<Int>([]),
-                target: .set([]),
+                target: .set(type: Set<Int>.self, elements: []),
                 expected: true
             ),
             #line: TestCase(
                 input: Set([1]),
-                target: .set([
-                    .number(1),
+                target: .set(type: Set<Int>.self, elements: [
+                    .number(type: Int.self, value: "1"),
                 ]),
                 expected: true
             ),
 
 
-            // MARK: Array
+            // MARK: Collection
             #line: TestCase(
-                input: [],
-                target: .array([]),
+                input: [Int](),
+                target: .collection(type: Array<Int>.self, elements: []),
                 expected: true
             ),
             #line: TestCase(
                 input: [1, 1, 2, 3, 5],
-                target: .array([
-                    .number(1),
-                    .number(1),
-                    .number(2),
-                    .number(3),
-                    .number(5),
+                target: .collection(type: Array<Int>.self, elements: [
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "2"),
+                    .number(type: Int.self, value: "3"),
+                    .number(type: Int.self, value: "5"),
                 ]),
                 expected: true
             ),
             #line: TestCase(
                 input: [[0, -1], [1, 0]],
-                target: .array([
-                    .array([.number(0), .number(-1)]),
-                    .array([.number(1), .number(0)]),
+                target: .collection(type: Array<Array<Int>>.self, elements: [
+                    .collection(type: Array<Int>.self, elements: [.number(type: Int.self, value: "0"), .number(type: Int.self, value: "-1")]),
+                    .collection(type: Array<Int>.self, elements: [.number(type: Int.self, value: "1"), .number(type: Int.self, value: "0")]),
                 ]),
                 expected: true
             ),
             #line: TestCase(
-                input: [[0, -1], [1, 0]],
-                target: .array([
-                    .array([.number(0), .number(-1)]),
-                    .array([.number(1), .number(0)]),
+                input: [0, 1, 2][0...2],
+                target: .collection(type: ArraySlice<Int>.self, elements: [
+                    .number(type: Int.self, value: "0"),
+                    .number(type: Int.self, value: "1"),
+                    .number(type: Int.self, value: "2"),
                 ]),
                 expected: true
             ),
@@ -203,7 +229,7 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: StructStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: true
@@ -216,8 +242,8 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: StructStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: true
@@ -245,17 +271,6 @@ class TransformerTests: XCTestCase {
                 ),
                 expected: true
             ),
-            #line: TestCase(
-                input: 0 ..< 5,
-                target: .generic(
-                    type: CountableRange<Int>.self,
-                    entries: [
-                        "lowerBound": .number(0),
-                        "upperBound": .number(5),
-                    ]
-                ),
-                expected: true
-            ),
 
 
             // MARK: - Class
@@ -274,7 +289,7 @@ class TransformerTests: XCTestCase {
                 target: .anyClass(
                     type: ClassStub.OneEntry.self,
                     entries: [
-                        "key1": .string("value1"),
+                        "key1": .string(type: String.self, content: "value1"),
                     ]
                 ),
                 expected: true
@@ -287,8 +302,8 @@ class TransformerTests: XCTestCase {
                 target: .anyClass(
                     type: ClassStub.TwoEntries.self,
                     entries: [
-                        "key1": .string("value1"),
-                        "key2": .string("value2"),
+                        "key1": .string(type: String.self, content: "value1"),
+                        "key2": .string(type: String.self, content: "value2"),
                     ]
                 ),
                 expected: true
@@ -342,7 +357,7 @@ class TransformerTests: XCTestCase {
                     caseName: EnumCaseName("one"),
                     associated: [
                          // NOTE: Label has gone away X-(
-                        .notLabeled(index: 0, value: .string("value")),
+                        .notLabeled(index: 0, value: .string(type: String.self, content: "value")),
                     ]
                 ),
                 expected: true
@@ -354,12 +369,12 @@ class TransformerTests: XCTestCase {
                     caseName: EnumCaseName("two"),
                     associated: TupleRepresentation.current.isLabeled
                         ? [
-                            .labeled(label: "key1b", value: .string("value1b")),
-                            .labeled(label: "key2b", value: .string("value2b")),
+                            .labeled(label: "key1b", value: .string(type: String.self, content: "value1b")),
+                            .labeled(label: "key2b", value: .string(type: String.self, content: "value2b")),
                         ]
                         : [
-                            .notLabeled(index: 0, value: .string("value1b")),
-                            .notLabeled(index: 1, value: .string("value2b")),
+                            .notLabeled(index: 0, value: .string(type: String.self, content: "value1b")),
+                            .notLabeled(index: 1, value: .string(type: String.self, content: "value2b")),
                         ]
                 ),
                 expected: true
@@ -372,9 +387,33 @@ class TransformerTests: XCTestCase {
                 target: .anyStruct(
                     type: GenericStub<String>.self,
                     entries: [
-                        "value": .string("string"),
+                        "value": .string(type: String.self, content: "string"),
                     ]
                 ),
+                expected: true
+            ),
+
+
+            // MARK: MetaTypes
+            #line: TestCase(
+                input: StructStub.self,
+                target: .type(StructStub.self),
+                expected: true
+            ),
+
+
+            // MARK: - Minor CustomReflectable Types
+            #line: TestCase(
+                input: "a".first!,
+                target: .minorCustomReflectable(type: Character.self, content: .empty(description: "a")),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 0 ..< 5,
+                target: .minorCustomReflectable(type: Range<Int>.self, content: .notEmpty(entries: [
+                    "lowerBound": .number(type: Int.self, value: "0"),
+                    "upperBound": .number(type: Int.self, value: "5"),
+                ])),
                 expected: true
             ),
         ]
@@ -387,10 +426,10 @@ class TransformerTests: XCTestCase {
             let target = testCase.target
             let expected = testCase.expected
 
-            XCTAssertEqual(target == transformed, expected, line: line)
+            XCTAssertEqual(target =~ transformed, expected, line: line)
 
             // NOTE: Print verbose info to efficient debugging.
-            if ((target == transformed) != expected) {
+            if ((target =~ transformed) != expected) {
                 print("expected:")
                 dump(expected)
 

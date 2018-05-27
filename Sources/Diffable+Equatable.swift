@@ -7,11 +7,13 @@ extension Diffable: Equatable {
         case (.none, .none):
             return true
 
-        case let (.string(l), .string(r)):
-            return l == r
+        case let (.string(type: lt, content: lc), .string(type: rt, content: rc)):
+            return lt == rt
+                && lc == rc
 
-        case let (.number(l), .number(r)):
-            return l == r
+        case let (.number(type: lt, value: lv), .number(type: rt, value: rv)):
+            return lt == rt
+                && lv == rv
 
         case let (.bool(l), .bool(r)):
             return l == r
@@ -25,20 +27,22 @@ extension Diffable: Equatable {
         case let (.type(l), .type(r)):
             return l == r
 
-        case let (.tuple(l), .tuple(r)):
-            return l == r
+        case let (.tuple(type: lt, entries: le), .tuple(type: rt, entries: re)):
+            return lt == rt
+                && le == re
 
-        case let (.array(l), .array(r)):
-            return l == r
+        case let (.collection(type: lt, elements: le), .collection(type: rt, elements: re)):
+            return lt == rt
+                && le == re
 
-        case let (.set(l), .set(r)):
-            return DiffableSet(l) == DiffableSet(r)
+        case let (.set(type: lt, elements: le), .set(type: rt, elements: re)):
+            return DiffableSet(type: lt, elements: le) == DiffableSet(type: rt, elements: re)
 
-        case let (.dictionary(l), .dictionary(r)):
-            guard l.count == r.count else { return false }
+        case let (.dictionary(type: lt, entries: le), .dictionary(type: rt, entries: re)):
+            guard le.count == re.count else { return false }
 
-            return DiffableSet(l.map { $0.key }) == DiffableSet(r.map { $0.key })
-                && DiffableSet(l.map { $0.value }) == DiffableSet(r.map { $0.value })
+            return DiffableSet(type: lt, elements: le.map { $0.key }) == DiffableSet(type: rt, elements: re.map { $0.key })
+                && DiffableSet(type: lt, elements: le.map { $0.value }) == DiffableSet(type: rt, elements: re.map { $0.value })
 
         case let (.anyEnum(type: lt, caseName: lc, associated: le), .anyEnum(type: rt, caseName: rc, associated: re)):
             return lt == rt
@@ -53,13 +57,18 @@ extension Diffable: Equatable {
             return lt == rt
                 && le == re
 
-        case let (.generic(type: lt, entries: le), .generic(type: rt, entries: re)):
-            return lt == rt
-                && le == re
-
-        case (.notSupported, .notSupported):
-            // NOTE: This is an only only difference between Equatable and RoughEquatable.
+        case (
+                 .minorCustomReflectable(type: _, content: .empty),
+                 .minorCustomReflectable(type: _, content: .empty)
+             ):
+            // NOTE: This is difference between Equatable and RoughEquatable.
             return false
+
+        case let (
+                .minorCustomReflectable(type: lt, content: .notEmpty(entries: le)),
+                .minorCustomReflectable(type: rt, content: .notEmpty(entries: re))
+            ):
+            return DiffableSet(type: lt, elements: le.map { $0.value }) == DiffableSet(type: rt, elements: re.map { $0.value })
 
         case (.unrecognizable, .unrecognizable):
             return false

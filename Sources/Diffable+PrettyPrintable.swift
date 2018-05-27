@@ -7,11 +7,14 @@ extension Diffable: PrettyPrintable {
         case .none:
             return [.line("nil")]
 
-        case let .string(string):
-            return [.line("\"\(string)\"")]
+        case let .string(type: type, content: content):
+            if type == String.self {
+                return [.line("\"\(content)\"")]
+            }
+            return [.line("\(type)(\"\(content)\")")]
 
-        case let .number(number):
-            return [.line(number.description)]
+        case let .number(type: type, value: value):
+            return [.line("\(type)(\(value))")]
 
         case let .bool(bool):
             return [.line(bool.description)]
@@ -23,9 +26,9 @@ extension Diffable: PrettyPrintable {
             return [.line("\(url.absoluteString)")]
 
         case let .type(type):
-            return [.line(String(describing: type))]
+            return [.line("\(type).self")]
 
-        case let .tuple(entries):
+        case let .tuple(type: _, entries: entries):
             guard !entries.isEmpty else {
                 return [.line("()")]
             }
@@ -61,20 +64,20 @@ extension Diffable: PrettyPrintable {
 
             return [head] + content + [tail]
 
-        case let .array(array):
-            guard !array.isEmpty else {
-                return [.line("[]")]
+        case let .collection(type: type, elements: elements):
+            guard !elements.isEmpty else {
+                return [.line("\(type) []")]
             }
 
             // NOTE: The expected output format is:
-            // [
+            // T [
             //     "single-line"
-            //     [
+            //     T [
             //         "multiple-lines"
             //         "multiple-lines"
             //     ]
             // ]
-            let content: [PrettyLine] = array
+            let content: [PrettyLine] = elements
                 .flatMap { value -> [PrettyLine] in
                 return PrettyLine.addIndentLevel(
                     lines: value.prettyLines,
@@ -82,14 +85,14 @@ extension Diffable: PrettyPrintable {
                 )
             }
 
-            let head: PrettyLine = .line("[")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]
 
-        case let .set(array):
-            guard !array.isEmpty else {
-                return [.line("Set []")]
+        case let .set(type: type, elements: elements):
+            guard !elements.isEmpty else {
+                return [.line("\(type) []")]
             }
 
             // NOTE: The expected output format is:
@@ -100,7 +103,7 @@ extension Diffable: PrettyPrintable {
             //         "multiple-lines"
             //     ]
             // ]
-            let content: [PrettyLine] = array
+            let content: [PrettyLine] = elements
                 .sorted { String(describing: $0) < String(describing: $1) }
                 .flatMap { value -> [PrettyLine] in
                     return PrettyLine.addIndentLevel(
@@ -109,14 +112,14 @@ extension Diffable: PrettyPrintable {
                     )
                 }
 
-            let head: PrettyLine = .line("Set [")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]
 
-        case let .dictionary(entries):
+        case let .dictionary(type: type, entries: entries):
             guard !entries.isEmpty else {
-                return [.line("[:]")]
+                return [.line("\(type) [:]")]
             }
 
             // NOTE: The expected output format is:
@@ -148,7 +151,7 @@ extension Diffable: PrettyPrintable {
                     )
                 }
 
-            let head: PrettyLine = .line("[")
+            let head: PrettyLine = .line("\(type) [")
             let tail: PrettyLine = .line("]")
 
             return [head] + content + [tail]
@@ -180,8 +183,8 @@ extension Diffable: PrettyPrintable {
 
             return [head] + tuplePart + [tail]
 
-        case let .anyStruct(type: type, entries: dictionary):
-            if dictionary.isEmpty {
+        case let .anyStruct(type: type, entries: entries):
+            if entries.isEmpty {
                 return [.line("struct \(type) {}")]
             }
 
@@ -194,30 +197,13 @@ extension Diffable: PrettyPrintable {
             //     ]
             // }
 
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .flatMap { (entry) -> [PrettyLine] in
-                    let (key, value) = entry
-                    let keyLines: [PrettyLine] = [.line("\(key):")]
-                    let valueLines: [PrettyLine] = value.prettyLines
-
-                    return PrettyLine.addIndentLevel(
-                        lines: PrettyLine.concatKeyLineAndValueLines(
-                            keyLines,
-                            and: valueLines,
-                            with: " "
-                        ),
-                        count: 1
-                    )
-                }
-
             let head: PrettyLine = .line("struct \(type) {")
             let tail: PrettyLine = .line("}")
 
-            return [head] + content + [tail]
+            return [head] + childLines(by: entries) + [tail]
 
-        case let .anyClass(type: type, entries: dictionary):
-            if dictionary.isEmpty {
+        case let .anyClass(type: type, entries: entries):
+            if entries.isEmpty {
                 return [.line("class \(type) {}")]
             }
 
@@ -230,69 +216,54 @@ extension Diffable: PrettyPrintable {
             //     ]
             // }
 
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .flatMap { (entry) -> [PrettyLine] in
-                    let (key, value) = entry
-                    let keyLines: [PrettyLine] = [.line("\(key):")]
-                    let valueLines: [PrettyLine] = value.prettyLines
-
-                    return PrettyLine.addIndentLevel(
-                        lines: PrettyLine.concatKeyLineAndValueLines(
-                            keyLines,
-                            and: valueLines,
-                            with: " "
-                        ),
-                        count: 1
-                    )
-                }
-
             let head: PrettyLine = .line("class \(type) {")
             let tail: PrettyLine = .line("}")
 
-            return [head] + content + [tail]
+            return [head] + childLines(by: entries) + [tail]
 
-        case let .generic(type: type, entries: dictionary):
-            if dictionary.isEmpty {
-                return [.line("generic \(type) {}")]
+        case let .minorCustomReflectable(type: type, content: content):
+            switch content {
+            case let .empty(description: description):
+                return [.line("(unknown) \(type): CustomReflectable { description: \"\(description)\" }")]
+
+            case let .notEmpty(entries: entries):
+                // NOTE: The expected output format is:
+                // (opaque) MyStruct {
+                //     key: "single-line"
+                //     key: [
+                //         "multiple-lines"
+                //         "multiple-lines"
+                //     ]
+                // }
+
+                let head: PrettyLine = .line("(unknown) \(type): CustomReflectable {")
+                let tail: PrettyLine = .line("}")
+
+                return [head] + childLines(by: entries) + [tail]
             }
-
-            // NOTE: The expected output format is:
-            // generic T {
-            //     key: "single-line"
-            //     key: [
-            //         "multiple-lines"
-            //         "multiple-lines"
-            //     ]
-            // }
-
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .flatMap { entry -> [PrettyLine] in
-                    let (key, value) = entry
-                    let keyLines: [PrettyLine] = [.line("\(key):")]
-                    let valueLines: [PrettyLine] = value.prettyLines
-
-                    return PrettyLine.addIndentLevel(
-                        lines: PrettyLine.concatKeyLineAndValueLines(
-                            keyLines,
-                            and: valueLines,
-                            with: " "
-                        ),
-                        count: 1
-                    )
-                }
-
-            let head: PrettyLine = .line("generic \(type) {")
-            let tail: PrettyLine = .line("}")
-
-            return [head] + content + [tail]
-
-        case let .notSupported(value: x):
-            return [.line("notSupported<<value: \(x)>>")]
 
         case let .unrecognizable(debugInfo):
             return [.line("unrecognizable<<debugInfo: \(debugInfo)>>")]
         }
     }
+}
+
+
+fileprivate func childLines(by dictionary: [String: Diffable]) -> [PrettyLine] {
+    return entries(fromDictionary: dictionary)
+        .sorted { $0.key < $1.key }
+        .flatMap { (entry) -> [PrettyLine] in
+            let (key, value) = entry
+            let keyLines: [PrettyLine] = [.line("\(key):")]
+            let valueLines: [PrettyLine] = value.prettyLines
+
+            return PrettyLine.addIndentLevel(
+                lines: PrettyLine.concatKeyLineAndValueLines(
+                    keyLines,
+                    and: valueLines,
+                    with: " "
+                ),
+                count: 1
+            )
+        }
 }

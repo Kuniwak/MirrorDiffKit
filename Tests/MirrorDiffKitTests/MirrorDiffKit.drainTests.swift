@@ -13,7 +13,7 @@ class MirrorDiffKitDrainTests: XCTestCase {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
                 input: 123,
-                expected: "123.0"
+                expected: "Int(123)"
             ),
             #line: TestCase(
                 input: "string",

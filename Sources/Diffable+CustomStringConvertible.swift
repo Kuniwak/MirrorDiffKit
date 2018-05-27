@@ -11,11 +11,14 @@ extension Diffable /*: CustomStringConvertible */ {
         case .none:
             return "nil"
 
-        case let .string(string):
-            return "\"\(string)\""
+        case let .string(type: type, content: content):
+            if type == String.self {
+                return "\"\(content)\""
+            }
+            return "\(type)(\"\(content)\")"
 
-        case let .number(number):
-            return number.description
+        case let .number(type: type, value: value):
+            return "\(type)(\(value))"
 
         case let .bool(bool):
             return bool.description
@@ -27,38 +30,38 @@ extension Diffable /*: CustomStringConvertible */ {
             return url.absoluteString
 
         case let .type(type):
-            return String(describing: type)
+            return "\(type).self"
 
-        case let .tuple(entries):
-            let content = entries
+        case let .tuple(type: _, entries: entries):
+            let children = entries
                 .map { $0.description }
                 .joined(separator: ", ")
 
-            return "(" + content + ")"
+            return "(" + children + ")"
 
-        case let .array(array):
-            let content = array
+        case let .collection(type: type, elements: entries):
+            let children = entries
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "[" + content + "]"
+            return "\(type) [" + children + "]"
 
-        case let .set(array):
-            let content = array
+        case let .set(type: type, elements: elements):
+            let children = elements
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "Set [" + content + "]"
+            return "\(type) [" + children + "]"
 
-        case let .dictionary(diffables):
-            guard !diffables.isEmpty else { return "[:]" }
+        case let .dictionary(type: type, entries: entries):
+            guard !entries.isEmpty else { return "\(type) [:]" }
 
-            let content = diffables
+            let children = entries
                 .sorted { $0.key.description <= $1.key.description }
                 .map { (key, value) in "\(key.description): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "[" + content + "]"
+            return "\(type) [" + children + "]"
 
         case let .anyEnum(type: type, caseName: caseName, associated: associated):
             if associated.isEmpty {
@@ -79,12 +82,12 @@ extension Diffable /*: CustomStringConvertible */ {
                 return "struct \(type) {}"
             }
 
-            let content = array
+            let children = array
                 .sorted { $0.key < $1.key }
                 .map { (key, value) in "\(key): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "struct \(type) { \(content) }"
+            return "struct \(type) { \(children) }"
 
         case let .anyClass(type: type, entries: dictionary):
             let array = entries(fromDictionary: dictionary)
@@ -93,27 +96,28 @@ extension Diffable /*: CustomStringConvertible */ {
                 return "class \(type) {}"
             }
 
-            let content = array
+            let children = array
                 .sorted { $0.key < $1.key }
                 .map { (key, value) in "\(key): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "class \(type) { \(content) }"
+            return "class \(type) { \(children) }"
 
-        case let .generic(type: type, entries: dictionary):
-            guard !dictionary.isEmpty else {
-                return "generic \(type) {}"
+        case let .minorCustomReflectable(type: type, content: content):
+            switch content {
+            case let .empty(description: description):
+                return "(unknown) \(type): CustomReflectable { description: \"\(description)\" }"
+
+            case let .notEmpty(entries: dictionary):
+                let array = entries(fromDictionary: dictionary)
+
+                let children = array
+                    .sorted { $0.key < $1.key }
+                    .map { (key, value) in "\(key): \(value.description)" }
+                    .joined(separator: ", ")
+
+                return "(unknown) \(type): CustomReflectable { \(children) }"
             }
-
-            let content = entries(fromDictionary: dictionary)
-                .sorted { $0.key < $1.key }
-                .map { (key, value) in "\(key): \(value.description)" }
-                .joined(separator: ", ")
-
-            return "generic \(type) { (\(content)) }"
-
-        case let .notSupported(value: x):
-            return "notSupported<<value: \(x)>>"
 
         case let .unrecognizable(debugInfo):
             return "unrecognizable<<debugInfo: \(debugInfo)>>"
