@@ -382,6 +382,12 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
+                input: .type(Int.self),
+                expected: [
+                    .line("Int.self"),
+                ]
+            ),
+            #line: TestCase(
                 input: .minorCustomReflectable(type: Character.self, content: .empty(description: "a")),
                 expected: [
                     .line("(unknown) Character: CustomReflectable { description: \"a\" }"),

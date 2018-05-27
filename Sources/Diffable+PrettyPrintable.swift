@@ -26,7 +26,7 @@ extension Diffable: PrettyPrintable {
             return [.line("\(url.absoluteString)")]
 
         case let .type(type):
-            return [.line(String(describing: type))]
+            return [.line("\(type).self")]
 
         case let .tuple(type: _, entries: entries):
             guard !entries.isEmpty else {

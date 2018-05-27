@@ -30,7 +30,7 @@ extension Diffable /*: CustomStringConvertible */ {
             return url.absoluteString
 
         case let .type(type):
-            return String(describing: type)
+            return "\(type).self"
 
         case let .tuple(type: _, entries: entries):
             let children = entries
