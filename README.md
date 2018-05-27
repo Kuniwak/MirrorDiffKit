@@ -14,6 +14,9 @@ A tool for providing the 2 features for efficient testing:
 - Default implementation of Equatable for any types
 
 
+![](./Images/XcodePreview.png)
+
+
 
 Usage
 -----
