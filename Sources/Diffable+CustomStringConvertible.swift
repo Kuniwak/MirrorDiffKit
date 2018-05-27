@@ -11,12 +11,6 @@ extension Diffable /*: CustomStringConvertible */ {
         case .none:
             return "nil"
 
-        case let .unicodeScalar(unicodeScalar):
-            return "UnicodeScalar(\"\(unicodeScalar)\")"
-
-        case let .character(character):
-            return "Character(\"\(character)\")"
-
         case let .string(type: type, content: content):
             if type == String.self {
                 return "\"\(content)\""
@@ -39,35 +33,35 @@ extension Diffable /*: CustomStringConvertible */ {
             return String(describing: type)
 
         case let .tuple(type: _, entries: entries):
-            let content = entries
+            let children = entries
                 .map { $0.description }
                 .joined(separator: ", ")
 
-            return "(" + content + ")"
+            return "(" + children + ")"
 
         case let .collection(type: type, elements: entries):
-            let content = entries
+            let children = entries
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "\(type) [" + content + "]"
+            return "\(type) [" + children + "]"
 
         case let .set(type: type, elements: elements):
-            let content = elements
+            let children = elements
                 .map { value in value.description }
                 .joined(separator: ", ")
 
-            return "\(type) [" + content + "]"
+            return "\(type) [" + children + "]"
 
         case let .dictionary(type: type, entries: entries):
             guard !entries.isEmpty else { return "\(type) [:]" }
 
-            let content = entries
+            let children = entries
                 .sorted { $0.key.description <= $1.key.description }
                 .map { (key, value) in "\(key.description): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "\(type) [" + content + "]"
+            return "\(type) [" + children + "]"
 
         case let .anyEnum(type: type, caseName: caseName, associated: associated):
             if associated.isEmpty {
@@ -88,12 +82,12 @@ extension Diffable /*: CustomStringConvertible */ {
                 return "struct \(type) {}"
             }
 
-            let content = array
+            let children = array
                 .sorted { $0.key < $1.key }
                 .map { (key, value) in "\(key): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "struct \(type) { \(content) }"
+            return "struct \(type) { \(children) }"
 
         case let .anyClass(type: type, entries: dictionary):
             let array = entries(fromDictionary: dictionary)
@@ -102,15 +96,28 @@ extension Diffable /*: CustomStringConvertible */ {
                 return "class \(type) {}"
             }
 
-            let content = array
+            let children = array
                 .sorted { $0.key < $1.key }
                 .map { (key, value) in "\(key): \(value.description)" }
                 .joined(separator: ", ")
 
-            return "class \(type) { \(content) }"
+            return "class \(type) { \(children) }"
 
-        case let .notSupported(value: x):
-            return "notSupported<<value: \(x)>>"
+        case let .minorCustomReflectable(type: type, content: content):
+            switch content {
+            case let .empty(description: description):
+                return "(unknown) \(type): CustomReflectable { description: \"\(description)\" }"
+
+            case let .notEmpty(entries: dictionary):
+                let array = entries(fromDictionary: dictionary)
+
+                let children = array
+                    .sorted { $0.key < $1.key }
+                    .map { (key, value) in "\(key): \(value.description)" }
+                    .joined(separator: ", ")
+
+                return "(unknown) \(type): CustomReflectable { \(children) }"
+            }
 
         case let .unrecognizable(debugInfo):
             return "unrecognizable<<debugInfo: \(debugInfo)>>"

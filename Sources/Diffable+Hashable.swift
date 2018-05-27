@@ -7,12 +7,6 @@ extension Diffable: Hashable {
         case .none:
             return 1
 
-        case let .unicodeScalar(unicodeScalar):
-            return unicodeScalar.hashValue
-
-        case let .character(character):
-            return character.hashValue
-
         case let .string(type: type, content: content):
             return MirrorDiffKit.hashValue(from: type) ^ content.hashValue
 
@@ -59,8 +53,16 @@ extension Diffable: Hashable {
             return MirrorDiffKit.hashValue(from: type)
                 ^ entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
 
-        case let .notSupported(value: value):
-            return String(describing: value).hashValue
+        case let .minorCustomReflectable(type: type, content: content):
+            switch content {
+            case let .empty(description: description):
+                return MirrorDiffKit.hashValue(from: type)
+                    ^ description.hashValue
+
+            case let .notEmpty(entries: entries):
+                return MirrorDiffKit.hashValue(from: type)
+                    ^ entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
+            }
 
         case .unrecognizable:
             return Int.max

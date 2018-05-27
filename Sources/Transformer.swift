@@ -27,14 +27,6 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return .number(type: type, value: "\(x)")
     }
 
-    if let y = x as? UnicodeScalar {
-        return .unicodeScalar(y)
-    }
-
-    if let y = x as? Character {
-        return .character(y)
-    }
-
     if isStringLike(x) {
         return .string(type: type, content: "\(x)")
     }
@@ -49,10 +41,6 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
 
     if let y = x as? URL {
         return .url(y)
-    }
-
-    if let y = x as? Any.Type {
-        return .type(y)
     }
 
     return transformMirror(of: x)
@@ -138,8 +126,27 @@ func transformMirror(of x: Any) -> Diffable {
             return .anyClass(type: trulyType, entries: entries)
 
         case .none:
-            return .notSupported(value: x)
+            // NOTE: The types can have nil .displayType are only MetaTypes and OpaqueImpls and some CustomReflectables.
+            // https://github.com/apple/swift/blob/3ec7fc169d21f805366c19c0f8e1d437646c6149/stdlib/public/runtime/ReflectionMirror.mm#L512
+            // https://github.com/apple/swift/blob/c35d508600516b892732e2fd3f0f0a17ca4562ba/stdlib/public/core/ReflectionMirror.swift#L154
 
+            if let y = x as? Any.Type {
+                return .type(y)
+            }
+
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            let entries = try transformFromLabeledMirror(of: mirror)
+
+            if let y = x as? CustomReflectable {
+                guard !entries.isEmpty else {
+                    return .minorCustomReflectable(type: trulyType, content: .empty(description: "\(y)"))
+                }
+                return .minorCustomReflectable(type: trulyType, content: .notEmpty(entries: entries))
+            }
+
+            return .unrecognizable(debugInfo: "type=`\(trulyType)`, description=`\(x)`")
         }
     }
     catch {

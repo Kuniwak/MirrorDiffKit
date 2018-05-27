@@ -7,12 +7,6 @@ extension Diffable: Equatable {
         case (.none, .none):
             return true
 
-        case let (.unicodeScalar(l), .unicodeScalar(r)):
-            return l == r
-
-        case let (.character(l), .character(r)):
-            return l == r
-
         case let (.string(type: lt, content: lc), .string(type: rt, content: rc)):
             return lt == rt
                 && lc == rc
@@ -63,9 +57,18 @@ extension Diffable: Equatable {
             return lt == rt
                 && le == re
 
-        case (.notSupported, .notSupported):
-            // NOTE: This is an only only difference between Equatable and RoughEquatable.
+        case (
+                 .minorCustomReflectable(type: _, content: .empty),
+                 .minorCustomReflectable(type: _, content: .empty)
+             ):
+            // NOTE: This is difference between Equatable and RoughEquatable.
             return false
+
+        case let (
+                .minorCustomReflectable(type: lt, content: .notEmpty(entries: le)),
+                .minorCustomReflectable(type: rt, content: .notEmpty(entries: re))
+            ):
+            return DiffableSet(type: lt, elements: le.map { $0.value }) == DiffableSet(type: rt, elements: re.map { $0.value })
 
         case (.unrecognizable, .unrecognizable):
             return false

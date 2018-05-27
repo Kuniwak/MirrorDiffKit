@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 @testable import MirrorDiffKit
 
@@ -21,18 +22,6 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 input: .none,
                 expected: [
                     .line("nil"),
-                ]
-            ),
-            #line: TestCase(
-                input: .unicodeScalar("a".unicodeScalars.first!),
-                expected: [
-                    .line("UnicodeScalar(\"a\")"),
-                ]
-            ),
-            #line: TestCase(
-                input: .character("a".first!),
-                expected: [
-                    .line("Character(\"a\")"),
                 ]
             ),
             #line: TestCase(
@@ -392,7 +381,24 @@ class DiffablePrettyPrintableTests: XCTestCase {
                     .line("}"),
                 ]
             ),
-            // TODO: Generic
+            #line: TestCase(
+                input: .minorCustomReflectable(type: Character.self, content: .empty(description: "a")),
+                expected: [
+                    .line("(unknown) Character: CustomReflectable { description: \"a\" }"),
+                ]
+            ),
+            #line: TestCase(
+                input: .minorCustomReflectable(type: Range<Int>.self, content: .notEmpty(entries: [
+                    "lowerBound": .number(type: Int.self, value: "0"),
+                    "upperBound": .number(type: Int.self, value: "5"),
+                ])),
+                expected: [
+                    .line("(unknown) Range<Int>: CustomReflectable {"),
+                    .indent(.line("lowerBound: Int(0)")),
+                    .indent(.line("upperBound: Int(5)")),
+                    .line("}"),
+                ]
+            )
         ]
 
 
@@ -400,11 +406,11 @@ class DiffablePrettyPrintableTests: XCTestCase {
             let actual = testCase.input.prettyLines
             let expected = testCase.expected
 
-             XCTAssertEqual(
-                 actual, expected,
-                 diff(between: expected, and: actual),
-                 line: line
-             )
+            XCTAssertEqual(
+                actual, expected,
+                diff(between: expected, and: actual),
+                line: line
+            )
         }
     }
 

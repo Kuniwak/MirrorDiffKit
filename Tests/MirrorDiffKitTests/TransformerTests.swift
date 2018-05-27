@@ -1,5 +1,6 @@
 import XCTest
 import Foundation
+import CoreGraphics
 @testable import MirrorDiffKit
 
 
@@ -80,20 +81,6 @@ class TransformerTests: XCTestCase {
             #line: TestCase(
                 input: 3.14 as CGFloat,
                 target: .number(type: CGFloat.self, value: "3.14"),
-                expected: true
-            ),
-
-            // MARK: UnicodeScalar
-            #line: TestCase(
-                input: "a".unicodeScalars.first!,
-                target: .unicodeScalar("a".unicodeScalars.first!),
-                expected: true
-            ),
-
-            // MARK: Character
-            #line: TestCase(
-                input: "a".first!,
-                target: .character("a".first!),
                 expected: true
             ),
 
@@ -284,11 +271,6 @@ class TransformerTests: XCTestCase {
                 ),
                 expected: true
             ),
-            #line: TestCase(
-                input: 0 ..< 5,
-                target: .notSupported(value: 0 ..< 5),
-                expected: false
-            ),
 
 
             // MARK: - Class
@@ -412,10 +394,26 @@ class TransformerTests: XCTestCase {
             ),
 
 
-            // MARK: MetaType
+            // MARK: MetaTypes
             #line: TestCase(
                 input: StructStub.self,
                 target: .type(StructStub.self),
+                expected: true
+            ),
+
+
+            // MARK: - Minor CustomReflectable Types
+            #line: TestCase(
+                input: "a".first!,
+                target: .minorCustomReflectable(type: Character.self, content: .empty(description: "a")),
+                expected: true
+            ),
+            #line: TestCase(
+                input: 0 ..< 5,
+                target: .minorCustomReflectable(type: Range<Int>.self, content: .notEmpty(entries: [
+                    "lowerBound": .number(type: Int.self, value: "0"),
+                    "upperBound": .number(type: Int.self, value: "5"),
+                ])),
                 expected: true
             ),
         ]
@@ -428,10 +426,10 @@ class TransformerTests: XCTestCase {
             let target = testCase.target
             let expected = testCase.expected
 
-            XCTAssertEqual(target == transformed, expected, line: line)
+            XCTAssertEqual(target =~ transformed, expected, line: line)
 
             // NOTE: Print verbose info to efficient debugging.
-            if ((target == transformed) != expected) {
+            if ((target =~ transformed) != expected) {
                 print("expected:")
                 dump(expected)
 
