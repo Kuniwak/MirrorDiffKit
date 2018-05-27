@@ -51,6 +51,10 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
         return .url(y)
     }
 
+    if let y = x as? Any.Type {
+        return .type(y)
+    }
+
     return transformMirror(of: x)
 }
 

@@ -410,6 +410,14 @@ class TransformerTests: XCTestCase {
                 ),
                 expected: true
             ),
+
+
+            // MARK: MetaType
+            #line: TestCase(
+                input: StructStub.self,
+                target: .type(StructStub.self),
+                expected: true
+            ),
         ]
 
 
