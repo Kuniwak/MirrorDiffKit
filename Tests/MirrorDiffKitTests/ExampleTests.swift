@@ -15,7 +15,7 @@ class ExampleTests: XCTestCase {
         //     key2: "I'm inserted"
         // )
         //
-        // XCTAssertEqual(a, b, diff(between: a, and: b))
+        // XCTAssert(a == b, diff(between: a, and: b))
     }
 
 
