@@ -38,7 +38,7 @@ extension Diffable /*: CustomStringConvertible */ {
         case let .type(type):
             return String(describing: type)
 
-        case let .tuple(entries):
+        case let .tuple(type: _, entries: entries):
             let content = entries
                 .map { $0.description }
                 .joined(separator: ", ")

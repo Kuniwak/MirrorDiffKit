@@ -81,7 +81,10 @@ func transformMirror(of x: Any) -> Diffable {
 
         case .some(.tuple):
             let entries = transformFromTupleMirror(of: mirror)
-            return .tuple(entries)
+            // NOTE: .subjectType should not to be used. Because .subjectType can be different from
+            // the original type if x is a CustomReflectable.
+            let trulyType = type(of: x)
+            return .tuple(type: trulyType, entries: entries)
 
         case .some(.set):
             let elements = transformFromNonLabeledMirror(of: mirror)

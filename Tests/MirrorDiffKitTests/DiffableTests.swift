@@ -38,11 +38,11 @@ class DiffableTests: XCTestCase {
                 expected: "http://example.com/path/?q=v#f"
             ),
             #line: TestCase(
-                input: .tuple([]),
+                input: .tuple(type: Void.self, entries: []),
                 expected: "()"
             ),
             #line: TestCase(
-                input: .tuple([
+                input: .tuple(type: (Optional<Any>, label: Optional<Any>).self, entries: [
                     .notLabeled(index: 0, value: .none),
                     .labeled(label: "label", value: .none),
                 ]),

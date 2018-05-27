@@ -34,7 +34,7 @@ extension Diffable: PrettyPrintable {
         case let .type(type):
             return [.line(String(describing: type))]
 
-        case let .tuple(entries):
+        case let .tuple(type: _, entries: entries):
             guard !entries.isEmpty else {
                 return [.line("()")]
             }

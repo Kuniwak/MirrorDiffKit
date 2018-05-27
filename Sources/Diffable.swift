@@ -14,7 +14,7 @@ public indirect enum Diffable {
     case date(Date)
     case url(URL)
     case type(Any.Type)
-    case tuple([TupleEntry])
+    case tuple(type: Any.Type, entries: [TupleEntry])
     case collection(type: Any.Type, elements: [Diffable])
 
     // XXX: We can collect only Hashable values into Sets, but we cannot know

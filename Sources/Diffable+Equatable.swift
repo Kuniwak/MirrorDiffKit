@@ -33,8 +33,9 @@ extension Diffable: Equatable {
         case let (.type(l), .type(r)):
             return l == r
 
-        case let (.tuple(l), .tuple(r)):
-            return l == r
+        case let (.tuple(type: lt, entries: le), .tuple(type: rt, entries: re)):
+            return lt == rt
+                && le == re
 
         case let (.collection(type: lt, elements: le), .collection(type: rt, elements: re)):
             return lt == rt

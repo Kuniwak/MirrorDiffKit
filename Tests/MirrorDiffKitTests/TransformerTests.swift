@@ -143,12 +143,12 @@ class TransformerTests: XCTestCase {
             // MARK: Tuple
             #line: TestCase(
                 input: (),
-                target: .tuple([]),
+                target: .tuple(type: Void.self, entries: []),
                 expected: true
             ),
             #line: TestCase(
                 input: (10, 20),
-                target: .tuple([
+                target: .tuple(type: (Int, Int).self, entries: [
                     .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
                     .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                 ]),
@@ -163,11 +163,11 @@ class TransformerTests: XCTestCase {
             #line: TestCase(
                 input: (label1: 10, label2: 20),
                 target: TupleRepresentation.current.isLabeled
-                    ? .tuple([
+                    ? .tuple(type: (label1: Int, label2: Int).self, entries: [
                         .labeled(label: "label1", value: .number(type: Int.self, value: "10")),
                         .labeled(label: "label2", value: .number(type: Int.self, value: "20")),
                     ])
-                    : .tuple([
+                    : .tuple(type: (label1: Int, label2: Int).self, entries: [
                         .notLabeled(index: 0, value: .number(type: Int.self, value: "10")),
                         .notLabeled(index: 1, value: .number(type: Int.self, value: "20")),
                     ]),

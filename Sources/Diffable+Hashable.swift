@@ -31,8 +31,9 @@ extension Diffable: Hashable {
         case let .type(type):
             return MirrorDiffKit.hashValue(from: type)
 
-        case let .tuple(entries):
-            return entries.reduce(0, { (prev, entry) in prev + entry.value.hashValue })
+        case let .tuple(type: type, entries: entries):
+            return MirrorDiffKit.hashValue(from: type)
+                ^ entries.reduce(0, { (prev, entry) in prev + entry.value.hashValue })
 
         case let .collection(type: type, elements: elements):
             return MirrorDiffKit.hashValue(from: type)

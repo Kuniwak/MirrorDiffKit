@@ -72,13 +72,13 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .tuple([]),
+                input: .tuple(type: Void.self, entries: []),
                 expected: [
                     .line("()"),
                 ]
             ),
             #line: TestCase(
-                input: .tuple([
+                input: .tuple(type: (Optional<Any>, label: Optional<Any>).self, entries: [
                     .notLabeled(index: 0, value: .none),
                     .labeled(label: "label", value: .none),
                 ]),
