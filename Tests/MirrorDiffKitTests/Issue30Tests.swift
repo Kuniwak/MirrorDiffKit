@@ -1,5 +1,4 @@
 import XCTest
-import CoreGraphics
 @testable import MirrorDiffKit
 
 
@@ -12,8 +11,9 @@ class Issue30Tests: XCTestCase {
 
 
     func testCGFloat() {
-        let a = CGFloat(0.0)
-        let b = CGFloat(1.0)
+        // NOTE: Use a fake CGFloat on Linux.
+        let a = createCGFloat(0.0)
+        let b = createCGFloat(1.0)
 
         let expected = [
             "",

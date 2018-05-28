@@ -1,6 +1,5 @@
 import XCTest
 import Foundation
-import CoreGraphics
 @testable import MirrorDiffKit
 
 
@@ -79,8 +78,9 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
             #line: TestCase(
-                input: 3.14 as CGFloat,
-                target: .number(type: CGFloat.self, value: "3.14"),
+                // NOTE: Use fake CGFloat on Linux.
+                input: createCGFloat(3.14),
+                target: .number(type: CGFloatCompatibleWithLinux.self, value: "3.14"),
                 expected: true
             ),
 
