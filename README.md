@@ -2,8 +2,9 @@
 =============
 
 ![Swift 4.1 compatible](https://img.shields.io/badge/Swift%20version-4.1-green.svg)
-![Swift Package Manager and Carthage and CocoaPods compatible](https://img.shields.io/badge/SPM%20%7C%20Carthage%20%7C%20CocoaPods-compatible-green.svg)
-[![v3.0.0](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/Kuniwak/MirrorDiffKit/releases)
+![CocoaPods](https://img.shields.io/cocoapods/v/MirrorDiffKit.svg)
+![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)
+![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
 [![Build Status](https://www.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://www.bitrise.io/app/94e8fe199a9a670b)
 
