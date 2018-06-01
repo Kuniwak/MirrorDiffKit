@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: library/swift:4.1
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: swift test
