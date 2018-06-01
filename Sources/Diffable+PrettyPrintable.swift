@@ -200,7 +200,11 @@ extension Diffable: PrettyPrintable {
             let head: PrettyLine = .line("struct \(type) {")
             let tail: PrettyLine = .line("}")
 
-            return [head] + childLines(by: entries) + [tail]
+            // XXX: This temporary variable is necessary for Swift 4.0.x.
+            //     Type inference could be failed if the temporary variable is nothing.
+            let body: [PrettyLine] = childLines(by: entries)
+
+            return [head] + body + [tail]
 
         case let .anyClass(type: type, entries: entries):
             if entries.isEmpty {
@@ -219,7 +223,11 @@ extension Diffable: PrettyPrintable {
             let head: PrettyLine = .line("class \(type) {")
             let tail: PrettyLine = .line("}")
 
-            return [head] + childLines(by: entries) + [tail]
+            // XXX: This temporary variable is necessary for Swift 4.0.x.
+            //     Type inference could be failed if the temporary variable is nothing.
+            let body: [PrettyLine] = childLines(by: entries)
+
+            return [head] + body + [tail]
 
         case let .minorCustomReflectable(type: type, content: content):
             switch content {
@@ -239,7 +247,11 @@ extension Diffable: PrettyPrintable {
                 let head: PrettyLine = .line("(unknown) \(type): CustomReflectable {")
                 let tail: PrettyLine = .line("}")
 
-                return [head] + childLines(by: entries) + [tail]
+                // XXX: This temporary variable is necessary for Swift 4.0.x.
+                //     Type inference could be failed if the temporary variable is nothing.
+                let body: [PrettyLine] = childLines(by: entries)
+
+                return [head] + body + [tail]
             }
 
         case let .unrecognizable(debugInfo):
