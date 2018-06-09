@@ -149,7 +149,7 @@ class TransformerTests: XCTestCase {
             ),
             #line: TestCase(
                 input: (label1: 10, label2: 20),
-                target: TupleRepresentation.current.isLabeled
+                target: TupleRepresentation.current.isAlmostLabeled
                     ? .tuple(type: (label1: Int, label2: Int).self, entries: [
                         .labeled(label: "label1", value: .number(type: Int.self, value: "10")),
                         .labeled(label: "label2", value: .number(type: Int.self, value: "20")),
@@ -356,8 +356,10 @@ class TransformerTests: XCTestCase {
                     type: EnumStub.AssociatedBySameKeys.self,
                     caseName: EnumCaseName("one"),
                     associated: [
-                         // NOTE: Label has gone away X-(
-                        .notLabeled(index: 0, value: .string(type: String.self, content: "value")),
+                        TupleRepresentation.current.isFullyLabeled
+                            ? .labeled(label: "key", value: .string(type: String.self, content: "value"))
+                            // NOTE: Label has gone away on Swift 4.1 or lower X-(
+                            : .notLabeled(index: 0, value: .string(type: String.self, content: "value")),
                     ]
                 ),
                 expected: true
@@ -367,7 +369,7 @@ class TransformerTests: XCTestCase {
                 target: .anyEnum(
                     type: EnumStub.AssociatedByNotSameKeys.self,
                     caseName: EnumCaseName("two"),
-                    associated: TupleRepresentation.current.isLabeled
+                    associated: TupleRepresentation.current.isFullyLabeled
                         ? [
                             .labeled(label: "key1b", value: .string(type: String.self, content: "value1b")),
                             .labeled(label: "key2b", value: .string(type: String.self, content: "value2b")),
