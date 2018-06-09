@@ -49,10 +49,9 @@ public enum TupleRepresentation {
         // NOTE: This is Swift 3.1+.
         if label == "label1" {
             let anotherMirror = Mirror(reflecting: SampleEnum.caseAssociatedSingleType(label: "value"))
-            let anotherLabel = anotherMirror.children.first!.label
 
-            return anotherLabel != nil
-                ? .fullyLabeled
+            return type(of: anotherMirror.children.first!.value) != String.self
+                ? .fullyLabeled // NOTE: This is Swift 4.2+
                 : .labeledWithoutSingleAssociatedType
         }
 

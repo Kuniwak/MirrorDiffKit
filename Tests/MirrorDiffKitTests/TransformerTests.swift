@@ -369,7 +369,7 @@ class TransformerTests: XCTestCase {
                 target: .anyEnum(
                     type: EnumStub.AssociatedByNotSameKeys.self,
                     caseName: EnumCaseName("two"),
-                    associated: TupleRepresentation.current.isFullyLabeled
+                    associated: TupleRepresentation.current.isAlmostLabeled
                         ? [
                             .labeled(label: "key1b", value: .string(type: String.self, content: "value1b")),
                             .labeled(label: "key2b", value: .string(type: String.self, content: "value2b")),
