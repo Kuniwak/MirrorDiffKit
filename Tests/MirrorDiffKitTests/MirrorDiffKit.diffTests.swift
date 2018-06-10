@@ -85,11 +85,17 @@ class MirrorDiffKitDiffTests: XCTestCase {
             #line: TestCase(
                 diffBetween: EnumStub.AssociatedBySameKeys.one(key: "value"),
                 and: EnumStub.AssociatedBySameKeys.one(key: "value"),
-                is: [
-                    "",
-                    "  AssociatedBySameKeys.one(\"value\")", // NOTE: Label has gone away X-(
-                    "",
-                ].joined(separator: "\n")
+                is: TupleRepresentation.current.isFullyLabeled
+                    ? [
+                        "",
+                        "  AssociatedBySameKeys.one(key: \"value\")",
+                        "",
+                    ].joined(separator: "\n")
+                    : [
+                        "",
+                        "  AssociatedBySameKeys.one(\"value\")", // NOTE: Label has gone away on Swift 4.1 or lower X-(
+                        "",
+                    ].joined(separator: "\n")
             ),
             #line: TestCase(
                 diffBetween: EnumStub.AssociatedByNotSameKeys.two(key1b: "value1b", key2b: "value2b"),
