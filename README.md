@@ -1,12 +1,12 @@
 ![MirrorDiffKit](https://raw.githubusercontent.com/Kuniwak/MirrorDiffKit/master/Documentation/Images/logo.png)
 =============
 
-![Swift 4.2 compatible](https://img.shields.io/badge/Swift%20version-4.2-green.svg)
-![CocoaPods](https://img.shields.io/cocoapods/v/MirrorDiffKit.svg)
-![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)
-![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
-[![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
-[![Build Status](https://www.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://www.bitrise.io/app/94e8fe199a9a670b)
+![Swift 4.2 compatible](https://badgen.now.sh/badge/Swift/4.2/blue)
+[![CocoaPods](https://badgen.now.sh/badge/CocoaPods/compatible/green)](https://cocoapods.org/pods/MirrorDiffKit)
+[![Carthage](https://badgen.now.sh/badge/Carthage/compatible/green)](https://github.com/Kuniwak/MirrorDiffKit/releases/latest)
+[![Swift Package Manager](https://badgen.now.sh/badge/SPM/compatible/green)](https://github.com/Kuniwak/MirrorDiffKit/releases/latest)
+[![MIT license](https://badgen.now.sh/badge/lisence/MIT/yellow)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
+[![Build Status](https://app.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://app.bitrise.io/app/94e8fe199a9a670b)
 
 
 A tool for providing the 2 features for efficient testing:
