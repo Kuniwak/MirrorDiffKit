@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: library/swift:4.1
+      # TODO: Use library/swift:5.0 if available
+      - image: library/swift:4.2.1
     steps:
       - checkout
       - run:
