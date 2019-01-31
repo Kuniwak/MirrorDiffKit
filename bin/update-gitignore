@@ -1,0 +1,19 @@
+#!/bin/bash -eu
+set -o pipefail
+
+BASE_DIR="$(cd "$(dirname "$0")/.."; pwd)"
+GITIGNORE_FILE="${BASE_DIR}/.gitignore"
+
+
+(cd "$BASE_DIR"
+	echo > "$GITIGNORE_FILE"
+
+	echo "MirrorDiffKit.framework.zip" >> "$GITIGNORE_FILE"
+
+	git ignore swift >> "$GITIGNORE_FILE"
+	git ignore carthage >> "$GITIGNORE_FILE"
+	git ignore cocoapods >> "$GITIGNORE_FILE"
+	git ignore ruby >> "$GITIGNORE_FILE"
+	git ignore xcode >> "$GITIGNORE_FILE"
+	git ignore appcode >> "$GITIGNORE_FILE"
+)
