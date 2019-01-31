@@ -1,7 +1,7 @@
 ![MirrorDiffKit](https://raw.githubusercontent.com/Kuniwak/MirrorDiffKit/master/Documentation/Images/logo.png)
 =============
 
-![Swift 4.2 compatible](https://img.shields.io/badge/Swift%20version-4.2-green.svg)
+![Swift 5.0 compatible](https://img.shields.io/badge/Swift%20version-5.0-green.svg)
 ![CocoaPods](https://img.shields.io/cocoapods/v/MirrorDiffKit.svg)
 ![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
