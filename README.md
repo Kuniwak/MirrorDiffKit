@@ -83,7 +83,7 @@ Add the following line to your `Package.swift`:
 
 
 ```
-.Package(url: "https://github.com/Kuniwak/MirrorDiffKit.git")
+.package(url: "https://github.com/Kuniwak/MirrorDiffKit.git")
 ```
 
 
