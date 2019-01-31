@@ -72,7 +72,7 @@ public enum DiffStep<T> : CustomDebugStringConvertible {
 public extension Array where Element: Equatable {
     
     /// Returns the sequence of ArrayDiffResults required to transform one array into another.
-    public func diff(_ other: [Element]) -> Diff<Element> {
+    func diff(_ other: [Element]) -> Diff<Element> {
         let table = MemoizedSequenceComparison.buildTable(self, other, self.count, other.count)
         return Array.diffFromIndices(table, self, other, self.count, other.count)
     }
@@ -96,7 +96,7 @@ public extension Array where Element: Equatable {
     
     /// Applies a generated diff to an array. The following should always be true:
     /// Given x: [T], y: [T], x.apply(x.diff(y)) == y
-    public func apply(_ diff: Diff<Element>) -> Array<Element> {
+    func apply(_ diff: Diff<Element>) -> Array<Element> {
         var copy = self
         for result in diff.deletions {
             copy.remove(at: result.idx)
@@ -112,7 +112,7 @@ public extension Array where Element: Equatable {
 public extension Array where Element: Equatable {
     
     /// Returns the longest common subsequence between two arrays.
-    public func LCS(_ other: [Element]) -> [Element] {
+    func LCS(_ other: [Element]) -> [Element] {
         let table = MemoizedSequenceComparison.buildTable(self, other, self.count, other.count)
         return Array.lcsFromIndices(table, self, other, self.count, other.count)
     }

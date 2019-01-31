@@ -22,7 +22,7 @@ struct DiffableSet {
         var inserted = b.nonHashables
 
         deleted.enumerated().forEach { (indexOfDeleted, l) in
-            if let indexOfInserted = inserted.index(of: l) {
+            if let indexOfInserted = inserted.firstIndex(of: l) {
                 inserted.remove(at: indexOfInserted)
                 deleted.remove(at: indexOfDeleted)
                 notChanged.append(l)
