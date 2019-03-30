@@ -52,7 +52,7 @@ class Issue10Tests: XCTestCase {
         let wasTestFailed = actual != expected
         if wasTestFailed {
             print("verbose:")
-            dump(Diffable.diff(
+            Swift.dump(Diffable.diff(
                 between: Diffable.from(any: a),
                 and: Diffable.from(any: b)
             ))
