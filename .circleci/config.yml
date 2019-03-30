@@ -1,11 +1,29 @@
 version: 2
 jobs:
-  build:
+  test-swift-5.0:
     docker:
-      # TODO: Use library/swift:5.0 if available
+      - image: library/swift:5.0
+    steps:
+      - checkout
+      - run:
+          name: 'XXX: Test can run after ran swift test once'
+          command: swift test || true
+      - run:
+          name: Test
+          command: swift test
+
+  test-swift-4.2.1:
+    docker:
       - image: library/swift:4.2.1
     steps:
       - checkout
       - run:
           name: Test
           command: swift test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test-swift-5.0
+      - test-swift-4.2.1
