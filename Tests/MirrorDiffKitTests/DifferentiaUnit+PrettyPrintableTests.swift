@@ -12,17 +12,17 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
     func testPrettyLines() {
         let testCases: [UInt: TestCase] = [
             #line: TestCase(
-                input: .notChanged(.string(type: String.self, content: "I'm not changed")),
+                input: .notChanged(.string(type: .type(String.self), content: "I'm not changed")),
                 expected: "  \"I'm not changed\""
             ),
 
             #line: TestCase(
-                input: .deleted(.string(type: String.self, content: "I'm deleted")),
+                input: .deleted(.string(type: .type(String.self), content: "I'm deleted")),
                 expected: "- \"I'm deleted\""
             ),
 
             #line: TestCase(
-                input: .inserted(.string(type: String.self, content: "I'm inserted")),
+                input: .inserted(.string(type: .type(String.self), content: "I'm inserted")),
                 expected: "+ \"I'm inserted\""
             ),
 
@@ -35,7 +35,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
 
             #line: TestCase(
                 input: .dictionaryChanged(
-                    kind: .anyStruct(type: StructStub.Empty.self),
+                    kind: .anyStruct(type: .type(StructStub.Empty.self)),
                     [
                         "child": [],
                     ]
@@ -45,7 +45,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
 
             #line: TestCase(
                 input: .dictionaryChanged(
-                    kind: .anyClass(type: ClassStub.Empty.self),
+                    kind: .anyClass(type: .type(ClassStub.Empty.self)),
                     [
                         "child": [],
                     ]
@@ -58,7 +58,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .notChanged(.string(type: String.self, content: "I'm not changed")),
+                            .notChanged(.string(type: .type(String.self), content: "I'm not changed")),
                         ],
                     ]
                 ),
@@ -74,7 +74,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .deleted(.string(type: String.self, content: "I'm deleted")),
+                            .deleted(.string(type: .type(String.self), content: "I'm deleted")),
                         ],
                     ]
                 ),
@@ -90,7 +90,7 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .inserted(.string(type: String.self, content: "I'm inserted")),
+                            .inserted(.string(type: .type(String.self), content: "I'm inserted")),
                         ]
                     ]
                 ),
@@ -106,11 +106,11 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "changed": [
-                            .deleted(.string(type: String.self, content: "I'm deleted")),
-                            .inserted(.string(type: String.self, content: "I'm inserted")),
+                            .deleted(.string(type: .type(String.self), content: "I'm deleted")),
+                            .inserted(.string(type: .type(String.self), content: "I'm inserted")),
                         ],
                         "notChanged": [
-                            .notChanged(.string(type: String.self, content: "I'm not changed")),
+                            .notChanged(.string(type: .type(String.self), content: "I'm not changed")),
                         ],
                     ]
                 ),
@@ -127,18 +127,18 @@ class DifferentiaUnit_PrettyPrintableTests: XCTestCase {
                     kind: .dictionary,
                     [
                         "child": [
-                            .notChanged(.string(type: String.self, content: "I'm not changed")),
+                            .notChanged(.string(type: .type(String.self), content: "I'm not changed")),
                         ],
                         "grandChild": [
                             .dictionaryChanged(kind: .dictionary, [
                                 "deleted": [
-                                    .deleted(.string(type: String.self, content: "I'm deleted")),
+                                    .deleted(.string(type: .type(String.self), content: "I'm deleted")),
                                 ],
                                 "inserted": [
-                                    .inserted(.string(type: String.self, content: "I'm inserted")),
+                                    .inserted(.string(type: .type(String.self), content: "I'm inserted")),
                                 ],
                                 "notChanged": [
-                                    .notChanged(.string(type: String.self, content: "I'm not changed")),
+                                    .notChanged(.string(type: .type(String.self), content: "I'm not changed")),
                                 ],
                             ]),
                         ],

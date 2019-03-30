@@ -15,7 +15,7 @@ class Issue13Tests: XCTestCase {
 
         XCTAssert(
             Diffable.from(any: a) =~ Diffable.from(any: b),
-            diff(between: b, and: a)
+            dump((a: a, b: b))
         )
     }
 

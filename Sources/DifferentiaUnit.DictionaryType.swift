@@ -5,8 +5,8 @@ import Foundation
 extension DifferentiaUnit {
     public enum DictionaryType {
         case dictionary
-        case anyStruct(type: Any.Type)
-        case anyClass(type: Any.Type)
+        case anyStruct(type: HashableType)
+        case anyClass(type: HashableType)
 
 
         var token: (open: String, close: String) {

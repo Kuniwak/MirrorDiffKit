@@ -12,7 +12,7 @@ extension Diffable /*: CustomStringConvertible */ {
             return "nil"
 
         case let .string(type: type, content: content):
-            if type == String.self {
+            if type.actualType == String.self {
                 return "\"\(content)\""
             }
             return "\(type)(\"\(content)\")"
@@ -29,7 +29,7 @@ extension Diffable /*: CustomStringConvertible */ {
         case let .url(url):
             return url.absoluteString
 
-        case let .type(type):
+        case let .anyType(type):
             return "\(type).self"
 
         case let .tuple(type: _, entries: entries):

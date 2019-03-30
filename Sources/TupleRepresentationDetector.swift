@@ -2,7 +2,7 @@
 /// But before Swift 3.1, enums become not labeled tuple such as (K, V).
 public enum TupleRepresentation {
     /// For example, (key: K, value: V) becomes ["key": K, "value" V] and
-    /// an assocated tuple of .something(associated: K) becomes ["associated": K].
+    /// an associated tuple of .something(associated: K) becomes ["associated": K].
     /// This is Swift >= 4.2.
     case fullyLabeled
 

@@ -206,13 +206,13 @@ class MirrorDiffKitDiffTests: XCTestCase {
             let wasTestFailed = actual != testCase.expected
             if wasTestFailed {
                 print("actual:")
-                dump(actual.components(separatedBy: "\n"))
+                Swift.dump(actual.components(separatedBy: "\n"))
 
                 print("\nexpected:")
-                dump(expected.components(separatedBy: "\n"))
+                Swift.dump(expected.components(separatedBy: "\n"))
 
                 print("\nverbose:")
-                dump(diff(between: testCase.a, and: testCase.b))
+                Swift.dump(diff(between: testCase.a, and: testCase.b))
             }
         }
     }

@@ -18,10 +18,10 @@ class Issue22Tests: XCTestCase {
 
         if a =~ b {
             print("a:")
-            dump(a)
+            Swift.dump(a)
 
             print("b:")
-            dump(b)
+            Swift.dump(b)
         }
     }
 

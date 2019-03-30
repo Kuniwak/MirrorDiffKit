@@ -24,11 +24,11 @@ private func transformFromNonOptionalAny(_ x: Any) -> Diffable {
     }
 
     if isNumberLike(x) {
-        return .number(type: type, value: "\(x)")
+        return .number(type: HashableType(type: type), value: "\(x)")
     }
 
     if isStringLike(x) {
-        return .string(type: type, content: "\(x)")
+        return .string(type: HashableType(type: type), content: "\(x)")
     }
 
     if let y = x as? Bool {
@@ -76,38 +76,32 @@ func transformMirror(of x: Any) -> Diffable {
                 let entries = transformFromTupleMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .tuple(type: trulyType, entries: entries)
+                return .tuple(type: .type(of: x), entries: entries)
                 
             case .set:
                 let elements = transformFromNonLabeledMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .set(type: trulyType, elements: elements)
+                return .set(type: .type(of: x), elements: Set(elements))
                 
             case .collection:
                 let elements = transformFromNonLabeledMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .collection(type: trulyType, elements: elements)
+                return .collection(type: .type(of: x), elements: elements)
                 
             case .dictionary:
                 let entries = try transformFromDictionaryEntryMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .dictionary(type: trulyType, entries: entries.map(Diffable.DictionaryEntry.init(entry:)))
+                return .dictionary(type: .type(of: x), entries: Set(entries.map(Diffable.DictionaryEntry.init(entry:))))
                 
             case .enum:
                 let associated = transformFromEnumMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                
                 return .anyEnum(
-                    type: trulyType,
+                    type: .type(of: x),
                     caseName: try .from(mirror: mirror, original: x),
                     associated: associated
                 )
@@ -116,15 +110,13 @@ func transformMirror(of x: Any) -> Diffable {
                 let entries = try transformFromLabeledMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .anyStruct(type: trulyType, entries: entries)
+                return .anyStruct(type: .type(of: x), entries: entries)
                 
             case .class:
                 let entries = try transformFromLabeledMirror(of: mirror)
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
-                let trulyType = type(of: x)
-                return .anyClass(type: trulyType, entries: entries)
+                return .anyClass(type: .type(of: x), entries: entries)
 
             @unknown default:
                 return .unrecognizable(debugInfo: "reason=UNKNOWN_DISPLAY_STYLE, displayStyle=`\(displayStyle)`, description=`\(x)`")
@@ -136,12 +128,12 @@ func transformMirror(of x: Any) -> Diffable {
         // https://github.com/apple/swift/blob/c35d508600516b892732e2fd3f0f0a17ca4562ba/stdlib/public/core/ReflectionMirror.swift#L154
 
         if let y = x as? Any.Type {
-            return .type(y)
+            return .anyType(HashableType(type: y))
         }
 
         // NOTE: .subjectType should not to be used. Because .subjectType can be different from
         // the original type if x is a CustomReflectable.
-        let trulyType = type(of: x)
+        let trulyType = HashableType(of: x)
         let entries = try transformFromLabeledMirror(of: mirror)
 
         if let y = x as? CustomReflectable {

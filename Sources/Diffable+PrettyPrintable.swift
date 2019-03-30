@@ -8,7 +8,7 @@ extension Diffable: PrettyPrintable {
             return [.line("nil")]
 
         case let .string(type: type, content: content):
-            if type == String.self {
+            if type.actualType == String.self {
                 return [.line("\"\(content)\"")]
             }
             return [.line("\(type)(\"\(content)\")")]
@@ -25,7 +25,7 @@ extension Diffable: PrettyPrintable {
         case let .url(url):
             return [.line("\(url.absoluteString)")]
 
-        case let .type(type):
+        case let .anyType(type):
             return [.line("\(type).self")]
 
         case let .tuple(type: _, entries: entries):

@@ -1,33 +1,27 @@
 import Foundation
 
 
-public indirect enum Diffable {
+public indirect enum Diffable: Equatable, Hashable {
     case null
     case none
-    case string(type: Any.Type, content: String)
-    case number(type: Any.Type, value: String)
+    case string(type: HashableType, content: String)
+    case number(type: HashableType, value: String)
     case bool(Bool)
     case date(Date)
     case url(URL)
-    case type(Any.Type)
-    case tuple(type: Any.Type, entries: [TupleEntry])
-    case collection(type: Any.Type, elements: [Diffable])
-
-    // XXX: We can collect only Hashable values into Sets, but we cannot know
-    // whether Diffable is a Hashable or not. And also we cannot cast to
-    // Hashable because it is a generic protocol. Therefore we cannot handle
-    // types that have a type restrictions.
-    case set(type: Any.Type, elements: [Diffable])
-
-    case dictionary(type: Any.Type, entries: [DictionaryEntry])
-    case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
-    case anyStruct(type: Any.Type, entries: [String: Diffable])
-    case anyClass(type: Any.Type, entries: [String: Diffable])
-    case minorCustomReflectable(type: Any.Type, content: CustomReflectableContent)
+    case anyType(HashableType)
+    case tuple(type: HashableType, entries: [TupleEntry])
+    case collection(type: HashableType, elements: [Diffable])
+    case set(type: HashableType, elements: Set<Diffable>)
+    case dictionary(type: HashableType, entries: Set<DictionaryEntry>)
+    case anyEnum(type: HashableType, caseName: EnumCaseName, associated: [TupleEntry])
+    case anyStruct(type: HashableType, entries: [String: Diffable])
+    case anyClass(type: HashableType, entries: [String: Diffable])
+    case minorCustomReflectable(type: HashableType, content: CustomReflectableContent)
     case unrecognizable(debugInfo: String)
 
 
-    public enum TupleEntry {
+    public enum TupleEntry: Equatable, Hashable {
         case labeled(label: String, value: Diffable)
         case notLabeled(index: Int, value: Diffable)
 
@@ -41,12 +35,28 @@ public indirect enum Diffable {
                 return value
             }
         }
+
+
+        var description: String {
+            switch self {
+            case let .labeled(label: label, value: value):
+                return "\(label): \(value.description)"
+
+            case let .notLabeled(index: _, value: value):
+                return "\(value.description)"
+            }
+        }
     }
 
 
-    public struct DictionaryEntry {
+    public struct DictionaryEntry: Equatable, Hashable {
         public let key: Diffable
         public let value: Diffable
+
+
+        public var description: String {
+            return "\(self.key.description): \(self.value.description)"
+        }
 
 
         public init(entry: (key: Diffable, value: Diffable)) {
@@ -61,7 +71,7 @@ public indirect enum Diffable {
     }
 
 
-    public enum CustomReflectableContent {
+    public enum CustomReflectableContent: Equatable, Hashable {
         // NOTE: Some builtin types such as UnicodeScalar and Character have only empty children, but have identifiable description.
         // https://github.com/apple/swift/blob/ec5b51ec7c6f31e8d16bae762368032463bbac83/stdlib/public/core/Mirrors.swift.gyb#L21-L26
         case empty(description: String)
