@@ -219,7 +219,6 @@
 		2475E508447C7C4FC16E7D99 /* Issue13Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue13Tests.swift; sourceTree = "<group>"; };
 		2475E5087E79D9A4E8170014 /* DifferentiaUnit.SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentiaUnit.SequenceType.swift; sourceTree = "<group>"; };
 		2475E55AD7C7C9AEFEF1643C /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		2475E5B1B9EB8376144D192A /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = run; sourceTree = "<group>"; };
 		2475E5B2FD9639D9591CA945 /* Diffable+RoughEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diffable+RoughEquatable.swift"; sourceTree = "<group>"; };
 		2475E6141777D989D8211D6F /* PrettyLinesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyLinesTests.swift; sourceTree = "<group>"; };
 		2475E67CA1774ED3D14FE8F7 /* HashableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableType.swift; sourceTree = "<group>"; };
@@ -354,7 +353,6 @@
 		2475E312B09E05FD1AB42214 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2475E5B1B9EB8376144D192A /* run */,
 				2475EE61530F256A1D549339 /* LinuxMain.swift */,
 				2475E9B7A1DFD63AED417A2A /* MirrorDiffKitTests */,
 			);
