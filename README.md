@@ -22,7 +22,7 @@ A tool for providing the 2 features for efficient testing:
 Usage
 -----
 
-### `diff(between: Any, and: Any)`
+### `diff<T>(between: T, and: T)`
 
 ```swift
 import MirrorDiffKit
