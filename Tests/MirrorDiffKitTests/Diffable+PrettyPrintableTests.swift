@@ -170,9 +170,9 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .dictionary(type: [String: String].self, entries: [
-                    (key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
-                    (key: .string(type: String.self, content: "key2"), value: .string(type: String.self, content: "value2")),
-                    (key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
+                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
+                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key2"), value: .string(type: String.self, content: "value2")),
+                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
                 ]),
                 expected: [
                     .line("Dictionary<String, String> ["),
@@ -184,11 +184,11 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .dictionary(type: [String: Any].self, entries: [
-                    (key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
-                    (key: .string(type: String.self, content: "key2"), value: .dictionary(type: [String: Any].self, entries: [
-                        (key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
-                        (key: .string(type: String.self, content: "key4"), value: .dictionary(type: [String: Any].self, entries: [
-                            (key: .string(type: String.self, content: "key5"), value: .string(type: String.self, content: "value5")),
+                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
+                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key2"), value: .dictionary(type: [String: Any].self, entries: [
+                        Diffable.DictionaryEntry(key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
+                        Diffable.DictionaryEntry(key: .string(type: String.self, content: "key4"), value: .dictionary(type: [String: Any].self, entries: [
+                            Diffable.DictionaryEntry(key: .string(type: String.self, content: "key5"), value: .string(type: String.self, content: "value5")),
                         ])),
                     ]))
                 ]),

@@ -58,7 +58,7 @@ extension Diffable /*: CustomStringConvertible */ {
 
             let children = entries
                 .sorted { $0.key.description <= $1.key.description }
-                .map { (key, value) in "\(key.description): \(value.description)" }
+                .map { entry in entry.description }
                 .joined(separator: ", ")
 
             return "\(type) [" + children + "]"

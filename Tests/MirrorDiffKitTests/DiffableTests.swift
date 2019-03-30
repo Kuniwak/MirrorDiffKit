@@ -71,7 +71,7 @@ class DiffableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .dictionary(type: [String: String].self, entries: [
-                    (
+                    Diffable.DictionaryEntry(
                         key: .string(type: String.self, content: "KEY"),
                         value: .string(type: String.self, content: "VALUE")
                     ),
@@ -80,11 +80,11 @@ class DiffableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .dictionary(type: [String: String].self, entries: [
-                    (
+                    Diffable.DictionaryEntry(
                         key: .string(type: String.self, content: "KEY1"),
                         value: .string(type: String.self, content: "VALUE1")
                     ),
-                    (
+                    Diffable.DictionaryEntry(
                         key: .string(type: String.self, content: "KEY2"),
                         value: .string(type: String.self, content: "VALUE2")
                     ),

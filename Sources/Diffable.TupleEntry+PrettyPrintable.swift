@@ -1,5 +1,5 @@
 extension Diffable.TupleEntry: PrettyPrintable {
-    var prettyLines: [PrettyLine] {
+    internal var prettyLines: [PrettyLine] {
         switch self {
         case let .labeled(label: label, value: value):
             return PrettyLine.concatKeyLineAndValueLines(

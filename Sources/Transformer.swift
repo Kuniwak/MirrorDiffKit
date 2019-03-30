@@ -98,7 +98,7 @@ func transformMirror(of x: Any) -> Diffable {
                 // NOTE: .subjectType should not to be used. Because .subjectType can be different from
                 // the original type if x is a CustomReflectable.
                 let trulyType = type(of: x)
-                return .dictionary(type: trulyType, entries: entries)
+                return .dictionary(type: trulyType, entries: entries.map(Diffable.DictionaryEntry.init(entry:)))
                 
             case .enum:
                 let associated = transformFromEnumMirror(of: mirror)

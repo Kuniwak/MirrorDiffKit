@@ -1,71 +1,66 @@
 extension Diffable: Hashable {
-    public var hashValue: Int {
+    public func hash(into hasher: inout Hasher) {
         switch self {
         case .null:
-            return 0
+            hasher.combine(0)
 
         case .none:
-            return 1
+            hasher.combine(1)
 
         case let .string(type: type, content: content):
-            return MirrorDiffKit.hashValue(from: type) ^ content.hashValue
+            hasher.combine(HashableType(type))
+            hasher.combine(content)
 
         case let .number(type: type, value: value):
-            return MirrorDiffKit.hashValue(from: type) ^ value.hashValue
+            hasher.combine(HashableType(type))
+            hasher.combine(value)
 
         case let .bool(bool):
-            return bool.hashValue
+            hasher.combine(bool)
 
         case let .date(date):
-            return date.hashValue
+            hasher.combine(date)
 
         case let .url(url):
-            return url.hashValue
+            hasher.combine(url)
 
         case let .type(type):
-            return MirrorDiffKit.hashValue(from: type)
+            hasher.combine(HashableType(type))
 
         case let .tuple(type: type, entries: entries):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ entries.reduce(0, { (prev, entry) in prev + entry.value.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(entries)
 
         case let .collection(type: type, elements: elements):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ elements.reduce(0, { (prev, element) in prev + element.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(elements)
 
         case let .set(type: type, elements: elements):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ elements.reduce(0, { (prev, element) in prev + element.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(elements)
 
         case let .dictionary(type: type, entries: entries):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ entries.map { $0.key }.reduce(0, { (prev, key) in prev + key.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(entries)
 
         case let .anyEnum(type: type, caseName: _, associated: associated):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ associated.reduce(0, { (prev, element) in prev + element.value.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(associated)
 
         case let .anyStruct(type: type, entries: entries):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(entries)
 
         case let .anyClass(type: type, entries: entries):
-            return MirrorDiffKit.hashValue(from: type)
-                ^ entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
+            hasher.combine(HashableType(type))
+            hasher.combine(entries)
 
         case let .minorCustomReflectable(type: type, content: content):
-            switch content {
-            case let .empty(description: description):
-                return MirrorDiffKit.hashValue(from: type)
-                    ^ description.hashValue
-
-            case let .notEmpty(entries: entries):
-                return MirrorDiffKit.hashValue(from: type)
-                    ^ entries.values.reduce(0, { (prev, value) in prev + value.hashValue })
-            }
+            hasher.combine(HashableType(type))
+            hasher.combine(content)
 
         case .unrecognizable:
-            return Int.max
+            hasher.combine(Int.max)
         }
     }
 }
