@@ -25,8 +25,7 @@ public struct HashableType {
 
 extension HashableType: CustomStringConvertible {
     public var description: String {
-        // TODO
-        // return String(reflecting: self.actualType)
+        // NOTE: Do not use String(reflecting:) because omitting their module names but enough.
         return String(describing: self.actualType)
     }
 }
