@@ -142,12 +142,6 @@ class TransformerTests: XCTestCase {
                 expected: true
             ),
             #line: TestCase(
-                input: (label: 10),
-                // XXX: Unary labeled tuple is not a tuple! ;-(
-                target: .number(type: Int.self, value: "10"),
-                expected: true
-            ),
-            #line: TestCase(
                 input: (label1: 10, label2: 20),
                 target: TupleRepresentation.current.isAlmostLabeled
                     ? .tuple(type: (label1: Int, label2: Int).self, entries: [
