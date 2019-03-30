@@ -36,8 +36,8 @@ extension Diffable {
                 .dictionaryChanged(
                     kind: .dictionary,
                     DiffableDictionary.diff(
-                        between: DiffableDictionary.from(type: lt, diffableTuples: le),
-                        and: DiffableDictionary.from(type: rt, diffableTuples: re)
+                        between: DiffableDictionary.from(type: lt, entries: le),
+                        and: DiffableDictionary.from(type: rt, entries: re)
                     )
                 )
             ]

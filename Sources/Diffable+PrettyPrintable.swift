@@ -132,8 +132,7 @@ extension Diffable: PrettyPrintable {
             // ]
             let content: [PrettyLine] = entries
                 .map { (entry) -> (key: String, value: Diffable) in
-                    let (key, value) = entry
-                    return (key: key.description, value: value)
+                    return (key: entry.key.description, value: entry.value)
                 }
                 .sorted { $0.key < $1.key }
                 .flatMap { (entry) -> [PrettyLine] in

@@ -9,11 +9,6 @@ internal func entries<K, V>(fromDictionary dictionary: [K: V]) -> [(key: K, valu
 }
 
 
-internal func hashValue(from type: Any.Type) -> Int {
-    return "\(type)".hashValue
-}
-
-
 internal func isNumberLike(_ x: Any) -> Bool {
     if isNumberType(type(of: x)) {
         return true

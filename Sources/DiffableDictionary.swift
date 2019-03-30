@@ -13,12 +13,11 @@ struct DiffableDictionary {
     }
 
 
-    static func from(type: Any.Type, diffableTuples: [(key: Diffable, value: Diffable)]) -> DiffableDictionary {
+    static func from(type: Any.Type, entries: [Diffable.DictionaryEntry]) -> DiffableDictionary {
         var dictionary: [String: Diffable] = [:]
 
-        diffableTuples.forEach { diffableTuple in
-            let (key, value) = diffableTuple
-            dictionary[key.description] = value
+        entries.forEach { entry in
+            dictionary[entry.key.description] = entry.value
         }
 
         return DiffableDictionary(type: type, dictionary: dictionary)

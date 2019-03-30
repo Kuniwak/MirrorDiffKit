@@ -19,7 +19,7 @@ public indirect enum Diffable {
     // types that have a type restrictions.
     case set(type: Any.Type, elements: [Diffable])
 
-    case dictionary(type: Any.Type, entries: [(key: Diffable, value: Diffable)])
+    case dictionary(type: Any.Type, entries: [DictionaryEntry])
     case anyEnum(type: Any.Type, caseName: EnumCaseName, associated: [TupleEntry])
     case anyStruct(type: Any.Type, entries: [String: Diffable])
     case anyClass(type: Any.Type, entries: [String: Diffable])
@@ -40,6 +40,23 @@ public indirect enum Diffable {
             case let .notLabeled(index: _, value: value):
                 return value
             }
+        }
+    }
+
+
+    public struct DictionaryEntry {
+        public let key: Diffable
+        public let value: Diffable
+
+
+        public init(entry: (key: Diffable, value: Diffable)) {
+            self.init(key: entry.key, value: entry.value)
+        }
+
+
+        public init(key: Diffable, value: Diffable) {
+            self.key = key
+            self.value = value
         }
     }
 
