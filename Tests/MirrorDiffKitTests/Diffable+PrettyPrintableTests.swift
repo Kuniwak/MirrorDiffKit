@@ -25,19 +25,19 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .string(type: String.self, content: "string"),
+                input: .string(type: .type(String.self), content: "string"),
                 expected: [
                     .line("\"string\""),
                 ]
             ),
             #line: TestCase(
-                input: .string(type: Substring.self, content: "sub"),
+                input: .string(type: .type(Substring.self), content: "sub"),
                 expected: [
                     .line("Substring(\"sub\")"),
                 ]
             ),
             #line: TestCase(
-                input: .number(type: Double.self, value: "123.4"),
+                input: .number(type: .type(Double.self), value: "123.4"),
                 expected: [
                     .line("Double(123.4)"),
                 ]
@@ -61,13 +61,13 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .tuple(type: Void.self, entries: []),
+                input: .tuple(type: .type(Void.self), entries: []),
                 expected: [
                     .line("()"),
                 ]
             ),
             #line: TestCase(
-                input: .tuple(type: (Optional<Any>, label: Optional<Any>).self, entries: [
+                input: .tuple(type: .type((Optional<Any>, label: Optional<Any>).self), entries: [
                     .notLabeled(index: 0, value: .none),
                     .labeled(label: "label", value: .none),
                 ]),
@@ -79,16 +79,16 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .collection(type: Array<Any>.self, elements: []),
+                input: .collection(type: .type(Array<Any>.self), elements: []),
                 expected: [
                     .line("Array<Any> []"),
                 ]
             ),
             #line: TestCase(
-                input: .collection(type: Array<String>.self, elements: [
-                    .string(type: String.self, content: "1"),
-                    .string(type: String.self, content: "2"),
-                    .string(type: String.self, content: "3"),
+                input: .collection(type: .type(Array<String>.self), elements: [
+                    .string(type: .type(String.self), content: "1"),
+                    .string(type: .type(String.self), content: "2"),
+                    .string(type: .type(String.self), content: "3"),
                 ]),
                 expected: [
                     .line("Array<String> ["),
@@ -99,12 +99,12 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .collection(type: Array<Any>.self, elements: [
-                    .string(type: String.self, content: "1"),
-                    .collection(type: Array<Any>.self, elements: [
-                        .string(type: String.self, content: "2"),
-                        .collection(type: Array<Any>.self, elements: [
-                            .string(type: String.self, content: "3"),
+                input: .collection(type: .type(Array<Any>.self), elements: [
+                    .string(type: .type(String.self), content: "1"),
+                    .collection(type: .type(Array<Any>.self), elements: [
+                        .string(type: .type(String.self), content: "2"),
+                        .collection(type: .type(Array<Any>.self), elements: [
+                            .string(type: .type(String.self), content: "3"),
                         ])
                     ])
                 ]),
@@ -121,16 +121,16 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .set(type: Set<String>.self, elements: []),
+                input: .set(type: .type(Set<String>.self), elements: []),
                 expected: [
                     .line("Set<String> []"),
                 ]
             ),
             #line: TestCase(
-                input: .set(type: Set<String>.self, elements: [
-                    .string(type: String.self, content: "1"),
-                    .string(type: String.self, content: "2"),
-                    .string(type: String.self, content: "3"),
+                input: .set(type: .type(Set<String>.self), elements: [
+                    .string(type: .type(String.self), content: "1"),
+                    .string(type: .type(String.self), content: "2"),
+                    .string(type: .type(String.self), content: "3"),
                 ]),
                 expected: [
                     .line("Set<String> ["),
@@ -141,12 +141,12 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .set(type: Set<AnyHashable>.self, elements: [
-                    .string(type: String.self, content: "1"),
-                    .set(type: Set<AnyHashable>.self, elements: [
-                        .string(type: String.self, content: "2"),
-                        .set(type: Set<AnyHashable>.self, elements: [
-                            .string(type: String.self, content: "3"),
+                input: .set(type: .type(Set<AnyHashable>.self), elements: [
+                    .string(type: .type(String.self), content: "1"),
+                    .set(type: .type(Set<AnyHashable>.self), elements: [
+                        .string(type: .type(String.self), content: "2"),
+                        .set(type: .type(Set<AnyHashable>.self), elements: [
+                            .string(type: .type(String.self), content: "3"),
                         ])
                     ])
                 ]),
@@ -163,16 +163,16 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .dictionary(type: [String: String].self, entries: []),
+                input: .dictionary(type: .type([String: String].self), entries: []),
                 expected: [
                     .line("Dictionary<String, String> [:]")
                 ]
             ),
             #line: TestCase(
-                input: .dictionary(type: [String: String].self, entries: [
-                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
-                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key2"), value: .string(type: String.self, content: "value2")),
-                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
+                input: .dictionary(type: .type([String: String].self), entries: [
+                    Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key1"), value: .string(type: .type(String.self), content: "value1")),
+                    Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key2"), value: .string(type: .type(String.self), content: "value2")),
+                    Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key3"), value: .string(type: .type(String.self), content: "value3")),
                 ]),
                 expected: [
                     .line("Dictionary<String, String> ["),
@@ -183,12 +183,12 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .dictionary(type: [String: Any].self, entries: [
-                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key1"), value: .string(type: String.self, content: "value1")),
-                    Diffable.DictionaryEntry(key: .string(type: String.self, content: "key2"), value: .dictionary(type: [String: Any].self, entries: [
-                        Diffable.DictionaryEntry(key: .string(type: String.self, content: "key3"), value: .string(type: String.self, content: "value3")),
-                        Diffable.DictionaryEntry(key: .string(type: String.self, content: "key4"), value: .dictionary(type: [String: Any].self, entries: [
-                            Diffable.DictionaryEntry(key: .string(type: String.self, content: "key5"), value: .string(type: String.self, content: "value5")),
+                input: .dictionary(type: .type([String: Any].self), entries: [
+                    Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key1"), value: .string(type: .type(String.self), content: "value1")),
+                    Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key2"), value: .dictionary(type: .type([String: Any].self), entries: [
+                        Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key3"), value: .string(type: .type(String.self), content: "value3")),
+                        Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key4"), value: .dictionary(type: .type([String: Any].self), entries: [
+                            Diffable.DictionaryEntry(key: .string(type: .type(String.self), content: "key5"), value: .string(type: .type(String.self), content: "value5")),
                         ])),
                     ]))
                 ]),
@@ -206,7 +206,7 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyEnum(
-                    type: EnumStub.NotAssociated.self,
+                    type: .type(EnumStub.NotAssociated.self),
                     caseName: EnumCaseName("one"),
                     associated: []
                 ),
@@ -216,10 +216,10 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyEnum(
-                    type: EnumStub.AssociatedBySameKeys.self,
+                    type: .type(EnumStub.AssociatedBySameKeys.self),
                     caseName: EnumCaseName("one"),
                     associated: [
-                        .labeled(label: "key", value: .string(type: String.self, content: "value")),
+                        .labeled(label: "key", value: .string(type: .type(String.self), content: "value")),
                     ]
                 ),
                 expected: [
@@ -230,24 +230,24 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyEnum(
-                    type: EnumStub.Nested.self,
+                    type: .type(EnumStub.Nested.self),
                     caseName: EnumCaseName("two"),
                     associated: [
                         .labeled(
                             label: "key",
                             value: .anyEnum(
-                                type: EnumStub.Nested.self,
+                                type: .type(EnumStub.Nested.self),
                                 caseName: EnumCaseName("two"),
                                 associated: [
                                     .labeled(
                                         label: "key",
                                         value: .anyEnum(
-                                            type: EnumStub.Nested.self,
+                                            type: .type(EnumStub.Nested.self),
                                             caseName: EnumCaseName("one"),
                                             associated: [
                                                 .labeled(
                                                     label: "key",
-                                                    value: .string(type: String.self, content: "value")
+                                                    value: .string(type: .type(String.self), content: "value")
                                                 )
                                             ]
                                         )
@@ -269,7 +269,7 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyStruct(
-                    type: StructStub.Empty.self,
+                    type: .type(StructStub.Empty.self),
                     entries: [:]
                 ),
                 expected: [
@@ -278,10 +278,10 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyStruct(
-                    type: StructStub.TwoEntries.self,
+                    type: .type(StructStub.TwoEntries.self),
                     entries: [
-                        "key1": .string(type: String.self, content: "value1"),
-                        "key2": .string(type: String.self, content: "value2"),
+                        "key1": .string(type: .type(String.self), content: "value1"),
+                        "key2": .string(type: .type(String.self), content: "value2"),
                     ]
                 ),
                 expected: [
@@ -293,18 +293,18 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyStruct(
-                    type: StructStub.Nested.self,
+                    type: .type(StructStub.Nested.self),
                     entries: [
-                        "key1": .string(type: String.self, content: "value1"),
+                        "key1": .string(type: .type(String.self), content: "value1"),
                         "key2": .anyStruct(
-                            type: StructStub.Nested.self,
+                            type: .type(StructStub.Nested.self),
                             entries: [
-                                "key1": .string(type: String.self, content: "value1"),
+                                "key1": .string(type: .type(String.self), content: "value1"),
                                 "key2": .anyStruct(
-                                    type: StructStub.Nested.self,
+                                    type: .type(StructStub.Nested.self),
                                     entries: [
-                                        "key1": .string(type: String.self, content: "value1"),
-                                        "key2": .string(type: String.self, content: "value2")
+                                        "key1": .string(type: .type(String.self), content: "value1"),
+                                        "key2": .string(type: .type(String.self), content: "value2")
                                     ]
                                 )
                             ]
@@ -326,7 +326,7 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyClass(
-                    type: ClassStub.Empty.self,
+                    type: .type(ClassStub.Empty.self),
                     entries: [:]
                 ),
                 expected: [
@@ -335,10 +335,10 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyClass(
-                    type: ClassStub.TwoEntries.self,
+                    type: .type(ClassStub.TwoEntries.self),
                     entries: [
-                        "key1": .string(type: String.self, content: "value1"),
-                        "key2": .string(type: String.self, content: "value2"),
+                        "key1": .string(type: .type(String.self), content: "value1"),
+                        "key2": .string(type: .type(String.self), content: "value2"),
                     ]
                 ),
                 expected: [
@@ -350,18 +350,18 @@ class DiffablePrettyPrintableTests: XCTestCase {
             ),
             #line: TestCase(
                 input: .anyClass(
-                    type: ClassStub.Nested.self,
+                    type: .type(ClassStub.Nested.self),
                     entries: [
-                        "key1": .string(type: String.self, content: "value1"),
+                        "key1": .string(type: .type(String.self), content: "value1"),
                         "key2": .anyClass(
-                            type: ClassStub.Nested.self,
+                            type: .type(ClassStub.Nested.self),
                             entries: [
-                                "key1": .string(type: String.self, content: "value1"),
+                                "key1": .string(type: .type(String.self), content: "value1"),
                                 "key2": .anyClass(
-                                    type: ClassStub.Nested.self,
+                                    type: .type(ClassStub.Nested.self),
                                     entries: [
-                                        "key1": .string(type: String.self, content: "value1"),
-                                        "key2": .string(type: String.self, content: "value2")
+                                        "key1": .string(type: .type(String.self), content: "value1"),
+                                        "key2": .string(type: .type(String.self), content: "value2")
                                     ]
                                 )
                             ]
@@ -382,21 +382,21 @@ class DiffablePrettyPrintableTests: XCTestCase {
                 ]
             ),
             #line: TestCase(
-                input: .type(Int.self),
+                input: .anyType(.type(Int.self)),
                 expected: [
                     .line("Int.self"),
                 ]
             ),
             #line: TestCase(
-                input: .minorCustomReflectable(type: Character.self, content: .empty(description: "a")),
+                input: .minorCustomReflectable(type: .type(Character.self), content: .empty(description: "a")),
                 expected: [
                     .line("(unknown) Character: CustomReflectable { description: \"a\" }"),
                 ]
             ),
             #line: TestCase(
-                input: .minorCustomReflectable(type: Range<Int>.self, content: .notEmpty(entries: [
-                    "lowerBound": .number(type: Int.self, value: "0"),
-                    "upperBound": .number(type: Int.self, value: "5"),
+                input: .minorCustomReflectable(type: .type(Range<Int>.self), content: .notEmpty(entries: [
+                    "lowerBound": .number(type: .type(Int.self), value: "0"),
+                    "upperBound": .number(type: .type(Int.self), value: "5"),
                 ])),
                 expected: [
                     .line("(unknown) Range<Int>: CustomReflectable {"),

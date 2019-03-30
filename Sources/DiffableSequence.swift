@@ -3,11 +3,11 @@ import Foundation
 
 
 class DiffableSequence {
-    let type: Any.Type
+    let type: HashableType
     let elements: [Diffable]
 
 
-    init(type: Any.Type, elements: [Diffable]) {
+    init(type: HashableType, elements: [Diffable]) {
         self.type = type
         self.elements = elements
     }

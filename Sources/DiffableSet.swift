@@ -3,31 +3,20 @@ import Foundation
 
 
 struct DiffableSet {
-    let type: Any.Type
-    let nonHashables: [Diffable]
+    let type: HashableType
+    let elements: Set<Diffable>
 
 
-    init(type: Any.Type, elements: [Diffable]) {
+    init(type: HashableType, elements: Set<Diffable>) {
         self.type = type
-        self.nonHashables = elements
+        self.elements = elements
     }
 
 
     static func diff(between a: DiffableSet, and b: DiffableSet) -> [DifferentiaUnit] {
-        // NOTE: Elements of [Diffable] may not conform to Hashable.
-        // So we cannot use O(1) algorithm such as hash map.
-
-        var notChanged = [Diffable]()
-        var deleted = a.nonHashables
-        var inserted = b.nonHashables
-
-        deleted.enumerated().forEach { (indexOfDeleted, l) in
-            if let indexOfInserted = inserted.firstIndex(of: l) {
-                inserted.remove(at: indexOfInserted)
-                deleted.remove(at: indexOfDeleted)
-                notChanged.append(l)
-            }
-        }
+        let notChanged = a.elements.intersection(b.elements)
+        let deleted = a.elements.subtracting(b.elements)
+        let inserted = b.elements.subtracting(a.elements)
 
         return (deleted
                 .sorted { String(describing: $0) < String(describing: $1) }
@@ -38,27 +27,5 @@ struct DiffableSet {
             + (notChanged
                 .sorted { String(describing: $0) < String(describing: $1) }
                 .map { .notChanged($0) })
-    }
-}
-
-
-extension DiffableSet: Equatable {
-    static func == (_ lhs: DiffableSet, _ rhs: DiffableSet) -> Bool {
-        // NOTE: Elements of [Diffable] may not conform to Hashable.
-        // So we cannot use O(1) algorithm such as hash map.
-
-        guard lhs.nonHashables.count == rhs.nonHashables.count else {
-            return false
-        }
-
-        var isEqual = true
-
-        lhs.nonHashables.forEach { l in
-            if !rhs.nonHashables.contains(l) {
-                isEqual = false
-            }
-        }
-
-        return isEqual
     }
 }

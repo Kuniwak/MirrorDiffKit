@@ -1,22 +1,46 @@
-internal struct HashableType {
-    public let type: Any.Type
+public struct HashableType {
+    public let actualType: Any.Type
 
 
-    init(_ type: Any.Type) {
-        self.type = type
+    public init(type: Any.Type) {
+        self.actualType = type
+    }
+
+
+    public init(of x: Any) {
+        self.actualType = Swift.type(of: x)
+    }
+
+
+    public static func type(_ type: Any.Type) -> HashableType {
+        return HashableType(type: type)
+    }
+
+
+    public static func type(of x: Any) -> HashableType {
+        return HashableType(type: Swift.type(of: x))
+    }
+}
+
+
+extension HashableType: CustomStringConvertible {
+    public var description: String {
+        // TODO
+        // return String(reflecting: self.actualType)
+        return String(describing: self.actualType)
     }
 }
 
 
 extension HashableType: Equatable {
     public static func ==(lhs: HashableType, rhs: HashableType) -> Bool {
-        return lhs.type == rhs.type
+        return lhs.actualType == rhs.actualType
     }
 }
 
 
 extension HashableType: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(String(reflecting: self.type))
+        hasher.combine(String(reflecting: self.actualType))
     }
 }
