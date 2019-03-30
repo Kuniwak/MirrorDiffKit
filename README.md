@@ -6,7 +6,7 @@
 ![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
-[![Build Status](https://www.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://www.bitrise.io/app/94e8fe199a9a670b)
+[![Build Status](https://app.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://app.bitrise.io/app/94e8fe199a9a670b)
 
 
 A tool for providing the 2 features for efficient testing:
