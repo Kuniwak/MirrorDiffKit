@@ -7,11 +7,6 @@
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
 [![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
 
-| Platform | Status |
-|:---------|:------:|
-| macOS    | [![Bitrise](https://app.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://app.bitrise.io/app/94e8fe199a9a670b) |
-| Linux    | [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=svg)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master) |
-
 A tool for providing the 2 features for efficient testing:
 
 - Output diff between 2 any types
@@ -19,6 +14,11 @@ A tool for providing the 2 features for efficient testing:
 
 
 ![](./Documentation/Images/XcodePreview.png)
+
+| Platform | Status |
+|:---------|:------:|
+| macOS    | [![Bitrise](https://app.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://app.bitrise.io/app/94e8fe199a9a670b) |
+| Linux    | [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=svg)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master) |
 
 
 
