@@ -1,12 +1,6 @@
 ![MirrorDiffKit](https://raw.githubusercontent.com/Kuniwak/MirrorDiffKit/master/Documentation/Images/logo.png)
 =============
 
-![Swift 5.0 compatible](https://img.shields.io/badge/Swift%20version-5.0-green.svg)
-![CocoaPods](https://img.shields.io/cocoapods/v/MirrorDiffKit.svg)
-![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)
-![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-green.svg)
-[![MIT license](https://img.shields.io/badge/lisence-MIT-yellow.svg)](https://github.com/Kuniwak/MirrorDiffKit/blob/master/LICENSE)
-
 A tool for providing the 2 features for efficient testing:
 
 - Output diff between 2 any types
@@ -14,12 +8,6 @@ A tool for providing the 2 features for efficient testing:
 
 
 ![](./Documentation/Images/XcodePreview.png)
-
-| Platform | Status |
-|:---------|:------:|
-| macOS    | [![Bitrise](https://app.bitrise.io/app/94e8fe199a9a670b/status.svg?token=XaNhf80F5x3pimGVlyPb-w&branch=master)](https://app.bitrise.io/app/94e8fe199a9a670b) |
-| Linux    | [![CircleCI](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master.svg?style=svg)](https://circleci.com/gh/Kuniwak/MirrorDiffKit/tree/master) |
-
 
 
 Usage
@@ -80,29 +68,13 @@ XCTAssert(a =~ b, diff(between: a, and: b))
 
 Installation
 ------------
-### Swift Package Manager
-
-Add the following line to your `Package.swift`:
-
 
 ```
 .package(url: "https://github.com/Kuniwak/MirrorDiffKit.git")
 ```
 
 
+License
+-------
 
-### Carthage
-
-Add the following line to your `Cartfile`:
-
-```
-github "Kuniwak/MirrorDiffKit"
-```
-
-
-
-### CocoaPods
-
-```ruby
-pod "MirrorDiffKit"
-```
+[MIT License](./LICENSE)

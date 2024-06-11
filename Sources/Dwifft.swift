@@ -61,10 +61,10 @@ public enum DiffStep<T> : CustomDebugStringConvertible {
     }
     public var value: T {
         switch(self) {
-        case .insert(let j):
-            return j.1
-        case .delete(let j):
-            return j.1
+        case .insert(_, let j):
+            return j
+        case .delete(_, let j):
+            return j
         }
     }
 }

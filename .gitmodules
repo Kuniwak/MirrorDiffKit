@@ -1,0 +1,3 @@
+[submodule "Scripts/xcodebuild-scripts"]
+	path = Scripts/xcodebuild-scripts
+	url = https://github.com/Kuniwak/xcodebuild-scripts
