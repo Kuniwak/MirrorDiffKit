@@ -6,7 +6,34 @@ on:
   pull_request:
 
 jobs:
-  test:
+  test-linux:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: setup swift
+        uses: swift-actions/setup-swift@e1dca7c4a36344146bbc2803f0d538462477bb37 # v2.0.0
+        with:
+          swift-version: '5.10'
+
+      - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+        with:
+          path: .build
+          key: linux-spm-${{ hashfiles('**/Package.resolved') }}
+          restore-keys: |
+            linux-spm-
+
+      - name: Run tests
+        run: |
+          swift test
+
+  test-macos:
     runs-on: macos-latest 
 
     permissions:
@@ -24,12 +51,12 @@ jobs:
           # - visionOS
 
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
         with:
           submodules: recursive
 
-      - name: Setup Swift
+      - name: setup swift
         uses: swift-actions/setup-swift@e1dca7c4a36344146bbc2803f0d538462477bb37 # v2.0.0
         with:
           swift-version: '5.10'
@@ -37,9 +64,9 @@ jobs:
       - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
           path: .build
-          key: spm-${{ hashFiles('**/Package.resolved') }}
+          key: macos-spm-${{ hashfiles('**/Package.resolved') }}
           restore-keys: |
-            spm-
+            macos-spm-
 
       - name: Setup jq
         uses: dcarbone/install-jq-action@8867ddb4788346d7c22b72ea2e2ffe4d514c7bcb # v2.1.0
