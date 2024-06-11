@@ -1,0 +1,23 @@
+name: Actions Lint
+on:
+  pull_request:
+    paths:
+      - ".github/**"
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      - name: Run actionlint
+        uses: reviewdog/action-actionlint@89a03f6ba8c0a9fd238e82c075ffb34b86e40291 # v1.46.0
+        with:
+          reporter: github-pr-review

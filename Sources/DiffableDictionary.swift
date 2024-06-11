@@ -35,13 +35,13 @@ struct DiffableDictionary {
 
         keys.forEach { key in
             switch (lhs.dictionary[key], rhs.dictionary[key]) {
-            case (.none, .none):
+            case (nil, nil):
                 fatalError("This case cannot be executed.")
 
-            case let (.some(lv), .none):
+            case let (.some(lv), nil):
                 result[key] = [.inserted(lv)]
 
-            case let (.none, .some(rv)):
+            case let (nil, .some(rv)):
                 result[key] = [.deleted(rv)]
 
             case let (.some(lv), .some(rv)):
